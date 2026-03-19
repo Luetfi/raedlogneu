@@ -32,9 +32,9 @@ export default function Header() {
             <Image
               src="/images/logo.gif"
               alt="RÄDLOG-Center Logo"
-              width={180}
-              height={50}
-              className="h-12 w-auto"
+              width={240}
+              height={67}
+              className="h-16 w-auto"
               priority
               unoptimized
             />

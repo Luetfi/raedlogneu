@@ -2,15 +2,21 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Building2, Smartphone, Printer, CheckCircle, AlertCircle, Send } from 'lucide-react'
+import { Phone, Mail, MapPin, Building2, Smartphone, Printer, CheckCircle, AlertCircle, Send, Navigation } from 'lucide-react'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
-import { COMPANY, LOCATIONS } from '@/lib/constants'
+import { COMPANY, LOCATIONS, SERVICE_REGION_DETAILS } from '@/lib/constants'
+
+const ServiceRegionMap = dynamic(
+  () => import('@/components/shared/ServiceRegionMap'),
+  { ssr: false, loading: () => <div className="h-[420px] w-full animate-pulse rounded-2xl bg-bg-surface sm:h-[500px]" /> },
+)
 
 interface FormState {
   name: string
@@ -77,13 +83,32 @@ export default function KontaktContent() {
   }
 
   return (
-    <main className="bg-bg min-h-screen py-16 lg:py-24">
-      <Container>
-        {/* Page Heading */}
-        <SectionHeading
-          title="Kontakt"
-          subtitle="Ihr Kontakt zu uns"
+    <main className="bg-bg min-h-screen">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden border-b border-border bg-bg-elevated py-20 lg:py-28">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,theme(colors.primary/0.12)_0%,transparent_60%)]"
         />
+        <Container>
+          <AnimatedSection variants={fadeInUp} className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
+              Kontakt
+            </p>
+            <h1 className="text-4xl font-bold text-text-heading sm:text-5xl lg:text-6xl">
+              Wir sind{' '}
+              <span className="text-primary">für Sie da</span>
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-text-muted sm:text-xl">
+              Haben Sie Fragen zu unseren Leistungen oder möchten Sie einen Termin vereinbaren?
+              Kontaktieren Sie uns — wir freuen uns auf Ihre Nachricht.
+            </p>
+          </AnimatedSection>
+        </Container>
+      </section>
+
+      <div className="py-16 lg:py-24">
+      <Container>
 
         {/* Two-column layout: Form + Sidebar */}
         <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -394,28 +419,45 @@ export default function KontaktContent() {
           </motion.div>
         </AnimatedSection>
 
-        {/* Google Maps Embed */}
+        {/* Serviceregionen */}
         <AnimatedSection variants={fadeInUp} delay={0.1} className="mt-16">
-          <h2 className="mb-6 text-2xl font-bold text-text-heading text-center">
-            So finden Sie uns
-          </h2>
-          <div className="overflow-hidden rounded-2xl border border-border shadow-xl shadow-black/20">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.5!2d9.2208!3d48.8183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ5JzA1LjkiTiA5wrAxMyoxNC45IkU!5e0!3m2!1sde!2sde!4v1"
-              width="100%"
-              height="400"
-              style={{ border: 0, display: 'block' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="RÄDLOG-Center GmbH Standort Stuttgart"
-            />
+          <SectionHeading
+            title="Unsere Serviceregionen"
+            subtitle="Wir sind im gesamten Großraum Stuttgart für Sie unterwegs"
+          />
+          <div className="mt-8">
+            <ServiceRegionMap />
           </div>
-          <p className="mt-3 text-center text-sm text-text-muted">
-            Hortensienweg 23, 70374 Stuttgart (Hauptsitz)
-          </p>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mt-6 flex flex-wrap justify-center gap-3"
+          >
+            {SERVICE_REGION_DETAILS.map((region) => (
+              <motion.a
+                key={region.name}
+                variants={staggerItem}
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(region.name + ', Baden-Württemberg, Deutschland')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 rounded-xl border border-border bg-bg-elevated px-4 py-2.5 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5"
+              >
+                <MapPin className="size-4 text-primary" />
+                <span className="font-semibold text-text-heading">{region.name}</span>
+                {region.isHQ && (
+                  <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+                    HQ
+                  </span>
+                )}
+                <Navigation className="size-3.5 text-text-muted transition-colors group-hover:text-primary" />
+              </motion.a>
+            ))}
+          </motion.div>
         </AnimatedSection>
       </Container>
+      </div>
     </main>
   )
 }

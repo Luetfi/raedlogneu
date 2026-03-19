@@ -79,70 +79,25 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-        {/* Layered background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#040810] via-bg to-[#0a1628]" />
+      <section className="relative h-screen flex items-start overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/hero-bg.jpeg')" }}
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#040810]/90 via-[#040810]/70 to-transparent" />
 
-        {/* Geometric wheel shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Large tire ring — top right */}
-          <div
-            className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-[0.04]"
-            style={{
-              border: '80px solid #0568b1',
-            }}
-          />
-          {/* Medium ring — bottom left */}
-          <div
-            className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full opacity-[0.03]"
-            style={{
-              border: '60px solid #0568b1',
-            }}
-          />
-          {/* Small accent ring */}
-          <div
-            className="absolute top-1/4 right-1/4 w-[200px] h-[200px] rounded-full opacity-[0.05]"
-            style={{
-              border: '3px solid #0568b1',
-            }}
-          />
-          {/* Dot at center of small ring */}
-          <div className="absolute top-1/4 right-1/4 w-[200px] h-[200px] flex items-center justify-center">
-            <div className="w-2 h-2 rounded-full bg-primary opacity-20" />
-          </div>
-
-          {/* Grid lines suggesting storage racks */}
-          <div className="absolute inset-0 opacity-[0.015]"
-            style={{
-              backgroundImage:
-                'linear-gradient(#0568b1 1px, transparent 1px), linear-gradient(90deg, #0568b1 1px, transparent 1px)',
-              backgroundSize: '80px 80px',
-            }}
-          />
-
-          {/* Radial glow behind hero text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/[0.04] blur-[120px]" />
-        </div>
-
-        {/* Diagonal accent line */}
-        <div className="absolute top-0 right-0 w-1/2 h-full overflow-hidden pointer-events-none">
-          <div className="absolute -top-[10%] -right-[20%] w-[1px] h-[140%] bg-gradient-to-b from-transparent via-primary/20 to-transparent rotate-[25deg]" />
-          <div className="absolute -top-[10%] -right-[18%] w-[1px] h-[140%] bg-gradient-to-b from-transparent via-primary/10 to-transparent rotate-[25deg]" />
-        </div>
-
-        <Container className="relative z-10">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-4 py-1.5 mb-8"
+        <Container className="relative z-10 pt-20 lg:pt-24">
+          <div className="flex flex-col items-center text-center">
+            <motion.p
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-lg sm:text-xl font-semibold text-primary tracking-widest uppercase mb-4"
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary tracking-wide">
-                Seit 1998 im Raum Stuttgart
-              </span>
-            </motion.div>
+              Wir kümmern uns Rund ums Rad!
+            </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -155,22 +110,29 @@ export default function HomePage() {
               <span className="text-primary">für Ihre Kundenräder</span>
             </motion.h1>
 
+            {/* Decorative divider */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="mt-4 h-[2px] w-24 bg-gradient-to-r from-transparent via-primary to-transparent"
+            />
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-6 text-lg text-text-muted leading-relaxed sm:text-xl max-w-xl"
+              className="mt-4 text-lg text-text-muted leading-relaxed sm:text-xl max-w-xl"
             >
               Ihr kompetenter Partner für fachmännische Räder&shy;einlagerung
-              und Reifenservice — für Autohäuser, Fuhrparks und
-              Autovermietungen.
+              und Reifenservice — für Firmenkunden.
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="mt-3 flex items-center gap-2 text-sm text-text-muted/80"
+              className="mt-3 flex items-center justify-center gap-2 text-sm text-text-muted/80"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-primary flex-shrink-0">
                 <path fillRule="evenodd" d="m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" clipRule="evenodd" />
@@ -182,7 +144,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-8 flex flex-wrap justify-center gap-4"
             >
               <Button href="/leistungen" size="lg">
                 Leistungen entdecken
@@ -198,15 +160,15 @@ export default function HomePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.9 }}
-              className="mt-16 flex gap-10 flex-wrap"
+              className="mt-10 grid grid-cols-3 max-w-lg mx-auto"
             >
               {[
                 { value: '25+', label: 'Jahre Erfahrung' },
                 { value: '4', label: 'Standorte' },
                 { value: '6', label: 'Serviceregionen' },
-              ].map((stat) => (
-                <div key={stat.label} className="group">
-                  <div className="text-3xl font-bold text-text-heading">
+              ].map((stat, i) => (
+                <div key={stat.label} className={`group ${i > 0 ? 'border-l border-primary/20' : ''}`}>
+                  <div className="text-3xl sm:text-4xl font-bold text-text-heading">
                     {stat.value}
                   </div>
                   <div className="text-sm text-text-muted mt-1">{stat.label}</div>

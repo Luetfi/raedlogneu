@@ -46,6 +46,7 @@ export const LOCATIONS = [
 
 export const NAV_ITEMS = [
   { label: 'Startseite', href: '/' },
+  { label: 'Über uns', href: '/ueber-uns' },
   { label: 'Leistungen', href: '/leistungen' },
   { label: 'Firmenkunden', href: '/firmenkunden' },
   { label: 'REOS', href: '/reos' },
@@ -61,4 +62,13 @@ export const SERVICE_REGIONS = [
   'Böblingen',
   'Sindelfingen',
   'Leonberg',
+] as const
+
+export const SERVICE_REGION_DETAILS = [
+  { name: 'Stuttgart', isHQ: true, lat: 48.7758, lng: 9.1829 },
+  { name: 'Ludwigsburg', isHQ: false, lat: 48.8975, lng: 9.1920 },
+  { name: 'Waiblingen', isHQ: false, lat: 48.8314, lng: 9.3168 },
+  { name: 'Böblingen', isHQ: false, lat: 48.6862, lng: 9.0106 },
+  { name: 'Sindelfingen', isHQ: false, lat: 48.7133, lng: 9.0028 },
+  { name: 'Leonberg', isHQ: false, lat: 48.8001, lng: 9.0132 },
 ] as const

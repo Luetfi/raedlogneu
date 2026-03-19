@@ -81,3 +81,15 @@ body {
   animation: scroll 20s linear infinite;
 }
 
+/* Leaflet attribution — minimal & unobtrusive */
+.leaflet-control-attribution {
+  font-size: 7px !important;
+  opacity: 0.2 !important;
+  background: transparent !important;
+  color: #334155 !important;
+  padding: 0 3px !important;
+}
+.leaflet-control-attribution a {
+  color: #334155 !important;
+}
+
