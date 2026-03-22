@@ -1,10 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Shield, Calendar, Truck, ArrowRight, Quote } from 'lucide-react'
+import { Shield, Calendar, Truck, ArrowRight, Quote, Building2 } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import {
@@ -41,41 +42,23 @@ export default function FirmenkundenContent() {
   return (
     <main className="min-h-screen bg-bg text-text">
       {/* Hero / Welcome Section */}
-      <section className="relative overflow-hidden border-b border-border bg-bg-elevated py-20 lg:py-28">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,theme(colors.primary/0.12)_0%,transparent_60%)]"
-        />
+      <PageHero
+        title={<>Herzlich Willkommen im <span className="text-primary">{COMPANY.shortName}-Center!</span></>}
+        subtitle={<>Ihr kompetenter Partner für Reifen, Räder, Einlagerung und Service rund um das Rad in der Region {SERVICE_REGIONS.join(', ')} und Umgebung.</>}
+      />
+
+      {/* CTA Buttons */}
+      <section className="border-b border-border bg-bg py-8">
         <Container>
-          <AnimatedSection variants={fadeInUp} className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
-              Firmenkunden
-            </p>
-            <h1 className="text-4xl font-bold text-text-heading sm:text-5xl lg:text-6xl">
-              Herzlich Willkommen im{' '}
-              <span className="text-primary">{COMPANY.shortName}-Center!</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-text-muted sm:text-xl">
-              Ihr kompetenter Partner für Reifen, Räder, Einlagerung und Service rund um das Rad
-              in der Region{' '}
-              {SERVICE_REGIONS.map((region, i) => (
-                <span key={region}>
-                  {region}
-                  {i < SERVICE_REGIONS.length - 1 ? ', ' : ''}
-                </span>
-              ))}{' '}
-              und Umgebung.
-            </p>
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button href="/kontakt" size="lg">
-                Jetzt Partner werden
-                <ArrowRight className="h-5 w-5" />
-              </Button>
-              <Button href="/leistungen" variant="outline" size="lg">
-                Unsere Leistungen
-              </Button>
-            </div>
-          </AnimatedSection>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Button href="/kontakt" size="lg">
+              Jetzt Partner werden
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+            <Button href="/leistungen" variant="outline" size="lg">
+              Unsere Leistungen
+            </Button>
+          </div>
         </Container>
       </section>
 
@@ -241,7 +224,7 @@ export default function FirmenkundenContent() {
                     href="/kontakt"
                     variant="secondary"
                     size="lg"
-                    className="bg-white text-primary hover:bg-white/90 border-0 shadow-lg"
+                    className="!bg-white !text-primary hover:!bg-white/90 !border-0 shadow-lg"
                   >
                     Kontakt aufnehmen
                     <ArrowRight className="h-5 w-5" />
@@ -250,7 +233,7 @@ export default function FirmenkundenContent() {
                     href={`tel:${COMPANY.phone.replace(/\s|\/|-/g, '')}`}
                     variant="outline"
                     size="lg"
-                    className="border-white text-white hover:bg-white hover:text-primary"
+                    className="!border-white !text-white hover:!bg-white hover:!text-primary"
                   >
                     {COMPANY.phone}
                   </Button>

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import HeroSlideshow from '@/components/shared/HeroSlideshow'
 import {
   Building2,
   Car,
@@ -80,13 +81,8 @@ export default function HomePage() {
     <>
       {/* ── Hero ── */}
       <section className="relative h-screen flex items-start overflow-hidden">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-bg.jpeg')" }}
-        />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#040810]/90 via-[#040810]/70 to-transparent" />
+        {/* Slideshow background + overlay */}
+        <HeroSlideshow />
 
         <Container className="relative z-10 pt-20 lg:pt-24">
           <div className="flex flex-col items-center text-center">
@@ -94,7 +90,7 @@ export default function HomePage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-lg sm:text-xl font-semibold text-primary tracking-widest uppercase mb-4"
+              className="text-lg sm:text-xl font-semibold text-primary tracking-widest uppercase mb-4 hero-text-shadow-sm"
             >
               Wir kümmern uns Rund ums Rad!
             </motion.p>
@@ -103,7 +99,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-4xl font-extrabold tracking-tight text-text-heading sm:text-5xl lg:text-6xl xl:text-7xl !leading-[1.1]"
+              className="text-4xl font-extrabold tracking-tight text-text-heading sm:text-5xl lg:text-6xl xl:text-7xl !leading-[1.1] hero-text-shadow"
             >
               Ein neues Zuhause
               <br />
@@ -122,7 +118,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-4 text-lg text-text-muted leading-relaxed sm:text-xl max-w-xl"
+              className="mt-4 text-lg text-text-muted leading-relaxed sm:text-xl max-w-xl hero-text-shadow-sm"
             >
               Ihr kompetenter Partner für fachmännische Räder&shy;einlagerung
               und Reifenservice — für Firmenkunden.
@@ -132,7 +128,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="mt-3 flex items-center justify-center gap-2 text-sm text-text-muted/80"
+              className="mt-3 flex items-center justify-center gap-2 text-sm text-text-muted/80 hero-text-shadow-sm"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-primary flex-shrink-0">
                 <path fillRule="evenodd" d="m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" clipRule="evenodd" />
@@ -164,14 +160,14 @@ export default function HomePage() {
             >
               {[
                 { value: '25+', label: 'Jahre Erfahrung' },
-                { value: '4', label: 'Standorte' },
-                { value: '6', label: 'Serviceregionen' },
+                { value: '3', label: 'Standorte' },
+                { value: '2', label: 'Serviceregionen' },
               ].map((stat, i) => (
                 <div key={stat.label} className={`group ${i > 0 ? 'border-l border-primary/20' : ''}`}>
-                  <div className="text-3xl sm:text-4xl font-bold text-text-heading">
+                  <div className="text-3xl sm:text-4xl font-bold text-text-heading hero-text-shadow-sm">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-text-muted mt-1">{stat.label}</div>
+                  <div className="text-sm text-text-muted mt-1 hero-text-shadow-sm">{stat.label}</div>
                 </div>
               ))}
             </motion.div>

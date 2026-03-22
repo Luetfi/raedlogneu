@@ -12,6 +12,7 @@ import {
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
@@ -68,31 +69,10 @@ export default function ReosContent() {
   return (
     <main className="min-h-screen bg-bg">
       {/* Hero / Intro */}
-      <section className="relative overflow-hidden border-b border-border bg-bg-surface py-20 sm:py-28">
-        {/* Subtle background glow */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-[500px] w-[800px] rounded-full bg-primary/5 blur-3xl" />
-        </div>
-
-        <Container>
-          <AnimatedSection variants={fadeInUp} className="relative text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border-accent bg-bg-elevated px-4 py-2 text-sm font-medium text-primary">
-              <Monitor className="h-4 w-4" />
-              Online-System
-            </div>
-            <h1 className="text-4xl font-bold tracking-tight text-text-heading sm:text-5xl lg:text-6xl">
-              REOS
-            </h1>
-            <p className="mt-2 text-xl font-semibold text-primary sm:text-2xl">
-              Räder Einlagerungs Online System
-            </p>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-muted">
-              REOS ist eine eigens für unsere Zwecke entwickelte Onlinedatenbank.
-              Damit können Sie schnell und unkompliziert einen Radsatz anfordern.
-            </p>
-          </AnimatedSection>
-        </Container>
-      </section>
+      <PageHero
+        title={<>REOS — <span className="text-primary">Räder Einlagerungs Online System</span></>}
+        subtitle="REOS ist eine eigens für unsere Zwecke entwickelte Onlinedatenbank. Damit können Sie schnell und unkompliziert einen Radsatz anfordern."
+      />
 
       {/* Workflow Steps */}
       <section className="py-20 sm:py-24">
@@ -211,7 +191,7 @@ export default function ReosContent() {
                   variant="primary"
                 >
                   <LogIn className="h-5 w-5" />
-                  Zu REOS (reos.raedlog.de)
+                  Zu REOS Login
                 </Button>
 
                 <p className="mt-4 text-xs text-text-muted">

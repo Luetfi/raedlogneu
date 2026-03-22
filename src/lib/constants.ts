@@ -15,29 +15,22 @@ export const COMPANY = {
 
 export const LOCATIONS = [
   {
-    name: 'Stuttgart (Hauptsitz)',
+    name: 'Stuttgart-Sommerrain (Hauptsitz)',
     street: 'Hortensienweg 23',
     zip: '70374',
     city: 'Stuttgart',
     isHQ: true,
   },
   {
-    name: 'Stuttgart II',
-    street: 'Hortensienweg 27',
-    zip: '70374',
-    city: 'Stuttgart',
-    isHQ: false,
-  },
-  {
-    name: 'Kornwestheim',
-    street: 'Murrstraße 3',
-    zip: '70806',
-    city: 'Kornwestheim',
-    isHQ: false,
-  },
-  {
-    name: 'Remseck',
+    name: 'Remseck-Aldingen (1)',
     street: 'Bernhardslaicher Weg 14',
+    zip: '71686',
+    city: 'Remseck',
+    isHQ: false,
+  },
+  {
+    name: 'Remseck-Aldingen (2)',
+    street: 'Hardtweg 3',
     zip: '71686',
     city: 'Remseck',
     isHQ: false,
@@ -52,23 +45,15 @@ export const NAV_ITEMS = [
   { label: 'REOS', href: '/reos' },
   { label: 'Karriere', href: '/karriere' },
   { label: 'Kontakt', href: '/kontakt' },
-  { label: 'Chronik', href: '/chronik' },
 ] as const
 
 export const SERVICE_REGIONS = [
-  'Stuttgart',
-  'Ludwigsburg',
-  'Waiblingen',
-  'Böblingen',
-  'Sindelfingen',
-  'Leonberg',
+  'Stuttgart-Sommerrain',
+  'Remseck-Aldingen',
 ] as const
 
 export const SERVICE_REGION_DETAILS = [
-  { name: 'Stuttgart', isHQ: true, lat: 48.7758, lng: 9.1829 },
-  { name: 'Ludwigsburg', isHQ: false, lat: 48.8975, lng: 9.1920 },
-  { name: 'Waiblingen', isHQ: false, lat: 48.8314, lng: 9.3168 },
-  { name: 'Böblingen', isHQ: false, lat: 48.6862, lng: 9.0106 },
-  { name: 'Sindelfingen', isHQ: false, lat: 48.7133, lng: 9.0028 },
-  { name: 'Leonberg', isHQ: false, lat: 48.8001, lng: 9.0132 },
+  { name: 'Stuttgart-Sommerrain', isHQ: true, lat: 48.8185, lng: 9.2295 },
+  { name: 'Remseck-Aldingen (1)', isHQ: false, lat: 48.8709, lng: 9.2720 },
+  { name: 'Remseck-Aldingen (2)', isHQ: false, lat: 48.8685, lng: 9.2650 },
 ] as const

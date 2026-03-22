@@ -11,16 +11,15 @@ import {
   MapPin,
   Calendar,
   Star,
-  ArrowRight,
 } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Card from '@/components/ui/Card'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Badge from '@/components/ui/Badge'
-import Button from '@/components/ui/Button'
+import PageHero from '@/components/ui/PageHero'
 import AnimatedSection from '@/components/shared/AnimatedSection'
+import Timeline from '@/components/sections/Timeline'
 import {
-  fadeInUp,
   fadeInLeft,
   fadeInRight,
   staggerContainer,
@@ -66,7 +65,7 @@ const teamMembers: TeamMember[] = [
 
 const companyFacts = [
   { icon: Calendar, label: 'Gründung', value: '1998' },
-  { icon: MapPin, label: 'Standorte', value: '4 im Raum Stuttgart' },
+  { icon: MapPin, label: 'Standorte', value: '3 im Raum Stuttgart' },
   { icon: Users, label: 'Führung', value: 'Familie Hoffmann' },
   { icon: Building2, label: 'Spezialisierung', value: 'Räder- & Reifenlogistik' },
 ]
@@ -101,7 +100,7 @@ const values = [
 function TeamCard({ member, index }: { member: TeamMember; index: number }) {
   return (
     <motion.div variants={staggerItem} className="group">
-      <Card className={`relative overflow-hidden text-center ${member.isFounder ? 'ring-2 ring-primary/20' : ''}`}>
+      <Card className={`relative overflow-hidden text-center h-full flex flex-col ${member.isFounder ? 'ring-2 ring-primary/20' : ''}`}>
         {/* Subtle top accent */}
         <div
           aria-hidden="true"
@@ -109,14 +108,18 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         />
 
         {/* Founder badge */}
-        {member.isFounder && (
-          <div className="mb-4 flex justify-center">
+        <div className="mb-4 flex justify-center">
+          {member.isFounder ? (
             <Badge>
               <Star className="mr-1.5 h-3.5 w-3.5" />
               Gründer
             </Badge>
-          </div>
-        )}
+          ) : (
+            <span className="invisible">
+              <Badge>Platzhalter</Badge>
+            </span>
+          )}
+        </div>
 
         {/* Avatar placeholder */}
         <div className="mx-auto mb-5 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 ring-4 ring-primary/10 transition-all duration-300 group-hover:ring-primary/25 group-hover:shadow-lg group-hover:shadow-primary/10">
@@ -130,7 +133,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         <p className="mt-1 text-sm font-medium text-primary">{member.role}</p>
 
         {/* Description */}
-        <p className="mt-4 text-sm leading-relaxed text-text-muted">
+        <p className="mt-4 flex-1 text-sm leading-relaxed text-text-muted">
           {member.description}
         </p>
       </Card>
@@ -142,28 +145,10 @@ export default function UeberUnsContent() {
   return (
     <main className="min-h-screen bg-bg text-text">
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden border-b border-border bg-bg-elevated py-20 lg:py-28">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,theme(colors.primary/0.12)_0%,transparent_60%)]"
-        />
-        <Container>
-          <AnimatedSection variants={fadeInUp} className="mx-auto max-w-3xl text-center">
-            <Badge className="mb-6">
-              <Users className="mr-1.5 h-3.5 w-3.5" />
-              Über uns
-            </Badge>
-            <h1 className="text-4xl font-bold text-text-heading sm:text-5xl lg:text-6xl">
-              Über uns —{' '}
-              <span className="text-primary">RÄDLOG-Center GmbH</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-text-muted sm:text-xl">
-              Ein Familienunternehmen mit Leidenschaft für Räder- und Reifenlogistik —
-              seit 1998 im Raum Stuttgart zuhause.
-            </p>
-          </AnimatedSection>
-        </Container>
-      </section>
+      <PageHero
+        title={<>Über uns — <span className="text-primary">RÄDLOG-Center GmbH</span></>}
+        subtitle="Ein Familienunternehmen mit Leidenschaft für Räder- und Reifenlogistik — seit 1998 im Raum Stuttgart zuhause."
+      />
 
       {/* ── Unternehmensphilosophie ── */}
       <section className="py-20 lg:py-28">
@@ -179,7 +164,7 @@ export default function UeberUnsContent() {
               <div className="mt-2 h-1 w-16 rounded-full bg-primary" />
               <p className="mt-6 text-lg leading-relaxed text-text-muted">
                 Was 1998 als Ein-Mann-Betrieb begann, ist heute ein etabliertes
-                Familienunternehmen mit vier Standorten. Gegründet von Jörg Hoffmann,
+                Familienunternehmen mit drei Standorten. Gegründet von Jörg Hoffmann,
                 geführt gemeinsam mit seinen Söhnen Dominik und Tim — vereint durch die
                 Überzeugung, dass exzellenter Service auf persönlichen Beziehungen aufbaut.
               </p>
@@ -214,6 +199,9 @@ export default function UeberUnsContent() {
           </div>
         </Container>
       </section>
+
+      {/* ── Firmengeschichte / Timeline ── */}
+      <Timeline />
 
       {/* ── Team ── */}
       <section className="bg-bg-elevated py-20 lg:py-28">
@@ -255,8 +243,8 @@ export default function UeberUnsContent() {
             {values.map((value) => {
               const Icon = value.icon
               return (
-                <motion.div key={value.title} variants={staggerItem}>
-                  <Card className="text-center">
+                <motion.div key={value.title} variants={staggerItem} className="h-full">
+                  <Card className="text-center h-full">
                     <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
                       <Icon className="h-7 w-7 text-primary" />
                     </div>
@@ -274,26 +262,6 @@ export default function UeberUnsContent() {
         </Container>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="border-t border-border bg-bg-elevated py-20 lg:py-24">
-        <Container>
-          <AnimatedSection variants={fadeInUp} className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-text-heading sm:text-4xl">
-              Interesse geweckt?
-            </h2>
-            <p className="mt-4 text-lg text-text-muted">
-              Wir freuen uns auf den Austausch mit Ihnen — ob als Kunde, Partner oder
-              zukünftiger Kollege.
-            </p>
-            <div className="mt-8">
-              <Button href="/kontakt" size="lg">
-                Kontakt aufnehmen
-                <ArrowRight className="h-5 w-5" />
-              </Button>
-            </div>
-          </AnimatedSection>
-        </Container>
-      </section>
     </main>
   )
 }

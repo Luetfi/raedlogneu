@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Building2, Smartphone, Printer, CheckCircle, AlertCircle, Send, Navigation } from 'lucide-react'
+import { Phone, Mail, MapPin, Building2, Smartphone, Printer, CheckCircle, AlertCircle, Send, Navigation, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
@@ -85,27 +86,10 @@ export default function KontaktContent() {
   return (
     <main className="bg-bg min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border bg-bg-elevated py-20 lg:py-28">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,theme(colors.primary/0.12)_0%,transparent_60%)]"
-        />
-        <Container>
-          <AnimatedSection variants={fadeInUp} className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">
-              Kontakt
-            </p>
-            <h1 className="text-4xl font-bold text-text-heading sm:text-5xl lg:text-6xl">
-              Wir sind{' '}
-              <span className="text-primary">für Sie da</span>
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-text-muted sm:text-xl">
-              Haben Sie Fragen zu unseren Leistungen oder möchten Sie einen Termin vereinbaren?
-              Kontaktieren Sie uns — wir freuen uns auf Ihre Nachricht.
-            </p>
-          </AnimatedSection>
-        </Container>
-      </section>
+      <PageHero
+        title={<>Wir sind <span className="text-primary">für Sie da</span></>}
+        subtitle="Haben Sie Fragen zu unseren Leistungen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns — wir freuen uns auf Ihre Nachricht."
+      />
 
       <div className="py-16 lg:py-24">
       <Container>
@@ -389,7 +373,7 @@ export default function KontaktContent() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
           >
             {LOCATIONS.map((location) => (
               <motion.div key={location.name} variants={staggerItem}>
@@ -413,6 +397,15 @@ export default function KontaktContent() {
                       {location.zip} {location.city}
                     </span>
                   </div>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${location.street}, ${location.zip} ${location.city}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
+                  >
+                    <Navigation className="size-3.5" />
+                    Zur Route
+                  </a>
                 </Card>
               </motion.div>
             ))}

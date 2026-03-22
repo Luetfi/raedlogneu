@@ -30,8 +30,8 @@ const hqIcon = L.divIcon({
 })
 
 // Center of the Stuttgart metro area
-const CENTER: [number, number] = [48.78, 9.1]
-const ZOOM = 11
+const CENTER: [number, number] = [48.845, 9.25]
+const ZOOM = 12
 
 export default function ServiceRegionMap() {
   return (

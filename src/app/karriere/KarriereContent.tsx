@@ -6,6 +6,7 @@ import { Briefcase, Users, MapPin, Building2, Upload, CheckCircle, AlertCircle }
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
@@ -22,7 +23,7 @@ const benefits = [
     icon: Building2,
     title: 'Wachsendes Unternehmen',
     description:
-      'Mit 4 Standorten in der Region Stuttgart sind wir seit 1998 kontinuierlich gewachsen. Wir bieten Ihnen langfristige Perspektiven in einem stabilen Unternehmen.',
+      'Mit 3 Standorten in der Region Stuttgart sind wir seit 1998 kontinuierlich gewachsen. Wir bieten Ihnen langfristige Perspektiven in einem stabilen Unternehmen.',
   },
   {
     icon: MapPin,
@@ -168,26 +169,10 @@ export default function KarriereContent() {
   return (
     <main className="min-h-screen bg-bg">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border bg-bg-elevated py-20 sm:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
-        <Container>
-          <AnimatedSection variants={fadeInUp} className="relative z-10 max-w-3xl">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-              <Briefcase className="h-4 w-4" />
-              Jetzt bewerben
-            </div>
-            <h1 className="text-4xl font-bold text-text-heading sm:text-5xl lg:text-6xl">
-              Karriere bei{' '}
-              <span className="text-primary">RÄDLOG-Center</span>
-            </h1>
-            <p className="mt-6 text-lg text-text-muted sm:text-xl">
-              Werden Sie Teil unseres Teams. Seit 1998 wachsen wir als führendes Unternehmen im
-              Bereich Räder- und Reifenlogistik — und wir suchen engagierte Menschen, die diesen
-              Weg mit uns fortsetzen.
-            </p>
-          </AnimatedSection>
-        </Container>
-      </section>
+      <PageHero
+        title={<>Karriere bei <span className="text-primary">RÄDLOG-Center</span></>}
+        subtitle="Werden Sie Teil unseres Teams. Seit 1998 wachsen wir als führendes Unternehmen im Bereich Räder- und Reifenlogistik — und wir suchen engagierte Menschen, die diesen Weg mit uns fortsetzen."
+      />
 
       {/* About Working at RÄDLOG */}
       <section className="py-16 sm:py-20">

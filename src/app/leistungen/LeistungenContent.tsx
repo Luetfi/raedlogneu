@@ -1,11 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, CheckCircle2, ArrowRight, Zap, Disc3, Wrench, Truck } from 'lucide-react'
+import { Check, CheckCircle2, ArrowRight, Zap, Disc3, Wrench, Truck, Settings } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
+import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp, fadeInLeft, fadeInRight } from '@/lib/animations'
@@ -114,48 +115,10 @@ export default function LeistungenContent() {
   return (
     <>
       {/* ── Hero / Intro ── */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
-        {/* Background layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#040810] via-bg to-[#0a1628]" />
-        <div
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage:
-              'linear-gradient(#0568b1 1px, transparent 1px), linear-gradient(90deg, #0568b1 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-          }}
-        />
-        {/* Decorative rings */}
-        <div className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full opacity-[0.04] pointer-events-none"
-          style={{ border: '70px solid #0568b1' }} />
-        <div className="absolute -bottom-16 -left-16 w-[320px] h-[320px] rounded-full opacity-[0.03] pointer-events-none"
-          style={{ border: '50px solid #0568b1' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/[0.04] blur-[100px] pointer-events-none" />
-
-        <Container className="relative z-10 text-center">
-          <AnimatedSection>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-4 py-1.5 mb-8">
-              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary tracking-wide">
-                Rädereinlagerung &amp; Reifenservice
-              </span>
-            </div>
-
-            <h1 className="text-4xl font-extrabold tracking-tight text-text-heading sm:text-5xl lg:text-6xl !leading-[1.1]">
-              Unsere{' '}
-              <span className="text-primary">Leistungspakete</span>
-            </h1>
-
-            <p className="mt-6 text-lg text-text-muted leading-relaxed sm:text-xl max-w-2xl mx-auto">
-              Werden Sie glücklich machen — mit maßgeschneiderten Paketen für
-              professionelle Rädereinlagerung und Hol- &amp; Bringservice in der
-              Region Stuttgart.
-            </p>
-          </AnimatedSection>
-        </Container>
-
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-bg to-transparent" />
-      </section>
+      <PageHero
+        title={<>Unsere <span className="text-primary">Leistungspakete</span></>}
+        subtitle="Werden Sie glücklich machen — mit maßgeschneiderten Paketen für professionelle Rädereinlagerung und Hol- & Bringservice in der Region Stuttgart."
+      />
 
       {/* ── Pricing Cards ── */}
       <section className="relative py-20 lg:py-28">

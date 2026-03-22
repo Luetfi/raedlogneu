@@ -1,5 +1,7 @@
 import { createMetadata } from '@/lib/metadata'
+import { Shield } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import PageHero from '@/components/ui/PageHero'
 
 export const metadata = createMetadata({
   title: 'Datenschutz',
@@ -9,11 +11,17 @@ export const metadata = createMetadata({
 
 export default function DatenschutzPage() {
   return (
-    <section className="py-20 lg:py-28">
+    <>
+      {/* Hero */}
+      <PageHero
+        title="Datenschutzerklärung"
+        subtitle="Informationen zum Umgang mit Ihren personenbezogenen Daten bei der RÄDLOG-Center GmbH."
+      />
+
+      {/* Content */}
+      <section className="py-20 lg:py-28">
       <Container>
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold text-text-heading sm:text-4xl mb-4">Datenschutzerklärung</h1>
-          <div className="h-1 w-16 rounded-full bg-primary mb-12" />
 
           <div className="space-y-8 text-text leading-relaxed [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4 [&_p]:text-text-muted [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-text-muted [&_ul]:space-y-1">
             <h2>Datenschutz</h2>
@@ -65,5 +73,6 @@ export default function DatenschutzPage() {
         </div>
       </Container>
     </section>
+    </>
   )
 }
