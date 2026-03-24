@@ -165,7 +165,7 @@ export default function TireScrollExperience() {
         { id: 'feature1', enter: 0.08, leave: 0.26, animation: 'slide-left' as const, persist: false },
         { id: 'feature2', enter: 0.28, leave: 0.46, animation: 'slide-right' as const, persist: false },
         { id: 'stats', enter: 0.50, leave: 0.70, animation: 'stagger-up' as const, persist: false },
-        { id: 'cta', enter: 0.74, leave: 0.92, animation: 'scale-up' as const, persist: true },
+        { id: 'cta', enter: 0.74, leave: 0.92, animation: 'scale-up' as const, persist: false },
       ]
 
       sectionConfigs.forEach(({ id, enter, leave, animation, persist }) => {

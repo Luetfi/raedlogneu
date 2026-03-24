@@ -23,6 +23,3 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 node_modules
-
-# extracted video frames
-public/frames/
