@@ -100,8 +100,8 @@ export default function TireScrollExperience() {
             wipeProgress >= 1 ? 'none' : `circle(${radius}% at 50% 50%)`
 
           // Dark overlay for stats section (50% - 70%)
-          const overlayEnter = 0.48
-          const overlayLeave = 0.72
+          const overlayEnter = 0.46
+          const overlayLeave = 0.70
           const fadeRange = 0.04
           let overlayOpacity = 0
           if (p >= overlayEnter - fadeRange && p <= overlayEnter) {
@@ -304,7 +304,7 @@ export default function TireScrollExperience() {
           <div
             ref={scrollContainerRef}
             className="relative z-[3]"
-            style={{ height: '800vh' }}
+            style={{ height: '350vh' }}
           >
             {/* Feature 1 — Left aligned */}
             <section
@@ -344,9 +344,9 @@ export default function TireScrollExperience() {
                 </span>
                 <h2
                   className="section-heading font-bold text-text-heading leading-[1.05] hero-text-shadow"
-                  style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
+                  style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2.8rem)' }}
                 >
-                  Komplett-Service
+                  Komplettservice
                   <br />
                   aus einer Hand
                 </h2>
