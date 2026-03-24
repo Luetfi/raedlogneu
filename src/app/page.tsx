@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import HeroSlideshow from '@/components/shared/HeroSlideshow'
 import {
   Building2,
@@ -21,6 +22,11 @@ import Card from '@/components/ui/Card'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import PartnerSlider from '@/components/shared/PartnerSlider'
 import { staggerContainer, staggerItem, fadeInUp, fadeInLeft, fadeInRight } from '@/lib/animations'
+
+const TireScrollExperience = dynamic(
+  () => import('@/components/hero/HeroScrollExperience'),
+  { ssr: false }
+)
 
 const targetAudiences = [
   {
@@ -180,6 +186,9 @@ export default function HomePage() {
 
       {/* ── Partner Logos ── */}
       <PartnerSlider />
+
+      {/* ── Tire Scroll Experience ── */}
+      <TireScrollExperience />
 
       {/* ── Target Audience ── */}
       <section className="relative pt-12 pb-24 lg:pt-16 lg:pb-32">

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Shield, Calendar, Truck, ArrowRight, Quote, Building2 } from 'lucide-react'
+import { Shield, Calendar, Truck, ArrowRight, Quote } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
@@ -11,7 +11,6 @@ import AnimatedSection from '@/components/shared/AnimatedSection'
 import {
   staggerContainer,
   staggerItem,
-  fadeInUp,
   fadeInLeft,
   fadeInRight,
 } from '@/lib/animations'
@@ -195,54 +194,6 @@ export default function FirmenkundenContent() {
         </Container>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 lg:py-28">
-        <Container>
-          <AnimatedSection variants={fadeInUp}>
-            <div className="relative overflow-hidden rounded-3xl bg-primary px-8 py-16 text-center lg:px-16 lg:py-20">
-              {/* Decorative background blobs */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/10 blur-3xl"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/10 blur-3xl"
-              />
-
-              <div className="relative">
-                <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-                  Werden Sie Partner
-                </h2>
-                <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
-                  Wir freuen uns darauf, Sie kennenzulernen und gemeinsam die beste Lösung für Ihr
-                  Unternehmen zu finden. Kontaktieren Sie uns — wir antworten schnell und
-                  unkompliziert.
-                </p>
-                <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                  <Button
-                    href="/kontakt"
-                    variant="secondary"
-                    size="lg"
-                    className="!bg-white !text-primary hover:!bg-white/90 !border-0 shadow-lg"
-                  >
-                    Kontakt aufnehmen
-                    <ArrowRight className="h-5 w-5" />
-                  </Button>
-                  <Button
-                    href={`tel:${COMPANY.phone.replace(/\s|\/|-/g, '')}`}
-                    variant="outline"
-                    size="lg"
-                    className="!border-white !text-white hover:!bg-white hover:!text-primary"
-                  >
-                    {COMPANY.phone}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
-        </Container>
-      </section>
     </main>
   )
 }
