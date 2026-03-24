@@ -184,11 +184,11 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent" />
       </section>
 
-      {/* ── Partner Logos ── */}
-      <PartnerSlider />
-
       {/* ── Tire Scroll Experience ── */}
       <TireScrollExperience />
+
+      {/* ── Partner Logos ── */}
+      <PartnerSlider />
 
       {/* ── Target Audience ── */}
       <section className="relative pt-12 pb-24 lg:pt-16 lg:pb-32">
