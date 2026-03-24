@@ -162,10 +162,10 @@ export default function TireScrollExperience() {
 
       // ── Section animations ──
       const sectionConfigs = [
-        { id: 'feature1', enter: 0.08, leave: 0.26, animation: 'slide-left' as const },
-        { id: 'feature2', enter: 0.28, leave: 0.46, animation: 'slide-right' as const },
-        { id: 'stats', enter: 0.50, leave: 0.70, animation: 'stagger-up' as const },
-        { id: 'cta', enter: 0.74, leave: 0.92, animation: 'scale-up' as const },
+        { id: 'feature1', enter: 0.08, leave: 0.26, animation: 'slide-left' as const, persist: false },
+        { id: 'feature2', enter: 0.28, leave: 0.46, animation: 'slide-right' as const, persist: false },
+        { id: 'stats', enter: 0.50, leave: 0.70, animation: 'stagger-up' as const, persist: false },
+        { id: 'cta', enter: 0.74, leave: 0.92, animation: 'scale-up' as const, persist: true },
       ]
 
       sectionConfigs.forEach(({ id, enter, leave, animation, persist }) => {
