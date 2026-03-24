@@ -49,9 +49,7 @@ export default function HeroSlideshow() {
       </AnimatePresence>
 
       {/* Overlay — always on top of slides */}
-      {/* Basis-Overlay: gleichmäßige Abdunklung */}
       <div className="absolute inset-0 bg-[#040810]/60" />
-      {/* Vignette: Ränder dunkler, Mitte etwas heller für Bild-Durchschein */}
       <div
         className="absolute inset-0"
         style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 40%, rgba(4,8,16,0.1) 0%, rgba(4,8,16,0.4) 100%)' }}

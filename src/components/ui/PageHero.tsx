@@ -1,9 +1,11 @@
 'use client'
 
-import type { ReactNode } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useCallback, type ReactNode } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Container from './Container'
 import { fadeInUp } from '@/lib/animations'
+
+const videos = ['/images/hero-video.mp4', '/images/hero-video-2.mp4']
 
 interface PageHeroProps {
   title: ReactNode
@@ -11,17 +13,30 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ title, subtitle }: PageHeroProps) {
+  const [currentVideo, setCurrentVideo] = useState(0)
+
+  const handleEnded = useCallback(() => {
+    setCurrentVideo((prev) => (prev + 1) % videos.length)
+  }, [])
+
   return (
     <section className="relative flex h-[340px] items-center overflow-hidden border-b border-border sm:h-[380px] lg:h-[420px]">
-      {/* Background video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/images/hero-video.mp4"
-      />
+      {/* Background videos — crossfade between two */}
+      <AnimatePresence mode="sync">
+        <motion.video
+          key={currentVideo}
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleEnded}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
+          className="absolute inset-0 h-full w-full object-cover"
+          src={videos[currentVideo]}
+        />
+      </AnimatePresence>
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60" />
       {/* Radial gradient accent */}

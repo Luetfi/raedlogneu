@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingButtons from '@/components/layout/FloatingButtons'
+import ScrollToTopButton from '@/components/layout/ScrollToTopButton'
 import ScrollToTop from '@/components/shared/ScrollToTop'
 import { jsonLd } from '@/lib/metadata'
 import './globals.css'
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <FloatingButtons />
+        <ScrollToTopButton />
         <Footer />
       </body>
     </html>

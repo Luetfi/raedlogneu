@@ -80,11 +80,11 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative h-screen flex items-start overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Slideshow background + overlay */}
         <HeroSlideshow />
 
-        <Container className="relative z-10 pt-20 lg:pt-24">
+        <Container className="relative z-10">
           <div className="flex flex-col items-center text-center">
             <motion.p
               initial={{ opacity: 0, scale: 0.9 }}

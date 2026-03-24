@@ -55,16 +55,15 @@ export default function Footer() {
           >
             {/* 1. Marke */}
             <motion.div variants={staggerItem}>
-              <Image
-                src="/images/logo.png"
-                alt="RÄDLOG-Center Logo"
-                width={160}
-                height={44}
-                className="h-10 w-auto mb-4"
-              />
-              <p className="text-sm font-medium text-text-muted mb-3">
-                {COMPANY.tagline}
-              </p>
+              <Link href="/">
+                <Image
+                  src="/images/logo.png"
+                  alt="RÄDLOG-Center Logo"
+                  width={220}
+                  height={60}
+                  className="h-16 w-auto mb-4 hover:opacity-80 transition-opacity"
+                />
+              </Link>
               <p className="text-sm text-text-muted/80 leading-relaxed">
                 Wir kümmern uns Rund ums Rad — Ihr Partner für Rädereinlagerung, Reifenservice und Logistik im
                 Raum Stuttgart, professionell und zuverlässig seit 1998.
