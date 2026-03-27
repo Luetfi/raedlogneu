@@ -30,8 +30,8 @@ export default function PartnerSlider() {
       </div>
 
       <div className="overflow-hidden">
-        <div className="flex animate-scroll pointer-events-none">
-          {[...logos, ...logos].map((logo, i) => (
+        <div className="flex animate-scroll pointer-events-none w-max">
+          {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
             <div
               key={i}
               className="flex-shrink-0 px-8 sm:px-12 lg:px-16 flex items-center justify-center"
