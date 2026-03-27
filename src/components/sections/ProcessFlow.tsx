@@ -144,25 +144,14 @@ export default function ProcessFlow() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
-          className="lg:hidden relative pl-14"
+          className="lg:hidden flex flex-col"
         >
-          {/* Vertical line */}
-          <div className="absolute left-[23px] top-4 bottom-4 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
-
           {steps.map((step, i) => {
             const Icon = step.icon
             return (
-              <motion.div key={step.number} variants={staggerItem} className="relative pb-10 last:pb-0">
-                {/* Vertical connector animation */}
-                {i < steps.length - 1 && (
-                  <motion.div
-                    variants={verticalConnectorVariant(i)}
-                    className="absolute left-[23px] top-12 bottom-0 w-px bg-primary/25 origin-top"
-                  />
-                )}
-
-                {/* Icon circle */}
-                <div className="absolute left-0 top-0">
+              <motion.div key={step.number} variants={staggerItem} className="flex items-stretch gap-4">
+                {/* Left column: icon + connector */}
+                <div className="flex flex-col items-center shrink-0">
                   <div className="relative">
                     <div className="w-12 h-12 rounded-full border-2 border-primary/40 bg-primary/10 flex items-center justify-center">
                       <Icon className="h-5 w-5 text-primary" />
@@ -171,10 +160,16 @@ export default function ProcessFlow() {
                       {step.number}
                     </span>
                   </div>
+                  {i < steps.length - 1 && (
+                    <motion.div
+                      variants={verticalConnectorVariant(i)}
+                      className="w-px flex-1 bg-gradient-to-b from-primary/40 to-primary/20 origin-top mt-2"
+                    />
+                  )}
                 </div>
 
-                {/* Text */}
-                <div className="pt-1">
+                {/* Right column: text */}
+                <div className={`pt-1 ${i < steps.length - 1 ? 'pb-8' : ''}`}>
                   <h3 className="text-base font-bold text-text-heading">
                     {step.title}
                   </h3>
