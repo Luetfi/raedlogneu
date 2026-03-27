@@ -53,7 +53,7 @@ export const SERVICE_REGIONS = [
 ] as const
 
 export const SERVICE_REGION_DETAILS = [
-  { name: 'Stuttgart-Sommerrain', isHQ: true, lat: 48.8185, lng: 9.2295 },
-  { name: 'Remseck-Aldingen (1)', isHQ: false, lat: 48.8709, lng: 9.2720 },
-  { name: 'Remseck-Aldingen (2)', isHQ: false, lat: 48.8685, lng: 9.2650 },
+  { name: 'Stuttgart-Sommerrain', isHQ: true, lat: 48.8185, lng: 9.2295, street: 'Hortensienweg 23', zip: '70374', city: 'Stuttgart' },
+  { name: 'Remseck-Aldingen (1)', isHQ: false, lat: 48.8709, lng: 9.2720, street: 'Bernhardslaicher Weg 14', zip: '71686', city: 'Remseck' },
+  { name: 'Remseck-Aldingen (2)', isHQ: false, lat: 48.8685, lng: 9.2650, street: 'Hardtweg 3', zip: '71686', city: 'Remseck' },
 ] as const

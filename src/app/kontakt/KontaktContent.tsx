@@ -9,14 +9,13 @@ import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import PageHero from '@/components/ui/PageHero'
-import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
-import { COMPANY, LOCATIONS, SERVICE_REGION_DETAILS } from '@/lib/constants'
+import { COMPANY, LOCATIONS } from '@/lib/constants'
 
 const ServiceRegionMap = dynamic(
   () => import('@/components/shared/ServiceRegionMap'),
-  { ssr: false, loading: () => <div className="h-[420px] w-full animate-pulse rounded-2xl bg-bg-surface sm:h-[500px]" /> },
+  { ssr: false, loading: () => <div className="h-full min-h-[420px] w-full animate-pulse rounded-2xl bg-bg-surface" /> },
 )
 
 interface FormState {
@@ -363,91 +362,63 @@ export default function KontaktContent() {
           </AnimatedSection>
         </div>
 
-        {/* Location Cards */}
+        {/* Standorte mit Karte */}
         <AnimatedSection variants={fadeInUp} delay={0.1} className="mt-16">
           <h2 className="mb-8 text-2xl font-bold text-text-heading text-center">
             Unsere Standorte
           </h2>
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {LOCATIONS.map((location) => (
-              <motion.div key={location.name} variants={staggerItem}>
-                <Card className="h-full p-5">
-                  <div className="mb-3 flex items-center justify-between gap-2">
-                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <Building2 className="size-4" />
-                    </span>
-                    {location.isHQ && (
-                      <span className="rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-primary border border-primary/20">
-                        Hauptsitz
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="font-bold text-text-heading mb-1">{location.name}</h3>
-                  <div className="flex items-start gap-1.5 text-sm text-text-muted">
-                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-text-muted/50" />
-                    <span>
-                      {location.street}
-                      <br />
-                      {location.zip} {location.city}
-                    </span>
-                  </div>
-                  <a
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${location.street}, ${location.zip} ${location.city}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
-                  >
-                    <Navigation className="size-3.5" />
-                    Zur Route
-                  </a>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatedSection>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+            {/* Karte — links (3/5) */}
+            <div className="lg:col-span-3">
+              <div className="h-full min-h-[420px]">
+                <ServiceRegionMap />
+              </div>
+            </div>
 
-        {/* Serviceregionen */}
-        <AnimatedSection variants={fadeInUp} delay={0.1} className="mt-16">
-          <SectionHeading
-            title="Unsere Serviceregionen"
-            subtitle="Wir sind im gesamten Großraum Stuttgart für Sie unterwegs"
-          />
-          <div className="mt-8">
-            <ServiceRegionMap />
+            {/* Standortkarten — rechts (2/5) */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="flex flex-col gap-4 lg:col-span-2"
+            >
+              {LOCATIONS.map((location) => (
+                <motion.div key={location.name} variants={staggerItem}>
+                  <Card className="h-full p-5">
+                    <div className="mb-3 flex items-center justify-between gap-2">
+                      <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <Building2 className="size-4" />
+                      </span>
+                      {location.isHQ && (
+                        <span className="rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-primary border border-primary/20">
+                          Hauptsitz
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-text-heading mb-1">{location.name}</h3>
+                    <div className="flex items-start gap-1.5 text-sm text-text-muted">
+                      <MapPin className="mt-0.5 size-3.5 shrink-0 text-text-muted/50" />
+                      <span>
+                        {location.street}
+                        <br />
+                        {location.zip} {location.city}
+                      </span>
+                    </div>
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${location.street}, ${location.zip} ${location.city}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
+                    >
+                      <Navigation className="size-3.5" />
+                      Zur Route
+                    </a>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="mt-6 flex flex-wrap justify-center gap-3"
-          >
-            {SERVICE_REGION_DETAILS.map((region) => (
-              <motion.a
-                key={region.name}
-                variants={staggerItem}
-                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(region.name + ', Baden-Württemberg, Deutschland')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 rounded-xl border border-border bg-bg-elevated px-4 py-2.5 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5"
-              >
-                <MapPin className="size-4 text-primary" />
-                <span className="font-semibold text-text-heading">{region.name}</span>
-                {region.isHQ && (
-                  <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
-                    HQ
-                  </span>
-                )}
-                <Navigation className="size-3.5 text-text-muted transition-colors group-hover:text-primary" />
-              </motion.a>
-            ))}
-          </motion.div>
         </AnimatedSection>
       </Container>
       </div>

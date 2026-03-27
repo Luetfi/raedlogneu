@@ -134,7 +134,7 @@ export default function FirmenkundenContent() {
       </section>
 
       {/* Why RÄDLOG Section */}
-      <section className="border-y border-border bg-bg-surface py-16 lg:py-24">
+      <section className="border-y border-border py-16 lg:py-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <AnimatedSection variants={fadeInLeft}>

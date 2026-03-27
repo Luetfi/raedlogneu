@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import HeroSlideshow from '@/components/shared/HeroSlideshow'
 import {
   Building2,
@@ -21,12 +20,10 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import PartnerSlider from '@/components/shared/PartnerSlider'
+import ParallaxBackground from '@/components/shared/ParallaxBackground'
+import StatsSection from '@/components/sections/StatsSection'
+import ProcessFlow from '@/components/sections/ProcessFlow'
 import { staggerContainer, staggerItem, fadeInUp, fadeInLeft, fadeInRight } from '@/lib/animations'
-
-const TireScrollExperience = dynamic(
-  () => import('@/components/hero/HeroScrollExperience'),
-  { ssr: false }
-)
 
 const targetAudiences = [
   {
@@ -184,11 +181,11 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent" />
       </section>
 
-      {/* ── Tire Scroll Experience ── */}
-      <TireScrollExperience />
-
       {/* ── Partner Logos ── */}
       <PartnerSlider />
+
+      {/* ── Stats / Zahlen ── */}
+      <StatsSection />
 
       {/* ── Target Audience ── */}
       <section className="relative pt-12 pb-24 lg:pt-16 lg:pb-32">
@@ -234,17 +231,22 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* ── Process Flow ── */}
+      <ProcessFlow />
+
       {/* ── Benefits Grid ── */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         {/* Subtle background treatment */}
         <div className="absolute inset-0 bg-bg-elevated" />
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, #0568b1 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}
-        />
+        <ParallaxBackground speed={0.1} className="absolute inset-0">
+          <div
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, #0568b1 1px, transparent 0)',
+              backgroundSize: '40px 40px',
+            }}
+          />
+        </ParallaxBackground>
 
         <Container className="relative">
           <AnimatedSection className="text-center mb-16">
@@ -272,8 +274,8 @@ export default function HomePage() {
               <motion.div key={benefit.title} variants={staggerItem}>
                 <div className="group relative rounded-2xl border border-border bg-bg/60 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30 hover:bg-bg-surface/50">
                   <div className="flex items-start gap-4">
-                    <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors duration-300">
-                      <benefit.icon className="h-6 w-6 text-primary" />
+                    <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <benefit.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <div>
                       <h3 className="font-bold text-text-heading mb-1">

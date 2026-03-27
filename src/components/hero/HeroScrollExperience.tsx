@@ -6,8 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroCanvas from './HeroCanvas'
 import { useFrameSequence } from './useFrameSequence'
 import { useLenis } from './useLenis'
-import Button from '@/components/ui/Button'
-import { ArrowRight } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -99,24 +97,24 @@ export default function TireScrollExperience() {
           canvasWrap.style.clipPath =
             wipeProgress >= 1 ? 'none' : `circle(${radius}% at 50% 50%)`
 
-          // Dark overlay for stats section (50% - 70%)
-          const overlayEnter = 0.46
-          const overlayLeave = 0.70
-          const fadeRange = 0.04
+          // Constant dark overlay — fades in after wipe, fades out after stats
+          const overlayFadeStart = 0.08
+          const overlayFadeEnd = 0.14
+          const overlayStrength = 0.4
           let overlayOpacity = 0
-          if (p >= overlayEnter - fadeRange && p <= overlayEnter) {
-            overlayOpacity = ((p - (overlayEnter - fadeRange)) / fadeRange) * 0.9
-          } else if (p > overlayEnter && p < overlayLeave) {
-            overlayOpacity = 0.9
-          } else if (p >= overlayLeave && p <= overlayLeave + fadeRange) {
-            overlayOpacity = 0.9 * (1 - (p - overlayLeave) / fadeRange)
+          if (p >= overlayFadeStart && p <= overlayFadeEnd) {
+            overlayOpacity = ((p - overlayFadeStart) / (overlayFadeEnd - overlayFadeStart)) * overlayStrength
+          } else if (p > overlayFadeEnd && p <= 0.80) {
+            overlayOpacity = overlayStrength
+          } else if (p > 0.80 && p <= 0.90) {
+            overlayOpacity = overlayStrength * (1 - (p - 0.80) / 0.10)
           }
           darkOverlay.style.opacity = String(overlayOpacity)
           darkOverlay.style.display = overlayOpacity > 0 ? 'block' : 'none'
 
-          // Canvas fade-out at end (90% - 100%)
-          if (p > 0.90) {
-            const fadeOut = (p - 0.90) / 0.10
+          // Canvas fade-out after stats section (80% - 90%)
+          if (p > 0.80) {
+            const fadeOut = (p - 0.80) / 0.10
             canvasWrap.style.opacity = String(Math.max(0, 1 - fadeOut))
           } else {
             canvasWrap.style.opacity = '1'
@@ -150,10 +148,10 @@ export default function TireScrollExperience() {
             let opacity = 0
             if (p >= 0.06 && p <= 0.10) {
               opacity = (p - 0.06) / 0.04
-            } else if (p > 0.10 && p < 0.86) {
+            } else if (p > 0.10 && p < 0.76) {
               opacity = 1
-            } else if (p >= 0.86 && p <= 0.90) {
-              opacity = 1 - (p - 0.86) / 0.04
+            } else if (p >= 0.76 && p <= 0.82) {
+              opacity = 1 - (p - 0.76) / 0.06
             }
             marqueeEl.style.opacity = String(opacity * 0.10)
           },
@@ -162,10 +160,9 @@ export default function TireScrollExperience() {
 
       // ── Section animations ──
       const sectionConfigs = [
-        { id: 'feature1', enter: 0.08, leave: 0.26, animation: 'slide-left' as const, persist: false },
-        { id: 'feature2', enter: 0.28, leave: 0.46, animation: 'slide-right' as const, persist: false },
-        { id: 'stats', enter: 0.50, leave: 0.70, animation: 'stagger-up' as const, persist: false },
-        { id: 'cta', enter: 0.74, leave: 0.92, animation: 'scale-up' as const, persist: false },
+        { id: 'feature1', enter: 0.10, leave: 0.32, animation: 'slide-left' as const, persist: false },
+        { id: 'feature2', enter: 0.36, leave: 0.58, animation: 'slide-right' as const, persist: false },
+        { id: 'stats', enter: 0.62, leave: 0.80, animation: 'stagger-up' as const, persist: false },
       ]
 
       sectionConfigs.forEach(({ id, enter, leave, animation, persist }) => {
@@ -233,7 +230,7 @@ export default function TireScrollExperience() {
           scrub: true,
           onUpdate: (self) => {
             const p = self.progress
-            const counterProgress = Math.min(1, Math.max(0, (p - 0.52) / 0.12))
+            const counterProgress = Math.min(1, Math.max(0, (p - 0.64) / 0.12))
             const eased = 1 - Math.pow(1 - counterProgress, 3)
             const value = Math.round(eased * target)
             if (value !== lastValue) {
@@ -279,7 +276,7 @@ export default function TireScrollExperience() {
           {/* ── Dark Overlay ── */}
           <div
             ref={darkOverlayRef}
-            className="fixed inset-0 z-[2] bg-bg/90 pointer-events-none"
+            className="fixed inset-0 z-[2] bg-bg pointer-events-none"
             style={{ opacity: 0, display: 'none' }}
           />
 
@@ -304,7 +301,7 @@ export default function TireScrollExperience() {
           <div
             ref={scrollContainerRef}
             className="relative z-[3]"
-            style={{ height: '350vh' }}
+            style={{ height: '80vh' }}
           >
             {/* Feature 1 — Left aligned */}
             <section
@@ -312,7 +309,7 @@ export default function TireScrollExperience() {
               className="fixed top-0 left-0 w-full h-screen flex items-center pointer-events-none"
               style={{ opacity: 0 }}
             >
-              <div className="px-[5vw] md:px-[8vw] max-w-[40vw]">
+              <div className="px-[5vw] md:px-[8vw] max-w-[40vw] bg-bg/60 backdrop-blur-md rounded-2xl p-8">
                 <span className="section-label block text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
                   001 / Einlagerung
                 </span>
@@ -338,7 +335,7 @@ export default function TireScrollExperience() {
               className="fixed top-0 left-0 w-full h-screen flex items-center pointer-events-none"
               style={{ opacity: 0 }}
             >
-              <div className="px-[5vw] md:px-[8vw] max-w-[40vw]">
+              <div className="px-[5vw] md:px-[8vw] max-w-[40vw] bg-bg/60 backdrop-blur-md rounded-2xl p-8">
                 <span className="section-label block text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
                   002 / Service
                 </span>
@@ -364,7 +361,7 @@ export default function TireScrollExperience() {
               className="fixed top-0 left-0 w-full h-screen flex items-center justify-center pointer-events-none"
               style={{ opacity: 0 }}
             >
-              <div className="text-center">
+              <div className="text-center bg-bg/60 backdrop-blur-md rounded-2xl p-8 md:p-12">
                 <span className="section-label block text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-8">
                   003 / Erfahrung
                 </span>
@@ -418,37 +415,6 @@ export default function TireScrollExperience() {
               </div>
             </section>
 
-            {/* CTA — Left aligned */}
-            <section
-              ref={(el) => registerSection('cta', el)}
-              className="fixed top-0 left-0 w-full h-screen flex items-center pointer-events-none"
-              style={{ opacity: 0 }}
-            >
-              <div className="px-[5vw] md:px-[8vw] max-w-[40vw]">
-                <span className="section-label block text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
-                  Bereit?
-                </span>
-                <h2
-                  className="section-heading font-bold text-text-heading leading-[1.05] hero-text-shadow"
-                  style={{ fontSize: 'clamp(1.8rem, 5vw, 4rem)' }}
-                >
-                  Professionelle
-                  <br />
-                  Rädereinlagerung
-                  <br />
-                  <span className="text-primary">beginnt hier.</span>
-                </h2>
-                <div className="cta-button mt-8 flex flex-wrap gap-4 pointer-events-auto">
-                  <Button href="/kontakt" size="lg">
-                    Jetzt Kontakt aufnehmen
-                    <ArrowRight className="h-5 w-5" />
-                  </Button>
-                  <Button href="/leistungen" variant="outline" size="lg">
-                    Leistungspakete ansehen
-                  </Button>
-                </div>
-              </div>
-            </section>
           </div>
         </>
       )}

@@ -133,16 +133,16 @@ export default function LeistungenContent() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="grid gap-6 md:grid-cols-3 items-start"
+            className="grid gap-6 md:grid-cols-3"
           >
             {pricingPlans.map((plan) => (
               <motion.div
                 key={plan.id}
                 variants={staggerItem}
-                className={plan.popular ? 'md:-mt-4 md:mb-4' : ''}
+                className={`flex ${plan.popular ? 'md:-mt-4 md:mb-4' : ''}`}
               >
                 <div
-                  className={`relative rounded-2xl border p-7 transition-all duration-300 ${
+                  className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-300 w-full ${
                     plan.popular
                       ? 'border-primary bg-bg-elevated shadow-xl shadow-primary/10'
                       : 'border-border bg-bg-elevated hover:border-border-accent hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1'
@@ -153,7 +153,7 @@ export default function LeistungenContent() {
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
                   )}
 
-                  <div className="relative">
+                  <div className="relative flex flex-col flex-1">
                     {/* Header */}
                     <div className="flex items-start justify-between gap-3 mb-6">
                       <h3 className="text-xl font-bold text-text-heading">

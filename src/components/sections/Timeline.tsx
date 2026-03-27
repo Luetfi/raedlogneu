@@ -126,7 +126,7 @@ function TimelineItem({ event, index }: TimelineItemProps) {
               variants={cardVariants}
               className="w-full max-w-sm"
             >
-              <EventCard event={event} Icon={Icon} />
+              <EventCard event={event} Icon={Icon} isLeft />
             </motion.div>
           )}
         </div>
@@ -150,7 +150,7 @@ function TimelineItem({ event, index }: TimelineItemProps) {
               variants={cardVariants}
               className="w-full max-w-sm"
             >
-              <EventCard event={event} Icon={Icon} />
+              <EventCard event={event} Icon={Icon} isLeft={false} />
             </motion.div>
           )}
         </div>
@@ -184,7 +184,7 @@ function TimelineItem({ event, index }: TimelineItemProps) {
   )
 }
 
-function EventCard({ event, Icon }: { event: TimelineEvent; Icon: React.ElementType }) {
+function EventCard({ event, Icon, isLeft }: { event: TimelineEvent; Icon: React.ElementType; isLeft?: boolean }) {
   return (
     <div
       className="group relative overflow-hidden rounded-2xl border border-border bg-bg-elevated transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-border-accent"
@@ -196,16 +196,16 @@ function EventCard({ event, Icon }: { event: TimelineEvent; Icon: React.ElementT
       />
 
       <div className="p-4">
-        {/* Year badge */}
-        <div className="mb-3 flex items-center gap-3">
+        {/* Year badge – year faces the timeline */}
+        <div className={`mb-3 flex items-center gap-3 ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}>
           <span className="text-2xl font-extrabold tracking-tight text-primary leading-none">
             {event.year}
           </span>
-          <div className="h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent" />
+          <div className={`h-px flex-1 ${isLeft ? 'bg-gradient-to-l from-primary/40 to-transparent' : 'bg-gradient-to-r from-primary/40 to-transparent'}`} />
         </div>
 
         {/* Description */}
-        <p className="relative text-base leading-relaxed text-text-muted group-hover:text-text transition-colors duration-200">
+        <p className={`relative text-base leading-relaxed text-text-muted group-hover:text-text transition-colors duration-200 ${isLeft ? 'text-right' : 'text-left'}`}>
           {event.description}
         </p>
       </div>

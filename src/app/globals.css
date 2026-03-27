@@ -104,10 +104,10 @@ body {
 
 /* Hero text shadows for readability over slideshow */
 .hero-text-shadow {
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 .hero-text-shadow-sm {
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Leaflet attribution — minimal & unobtrusive */
@@ -120,5 +120,44 @@ body {
 }
 .leaflet-control-attribution a {
   color: #334155 !important;
+}
+
+/* Card glow — mouse-following radial highlight on hover */
+.card-glow {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+.card-glow::before,
+.card-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+/* Border glow — radial gradient on the border */
+.card-glow::before {
+  inset: -1px;
+  background: radial-gradient(
+    350px circle at var(--mouse-x) var(--mouse-y),
+    rgba(5, 104, 177, 0.35),
+    transparent 60%
+  );
+  z-index: -1;
+}
+/* Inner surface glow */
+.card-glow::after {
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    rgba(5, 104, 177, 0.06),
+    transparent 50%
+  );
+  z-index: 1;
+}
+.card-glow:hover::before,
+.card-glow:hover::after {
+  opacity: 1;
 }
 

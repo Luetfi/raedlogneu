@@ -35,12 +35,12 @@ const ZOOM = 12
 
 export default function ServiceRegionMap() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-border">
+    <div className="h-full overflow-hidden rounded-2xl border border-border">
       <MapContainer
         center={CENTER}
         zoom={ZOOM}
         scrollWheelZoom={false}
-        className="h-[420px] w-full sm:h-[500px]"
+        className="h-full min-h-[420px] w-full"
         attributionControl={true}
       >
         <TileLayer
@@ -64,7 +64,7 @@ export default function ServiceRegionMap() {
                   )}
                 </p>
                 <a
-                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(region.name + ', Baden-Württemberg, Deutschland')}`}
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${region.street}, ${region.zip} ${region.city}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', borderRadius: '6px', backgroundColor: '#0568b1', padding: '6px 12px', fontSize: '12px', fontWeight: 700, color: '#ffffff', textDecoration: 'none' }}

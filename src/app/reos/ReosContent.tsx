@@ -297,7 +297,7 @@ export default function ReosContent() {
       </section>
 
       {/* Features */}
-      <section className="border-t border-border bg-bg-surface py-20 sm:py-24">
+      <section className="border-t border-border py-20 sm:py-24">
         <Container>
           <SectionHeading
             title="Funktionen & Vorteile"
