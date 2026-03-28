@@ -23,12 +23,6 @@ export default function PartnerSlider() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="relative pt-16 pb-8 lg:pt-20 lg:pb-10"
     >
-      <div className="text-center mb-10">
-        <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-          Unsere Kunden
-        </span>
-      </div>
-
       <div className="overflow-hidden">
         <div className="flex animate-scroll pointer-events-none w-max">
           {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (

@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import HeroSlideshow from '@/components/shared/HeroSlideshow'
+import HeroVideo from '@/components/shared/HeroVideo'
 import {
   Building2,
   Car,
@@ -17,7 +18,6 @@ import {
 } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
-import Card from '@/components/ui/Card'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import PartnerSlider from '@/components/shared/PartnerSlider'
 import ParallaxBackground from '@/components/shared/ParallaxBackground'
@@ -31,18 +31,21 @@ const targetAudiences = [
     title: 'Autohäuser',
     description:
       'Schaffen Sie Platz für Ihr Kerngeschäft. Wir übernehmen Einlagerung, Logistik und Service — Sie stärken die Kundenbindung durch zwei garantierte Werkstattbesuche pro Jahr.',
+    backgroundImage: '/images/autohaus.jpeg',
   },
   {
     icon: Car,
     title: 'Fuhrparks',
     description:
       'Effiziente Räderlogistik für Ihren gesamten Fuhrpark. Termingerechte Abwicklung, lückenlose Dokumentation und professionelles Handling aller Radsätze.',
+    backgroundImage: '/images/fuhrparks.jpg',
   },
   {
     icon: KeyRound,
     title: 'Autovermietungen',
     description:
       'Schneller Räderwechsel ohne Lagerchaos. Tagesgenaue Anlieferung, gereinigt und gewuchtet — damit Ihre Flotte jederzeit einsatzbereit ist.',
+    backgroundImage: '/images/autovermietungen.jpg',
   },
 ]
 
@@ -80,12 +83,18 @@ const benefits = [
 ]
 
 export default function HomePage() {
+  const [flippedCards, setFlippedCards] = useState<Record<string, boolean>>({})
+
+  const toggleFlip = (title: string) => {
+    setFlippedCards((prev) => ({ ...prev, [title]: !prev[title] }))
+  }
+
   return (
     <>
       {/* ── Hero ── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Slideshow background + overlay */}
-        <HeroSlideshow />
+        {/* Video background + overlay */}
+        <HeroVideo />
 
         <Container className="relative z-10">
           <div className="flex flex-col items-center text-center">
@@ -117,28 +126,6 @@ export default function HomePage() {
               className="mt-4 h-[2px] w-24 bg-gradient-to-r from-transparent via-primary to-transparent"
             />
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-4 text-lg text-text-muted leading-relaxed sm:text-xl max-w-xl hero-text-shadow-sm"
-            >
-              Ihr kompetenter Partner für fachmännische Räder&shy;einlagerung
-              und Reifenservice — für Firmenkunden.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              className="mt-3 flex items-center justify-center gap-2 text-sm text-text-muted/80 hero-text-shadow-sm"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-primary flex-shrink-0">
-                <path fillRule="evenodd" d="m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" clipRule="evenodd" />
-              </svg>
-              Stuttgart · Ludwigsburg · Waiblingen · Böblingen · Sindelfingen · Leonberg
-            </motion.p>
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -154,26 +141,6 @@ export default function HomePage() {
               </Button>
             </motion.div>
 
-            {/* Quick stats */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="mt-10 grid grid-cols-3 max-w-lg mx-auto"
-            >
-              {[
-                { value: '25+', label: 'Jahre Erfahrung' },
-                { value: '3', label: 'Standorte' },
-                { value: '2', label: 'Serviceregionen' },
-              ].map((stat, i) => (
-                <div key={stat.label} className={`group ${i > 0 ? 'border-l border-primary/20' : ''}`}>
-                  <div className="text-3xl sm:text-4xl font-bold text-text-heading hero-text-shadow-sm">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-text-muted mt-1 hero-text-shadow-sm">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
         </Container>
 
@@ -209,22 +176,44 @@ export default function HomePage() {
           >
             {targetAudiences.map((audience) => (
               <motion.div key={audience.title} variants={staggerItem}>
-                <Card className="h-full relative group overflow-hidden">
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="relative">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 mb-6">
-                      <audience.icon className="h-7 w-7 text-primary" />
+                <div
+                  className={`flip-card h-72 cursor-pointer ${flippedCards[audience.title] ? 'flipped' : ''}`}
+                  onClick={() => toggleFlip(audience.title)}
+                >
+                  <div className="flip-inner relative w-full h-full">
+                    {/* Front */}
+                    <div className="flip-front absolute inset-0 rounded-2xl border border-border overflow-hidden">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${audience.backgroundImage})` }}
+                      />
+                      <div className="absolute inset-0 bg-bg-elevated/60" />
+                      <div className="relative flex flex-col items-center justify-center h-full p-6 text-center">
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary/10 border border-primary/20 mb-4">
+                          <audience.icon className="h-8 w-8 text-primary" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-white">
+                          {audience.title}
+                        </h3>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-text-heading mb-3">
-                      {audience.title}
-                    </h3>
-                    <p className="text-text-muted leading-relaxed">
-                      {audience.description}
-                    </p>
+                    {/* Back */}
+                    <div className="flip-back absolute inset-0 rounded-2xl border border-border bg-bg-elevated overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                      <div className="relative flex flex-col items-center justify-center h-full p-6 text-center">
+                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 mb-4">
+                          <audience.icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <h3 className="text-lg font-bold text-white mb-3">
+                          {audience.title}
+                        </h3>
+                        <p className="text-white/90 leading-relaxed text-sm">
+                          {audience.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </motion.div>

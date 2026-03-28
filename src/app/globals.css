@@ -92,6 +92,12 @@ body {
   animation: scroll 20s linear infinite;
 }
 
+@media (min-width: 640px) {
+  .animate-scroll {
+    animation-duration: 40s;
+  }
+}
+
 /* Ken Burns zoom effect for hero slideshow */
 @keyframes ken-burns {
   0% { transform: scale(1); }
@@ -120,6 +126,36 @@ body {
 }
 .leaflet-control-attribution a {
   color: #334155 !important;
+}
+
+/* Flip card — 3D hover effect for target audience cards */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+.flip-front,
+.flip-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+/* Desktop: flip on hover */
+@media (hover: hover) {
+  .flip-card:hover .flip-inner,
+  .flip-card.flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
+}
+/* Touch devices: flip on tap via .flipped class */
+@media (hover: none) {
+  .flip-card.flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
 }
 
 /* Card glow — mouse-following radial highlight on hover */

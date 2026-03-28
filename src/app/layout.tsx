@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer'
 import FloatingButtons from '@/components/layout/FloatingButtons'
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton'
 import SplashScreen from '@/components/shared/SplashScreen'
+import ScrollToTop from '@/components/shared/ScrollToTop'
 import { jsonLd } from '@/lib/metadata'
 import './globals.css'
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col">
+        <ScrollToTop />
         <SplashScreen />
         <Header />
         <main className="flex-1 pt-20">

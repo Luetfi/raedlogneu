@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Shield, Calendar, Truck, ArrowRight, Quote } from 'lucide-react'
+import { Shield, Calendar, Truck, ArrowRight } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
@@ -58,48 +58,6 @@ export default function FirmenkundenContent() {
               Unsere Leistungen
             </Button>
           </div>
-        </Container>
-      </section>
-
-      {/* CEO Quote Section */}
-      <section className="py-16 lg:py-20">
-        <Container>
-          <AnimatedSection variants={fadeInLeft} className="mx-auto max-w-4xl">
-            <div className="relative rounded-2xl border border-border bg-bg-elevated p-8 lg:p-12">
-              {/* Left accent bar */}
-              <div
-                aria-hidden="true"
-                className="absolute left-0 top-6 bottom-6 w-1 rounded-full bg-primary"
-              />
-              {/* Large decorative quotation mark */}
-              <Quote
-                aria-hidden="true"
-                className="mb-4 h-12 w-12 text-primary opacity-40"
-                strokeWidth={1.5}
-              />
-              <blockquote className="pl-4">
-                <p className="text-xl font-medium leading-relaxed text-text-heading lg:text-2xl">
-                  „In uns finden Sie einen Partner, auf den Sie sich verlassen können! Fragen? Wir
-                  sind gerne für Sie da, gehen zielgerecht auf Ihre Wünsche und Fragen ein und Sie
-                  bekommen schnell und effizient alle Antworten."
-                </p>
-                <footer className="mt-6 flex items-center gap-4">
-                  <div
-                    aria-hidden="true"
-                    className="h-px w-10 bg-primary"
-                  />
-                  <cite className="not-italic">
-                    <span className="block font-semibold text-text-heading">
-                      {COMPANY.ceo}
-                    </span>
-                    <span className="text-sm text-text-muted">
-                      Geschäftsführer, {COMPANY.name}
-                    </span>
-                  </cite>
-                </footer>
-              </blockquote>
-            </div>
-          </AnimatedSection>
         </Container>
       </section>
 

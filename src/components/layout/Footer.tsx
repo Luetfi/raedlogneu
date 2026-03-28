@@ -186,11 +186,6 @@ export default function Footer() {
                   >
                     <MapPin className="h-3.5 w-3.5 text-primary shrink-0 group-hover:scale-110 transition-transform" />
                     <span>{loc.name}</span>
-                    {loc.isHQ && (
-                      <span className="inline-flex items-center rounded-full bg-primary/10 px-1.5 py-0 text-[9px] font-medium text-primary">
-                        HQ
-                      </span>
-                    )}
                   </motion.a>
                 ))}
               </motion.div>

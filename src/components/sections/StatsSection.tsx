@@ -42,9 +42,6 @@ function StatItem({ stat, index }: { stat: StatConfig; index: number }) {
         index > 0 ? 'lg:border-l border-primary/15' : ''
       }`}
     >
-      {/* Background icon */}
-      <Icon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-24 w-24 text-primary opacity-[0.06]" />
-
       <div className="relative">
         <div className="text-5xl sm:text-6xl font-extrabold text-primary tracking-tight">
           {display}

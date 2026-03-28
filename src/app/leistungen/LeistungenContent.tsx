@@ -4,12 +4,11 @@ import { motion } from 'framer-motion'
 import { Check, CheckCircle2, ArrowRight, Zap, Disc3, Wrench, Truck, Settings } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
-import Card from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
 import PageHero from '@/components/ui/PageHero'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
-import { staggerContainer, staggerItem, fadeInUp, fadeInLeft, fadeInRight } from '@/lib/animations'
+import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
 
 // ── Data ────────────────────────────────────────────────────────────────────
 
@@ -50,39 +49,6 @@ const pricingPlans = [
       'Komplett-Check (Erfassung sämtlicher Reifendaten, Luftdruck auf 2,5 Bar, Reifen + Felgen Beschädigungen prüfen, Profiltiefe messen)',
       'Versicherung gegen Diebstahl, Brand und Transportschäden',
     ],
-  },
-]
-
-const timelineSteps = [
-  {
-    number: '01',
-    title: 'Barcode-Erfassung',
-    description:
-      'Abmontierte Kundenräder erhalten Barcode-Aufkleber für jede Position (VL, VR, HL, HR) — lückenlose Rückverfolgbarkeit von Anfang an.',
-  },
-  {
-    number: '02',
-    title: 'Datenerfassung',
-    description:
-      'Die wichtigsten Reifendaten werden vollständig auf dem Reparaturauftrag dokumentiert und digital hinterlegt.',
-  },
-  {
-    number: '03',
-    title: 'Einlagerung',
-    description:
-      'Der Radsatz wird in einem Rollwagen eingelagert. Volle Rollwagen werden von unserem Team abgeholt und ins Lager überführt.',
-  },
-  {
-    number: '04',
-    title: 'Abruf',
-    description:
-      'Den Radsatz bequem über REOS, telefonisch oder per Fax anfordern — flexibel und unkompliziert.',
-  },
-  {
-    number: '05',
-    title: 'Tagesgenaue Anlieferung',
-    description:
-      'Nur die für die Montage benötigten Räder werden tagesgenau angeliefert — kein Überschuss, kein Aufwand.',
   },
 ]
 
@@ -200,9 +166,8 @@ export default function LeistungenContent() {
         </Container>
       </section>
 
-      {/* ── Process Timeline ── */}
+      {/* ── Process Timeline (static) ── */}
       <section className="relative py-20 lg:py-28 overflow-hidden">
-        {/* Elevated background */}
         <div className="absolute inset-0 bg-bg-elevated" />
         <div
           className="absolute inset-0 opacity-[0.02]"
@@ -219,40 +184,72 @@ export default function LeistungenContent() {
             subtitle="Von der Abholung bis zur tagesgenauen Anlieferung — transparent und effizient."
           />
 
-          <div className="relative">
-            {/* Vertical connector line (desktop) */}
-            <div className="hidden lg:block absolute left-[39px] top-8 bottom-8 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
+          <div className="relative max-w-3xl mx-auto">
+            {/* Vertical line */}
+            <div className="absolute left-5 lg:left-1/2 top-0 bottom-0 w-px bg-border lg:-translate-x-1/2" />
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-              className="space-y-6"
-            >
-              {timelineSteps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  variants={index % 2 === 0 ? fadeInLeft : fadeInRight}
-                  className="relative flex items-start gap-5 lg:gap-7"
+            {[
+              {
+                number: '01',
+                title: 'Barcode-Erfassung',
+                description:
+                  'Abmontierte Kundenräder erhalten Barcode-Aufkleber für jede Position (VL, VR, HL, HR) — lückenlose Rückverfolgbarkeit von Anfang an.',
+              },
+              {
+                number: '02',
+                title: 'Datenerfassung',
+                description:
+                  'Die wichtigsten Reifendaten werden vollständig auf dem Reparaturauftrag dokumentiert und digital hinterlegt.',
+              },
+              {
+                number: '03',
+                title: 'Einlagerung',
+                description:
+                  'Der Radsatz wird in einem Rollwagen eingelagert. Volle Rollwagen werden von unserem Team abgeholt und ins Lager überführt.',
+              },
+              {
+                number: '04',
+                title: 'Abruf',
+                description:
+                  'Den Radsatz bequem über REOS, telefonisch oder per Fax anfordern — flexibel und unkompliziert.',
+              },
+              {
+                number: '05',
+                title: 'Tagesgenaue Anlieferung',
+                description:
+                  'Nur die für die Montage benötigten Räder werden tagesgenau angeliefert — kein Überschuss, kein Aufwand.',
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={step.number}
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                className={`relative flex items-start gap-6 lg:gap-12 mb-12 last:mb-0 ${
+                  i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                }`}
+              >
+                {/* Node */}
+                <div className="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-primary border-4 border-bg-elevated flex items-center justify-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+                  <span className="text-xs font-bold text-white">{step.number}</span>
+                </div>
+
+                {/* Content */}
+                <div
+                  className={`flex-1 rounded-2xl border border-border bg-bg-elevated p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 ${
+                    i % 2 === 0 ? 'lg:mr-[calc(50%+2rem)]' : 'lg:ml-[calc(50%+2rem)]'
+                  }`}
                 >
-                  {/* Step number bubble */}
-                  <div className="shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/10 border border-primary/30 text-primary font-extrabold text-xl z-10">
-                    {step.number}
-                  </div>
-
-                  {/* Content card */}
-                  <Card hover={false} className="flex-1 !hover:translate-y-0">
-                    <h3 className="text-lg font-bold text-text-heading mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-text-muted leading-relaxed text-sm">
-                      {step.description}
-                    </p>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
+                  <h3 className="text-lg font-bold text-text-heading mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-text-muted leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </Container>
       </section>
