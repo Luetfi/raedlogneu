@@ -16,7 +16,7 @@ export default function ImpressumPage() {
           <div className="h-1 w-16 rounded-full bg-primary mb-12" />
 
           <div className="space-y-8 text-text leading-relaxed [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4 [&_p]:text-text-muted [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-text-muted [&_ul]:space-y-1">
-            <h2>Angaben gemäß § 5 TMG</h2>
+            <h2>Angaben gemäß § 5 DDG</h2>
             <p>
               RÄDLOG-Center GmbH<br />
               Hortensienweg 23<br />
@@ -46,10 +46,25 @@ export default function ImpressumPage() {
               DE251345629
             </p>
 
+            <h2>EU-Streitschlichtung</h2>
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                https://ec.europa.eu/consumers/odr/
+              </a>
+            </p>
+            <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+
+            <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+            <p>
+              Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren
+              vor einer Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+
             <h2>Haftung für Inhalte</h2>
             <p>
-              Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen
-              Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir
+              Als Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für eigene Inhalte auf diesen
+              Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir
               als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
               Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
               rechtswidrige Tätigkeit hinweisen.

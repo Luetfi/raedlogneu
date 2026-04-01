@@ -96,7 +96,7 @@ export default function HomePage() {
         {/* Video background + overlay */}
         <HeroVideo />
 
-        <Container className="relative z-10">
+        <Container className="relative z-10 -mt-20 lg:-mt-28">
           <div className="flex flex-col items-center text-center">
             <motion.p
               initial={{ opacity: 0, scale: 0.9 }}

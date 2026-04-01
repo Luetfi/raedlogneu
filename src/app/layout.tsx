@@ -6,6 +6,7 @@ import FloatingButtons from '@/components/layout/FloatingButtons'
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton'
 import SplashScreen from '@/components/shared/SplashScreen'
 import ScrollToTop from '@/components/shared/ScrollToTop'
+import ConsentBanner from '@/components/shared/ConsentBanner'
 import { jsonLd } from '@/lib/metadata'
 import './globals.css'
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <FloatingButtons />
         <ScrollToTopButton />
         <Footer />
+        <ConsentBanner />
       </body>
     </html>
   )

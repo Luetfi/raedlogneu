@@ -27,7 +27,7 @@ const pricingPlans = [
   {
     id: 'komfort',
     name: 'Komfort-Service',
-    popular: true,
+    popular: false,
     features: [
       'Hol- und Bringservice',
       'Reinigung',

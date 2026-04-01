@@ -11,13 +11,12 @@ import {
   Building2,
   MapPin,
   Calendar,
-  Star,
   X,
+  ArrowRight,
 } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Card from '@/components/ui/Card'
 import SectionHeading from '@/components/ui/SectionHeading'
-import Badge from '@/components/ui/Badge'
 import PageHero from '@/components/ui/PageHero'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import Timeline from '@/components/sections/Timeline'
@@ -40,7 +39,7 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     name: 'Jörg Hoffmann',
-    role: 'Geschäftsführer & Gründer',
+    role: 'Geschäftsführer',
     initials: 'JH',
     description:
       'Gründete 1998 das Unternehmen mit der Vision, Autohäusern und Fuhrparks einen zuverlässigen Partner für die Rädereinlagerung zu bieten. Führt das Unternehmen mit Leidenschaft und langjähriger Branchenexpertise.',
@@ -143,15 +142,11 @@ function TeamCard({ member, onClick }: { member: TeamMember; onClick: () => void
           className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-60"
         />
 
-        {/* Founder badge */}
-        {member.isFounder && (
-          <div className="absolute top-3 right-3">
-            <Badge>
-              <Star className="mr-1 h-3 w-3" />
-              Gründer
-            </Badge>
-          </div>
-        )}
+        {/* Bottom accent — revealed on hover */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-500"
+        />
 
         {/* Silhouette avatar */}
         <div className="mt-2 mb-5 ring-4 ring-primary/10 rounded-full transition-all duration-300 group-hover:ring-primary/25 group-hover:shadow-lg group-hover:shadow-primary/10">
@@ -162,10 +157,11 @@ function TeamCard({ member, onClick }: { member: TeamMember; onClick: () => void
         <h3 className="text-xl font-bold text-text-heading">{member.name}</h3>
         <p className="mt-1 text-sm font-medium text-primary">{member.role}</p>
 
-        {/* Hover hint */}
-        <p className="mt-4 text-xs text-text-muted/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {/* Always-visible CTA pill */}
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-xs font-semibold text-primary tracking-wide uppercase transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/40 group-hover:shadow-md group-hover:shadow-primary/10">
           Mehr erfahren
-        </p>
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+        </div>
       </Card>
     </motion.div>
   )
@@ -213,16 +209,6 @@ function TeamMemberModal({
               >
                 <X className="h-5 w-5" />
               </button>
-
-              {/* Founder badge */}
-              {member.isFounder && (
-                <div className="flex justify-center mb-4">
-                  <Badge>
-                    <Star className="mr-1.5 h-3.5 w-3.5" />
-                    Gründer
-                  </Badge>
-                </div>
-              )}
 
               {/* Silhouette */}
               <div className="ring-4 ring-primary/15 rounded-full w-fit mx-auto">

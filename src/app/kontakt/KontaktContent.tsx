@@ -313,7 +313,7 @@ export default function KontaktContent() {
 
                 <li>
                   <div className="flex items-start gap-3 text-text-muted">
-                    <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg bg-bg-surface text-text-muted/60">
+                    <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                       <Printer className="size-4" />
                     </span>
                     <span>
