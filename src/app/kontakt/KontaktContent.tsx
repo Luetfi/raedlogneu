@@ -88,6 +88,7 @@ export default function KontaktContent() {
       <PageHero
         title={<>Wir sind <span className="text-primary">für Sie da</span></>}
         subtitle="Haben Sie Fragen zu unseren Leistungen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns — wir freuen uns auf Ihre Nachricht."
+        videos={['/videos/herovideo2.mp4']}
       />
 
       <div className="py-16 lg:py-24">

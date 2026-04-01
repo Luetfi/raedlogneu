@@ -309,7 +309,7 @@ export default function UeberUnsContent() {
         <Container>
           <SectionHeading
             title="Unser Team"
-            subtitle="Die Familie Hoffmann steht an der Spitze des Unternehmens — vereint durch gemeinsame Werte und eine klare Vision."
+            subtitle="Lernen Sie die Menschen kennen, die Rädlog leiten und gemeinsam mit dem gesamten Team jeden Tag für erstklassigen Service sorgen."
           />
 
           <motion.div

@@ -23,7 +23,7 @@ const stats: StatConfig[] = [
     end: 50000,
     suffix: '+',
     label: 'eingelagerte Radsätze',
-    description: 'Professionell gelagert in klimatisierten Hallen',
+    description: 'Professionell gelagert',
     icon: Warehouse,
   },
   {

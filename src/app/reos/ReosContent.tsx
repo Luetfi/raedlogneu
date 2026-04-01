@@ -102,6 +102,7 @@ export default function ReosContent() {
       <PageHero
         title={<>REOS — <span className="text-primary">Räder Einlagerungs Online System</span></>}
         subtitle="REOS ist eine eigens für unsere Zwecke entwickelte Onlinedatenbank. Damit können Sie schnell und unkompliziert einen Radsatz anfordern."
+        videos={['/videos/herovideo2.mp4']}
       />
 
       {/* Workflow Steps */}

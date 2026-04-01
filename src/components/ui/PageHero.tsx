@@ -5,18 +5,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Container from './Container'
 import { fadeInUp } from '@/lib/animations'
 
-const videos = ['/images/hero-video.mp4', '/images/hero-video-2.mp4']
+const defaultVideos = ['/images/hero-video.mp4', '/images/hero-video-2.mp4']
 
 interface PageHeroProps {
   title: ReactNode
   subtitle: ReactNode
+  videos?: string[]
 }
 
-export default function PageHero({ title, subtitle }: PageHeroProps) {
+export default function PageHero({ title, subtitle, videos }: PageHeroProps) {
+  const videoList = videos ?? defaultVideos
   const [currentVideo, setCurrentVideo] = useState(0)
 
   const handleEnded = useCallback(() => {
-    setCurrentVideo((prev) => (prev + 1) % videos.length)
+    setCurrentVideo((prev) => (prev + 1) % videoList.length)
   }, [])
 
   return (
@@ -34,7 +36,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: 'easeInOut' }}
           className="absolute inset-0 h-full w-full object-cover"
-          src={videos[currentVideo]}
+          src={videoList[currentVideo]}
         />
       </AnimatePresence>
       {/* Dark overlay */}

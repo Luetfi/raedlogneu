@@ -35,7 +35,7 @@ const ZOOM = 12
 
 export default function ServiceRegionMap() {
   return (
-    <div className="h-full overflow-hidden rounded-2xl border border-border">
+    <div className="relative z-0 h-full overflow-hidden rounded-2xl border border-border">
       <MapContainer
         center={CENTER}
         zoom={ZOOM}

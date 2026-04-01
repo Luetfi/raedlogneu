@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Check, CheckCircle2, ArrowRight, Zap, Disc3, Wrench, Truck, Settings } from 'lucide-react'
 import Container from '@/components/ui/Container'
@@ -84,6 +85,7 @@ export default function LeistungenContent() {
       <PageHero
         title={<>Unsere <span className="text-primary">Leistungspakete</span></>}
         subtitle="Werden Sie glücklich machen — mit maßgeschneiderten Paketen für professionelle Rädereinlagerung und Hol- & Bringservice in der Region Stuttgart."
+        videos={['/videos/herovideo2.mp4']}
       />
 
       {/* ── Pricing Cards ── */}
@@ -305,9 +307,6 @@ export default function LeistungenContent() {
             backgroundSize: '60px 60px',
           }}
         />
-        {/* Decorative ring overlay */}
-        <div className="absolute -right-32 -bottom-32 w-[400px] h-[400px] rounded-full opacity-5 pointer-events-none"
-          style={{ border: '60px solid white' }} />
 
         <Container className="relative text-center">
           <AnimatedSection>
