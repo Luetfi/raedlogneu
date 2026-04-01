@@ -32,6 +32,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://www.raedlog.de/sitemap.xml',
+    sitemap: 'https://raedlogneu.vercel.app/sitemap.xml',
   }
 }

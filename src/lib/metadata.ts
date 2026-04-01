@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-const BASE_URL = 'https://www.raedlog.de'
+const BASE_URL = 'https://raedlogneu.vercel.app'
 
 export function createMetadata({
   title,

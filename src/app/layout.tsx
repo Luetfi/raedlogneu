@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: '%s | RÄDLOG-Center GmbH',
   },
   description: 'Ihr kompetenter Partner für Rädereinlagerung, Reifeneinlagerung und Service in Stuttgart, Ludwigsburg, Waiblingen und Umgebung. Professionelle Einlagerung für Autohäuser, Fuhrparks und Autovermietungen.',
-  metadataBase: new URL('https://www.raedlog.de'),
+  metadataBase: new URL('https://raedlogneu.vercel.app'),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

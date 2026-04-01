@@ -1,6 +1,6 @@
 import { COMPANY, LOCATIONS, SERVICE_REGION_DETAILS } from './constants'
 
-const BASE_URL = 'https://www.raedlog.de'
+const BASE_URL = 'https://raedlogneu.vercel.app'
 
 export function getOrganizationSchema() {
   return {
