@@ -18,6 +18,7 @@ import Container from '@/components/ui/Container'
 import Card from '@/components/ui/Card'
 import SectionHeading from '@/components/ui/SectionHeading'
 import PageHero from '@/components/ui/PageHero'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import Timeline from '@/components/sections/Timeline'
 import {
@@ -250,6 +251,7 @@ export default function UeberUnsContent() {
         title={<>Über uns — <span className="text-primary">RÄDLOG-Center GmbH</span></>}
         subtitle="Ein Familienunternehmen mit Leidenschaft für Räder- und Reifenlogistik — seit 1998 im Raum Stuttgart zuhause."
       />
+      <Breadcrumb items={[{ name: 'Über uns', href: '/ueber-uns' }]} />
 
       {/* ── Unternehmensphilosophie ── */}
       <section className="py-20 lg:py-28">

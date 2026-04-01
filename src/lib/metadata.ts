@@ -30,36 +30,23 @@ export function createMetadata({
       siteName: 'RÄDLOG-Center GmbH',
       locale: 'de_DE',
       type: 'website',
+      images: [
+        {
+          url: `${BASE_URL}/og-image.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'RÄDLOG-Center GmbH – Rädereinlagerung & Reifenservice Stuttgart',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+      images: [`${BASE_URL}/og-image.jpg`],
     },
     alternates: {
       canonical: `${BASE_URL}${path}`,
     },
   }
-}
-
-export const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'RÄDLOG-Center GmbH',
-  description: 'Spezialisierter Räder- und Reifeneinlagerungsservice für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart.',
-  url: BASE_URL,
-  telephone: '+49711900540 5',
-  email: 'hoffmann@raedlog.de',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Hortensienweg 23',
-    addressLocality: 'Stuttgart',
-    postalCode: '70374',
-    addressCountry: 'DE',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 48.8183,
-    longitude: 9.2208,
-  },
-  areaServed: [
-    'Stuttgart', 'Ludwigsburg', 'Waiblingen', 'Böblingen', 'Sindelfingen', 'Leonberg',
-  ],
-  founder: { '@type': 'Person', name: 'Jörg Hoffmann' },
-  foundingDate: '1998',
 }

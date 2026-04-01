@@ -15,6 +15,7 @@ import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import PageHero from '@/components/ui/PageHero'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
@@ -104,6 +105,7 @@ export default function ReosContent() {
         subtitle="REOS ist eine eigens für unsere Zwecke entwickelte Onlinedatenbank. Damit können Sie schnell und unkompliziert einen Radsatz anfordern."
         videos={['/videos/herovideo2.mp4']}
       />
+      <Breadcrumb items={[{ name: 'REOS', href: '/reos' }]} />
 
       {/* Workflow Steps */}
       <section className="py-20 sm:py-28">

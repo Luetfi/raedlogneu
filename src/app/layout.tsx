@@ -7,7 +7,8 @@ import ScrollToTopButton from '@/components/layout/ScrollToTopButton'
 import SplashScreen from '@/components/shared/SplashScreen'
 import ScrollToTop from '@/components/shared/ScrollToTop'
 import ConsentBanner from '@/components/shared/ConsentBanner'
-import { jsonLd } from '@/lib/metadata'
+import JsonLd from '@/components/shared/JsonLd'
+import { getOrganizationSchema, getLocalBusinessSchema } from '@/lib/schema'
 import './globals.css'
 
 const inter = Inter({
@@ -29,10 +30,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={inter.variable}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <link rel="preconnect" href="https://basemaps.cartocdn.com" />
+        <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
+        <JsonLd data={[getOrganizationSchema(), getLocalBusinessSchema()]} />
       </head>
       <body className="min-h-screen flex flex-col">
         <ScrollToTop />

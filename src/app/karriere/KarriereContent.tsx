@@ -7,6 +7,7 @@ import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import PageHero from '@/components/ui/PageHero'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
@@ -173,6 +174,7 @@ export default function KarriereContent() {
         title={<>Karriere bei <span className="text-primary">RÄDLOG-Center</span></>}
         subtitle="Werden Sie Teil unseres Teams. Seit 1998 wachsen wir als führendes Unternehmen im Bereich Räder- und Reifenlogistik — und wir suchen engagierte Menschen, die diesen Weg mit uns fortsetzen."
       />
+      <Breadcrumb items={[{ name: 'Karriere', href: '/karriere' }]} />
 
       {/* About Working at RÄDLOG */}
       <section className="py-16 sm:py-20">

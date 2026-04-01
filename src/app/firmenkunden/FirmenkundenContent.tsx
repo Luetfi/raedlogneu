@@ -1,11 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Shield, Calendar, Truck, ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Shield, Calendar, Truck, ArrowRight, ChevronDown } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import PageHero from '@/components/ui/PageHero'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import {
@@ -45,6 +47,7 @@ export default function FirmenkundenContent() {
         title={<>Herzlich Willkommen im <span className="text-primary">{COMPANY.shortName}-Center!</span></>}
         subtitle={<>Ihr kompetenter Partner für Reifen, Räder, Einlagerung und Service rund um das Rad in der Region {SERVICE_REGIONS.join(', ')} und Umgebung.</>}
       />
+      <Breadcrumb items={[{ name: 'Firmenkunden', href: '/firmenkunden' }]} />
 
       {/* CTA Buttons */}
       <section className="border-b border-border bg-bg py-8">
@@ -90,6 +93,9 @@ export default function FirmenkundenContent() {
           </motion.div>
         </Container>
       </section>
+
+      {/* FAQ Section */}
+      <FaqSection />
 
       {/* Why RÄDLOG Section */}
       <section className="border-y border-border py-16 lg:py-24">
@@ -153,5 +159,90 @@ export default function FirmenkundenContent() {
       </section>
 
     </main>
+  )
+}
+
+const faqData = [
+  {
+    question: 'Was kostet die Rädereinlagerung bei RÄDLOG?',
+    answer:
+      'Die Rädereinlagerung beginnt ab 29,50 € pro Radsatz (zzgl. MwSt.), abhängig von Stückzahl und gewähltem Leistungspaket (Standard, Komfort oder Premium).',
+  },
+  {
+    question: 'Wie funktioniert der Hol- und Bringservice?',
+    answer:
+      'Wir holen Ihre Radsätze direkt bei Ihnen ab und liefern sie tagesgenau zurück. Bei Faxabruf bis 18 Uhr erfolgt die Anlieferung am nächsten Werktag bis 12 Uhr.',
+  },
+  {
+    question: 'Welche Leistungspakete gibt es?',
+    answer:
+      'Wir bieten drei Pakete: Standard (Einlagerung & Barcode-Erfassung), Komfort (inkl. Reinigung & Wuchten) und Premium (Komplett-Service mit REOS-Onlinezugang und Hol-/Bringservice).',
+  },
+  {
+    question: 'Wie fordere ich einen Radsatz über REOS an?',
+    answer:
+      'Über unser Online-System REOS können Sie 24/7 Radsätze anfordern. In nur zwei Klicks wählen Sie den Radsatz und das Lieferdatum — die Anlieferung erfolgt tagesgenau.',
+  },
+  {
+    question: 'In welchen Regionen ist RÄDLOG aktiv?',
+    answer:
+      'Wir bedienen den gesamten Raum Stuttgart, Ludwigsburg, Waiblingen, Böblingen, Sindelfingen und Leonberg mit drei Standorten in Stuttgart-Sommerrain und Remseck-Aldingen.',
+  },
+  {
+    question: 'Sind die eingelagerten Radsätze versichert?',
+    answer:
+      'Ja, alle bei uns eingelagerten Radsätze sind gegen Marke, Diebstahl und Transportschäden versichert.',
+  },
+]
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  return (
+    <section className="border-y border-border py-16 lg:py-24">
+      <Container>
+        <SectionHeading
+          title="Häufig gestellte Fragen"
+          subtitle="Antworten auf die wichtigsten Fragen rund um unseren Rädereinlagerungsservice."
+        />
+
+        <div className="mx-auto max-w-3xl space-y-3">
+          {faqData.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-xl border border-border bg-bg-elevated overflow-hidden"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+              >
+                <span className="font-semibold text-text-heading">
+                  {item.question}
+                </span>
+                <ChevronDown
+                  className={`h-5 w-5 shrink-0 text-text-muted transition-transform duration-200 ${
+                    openIndex === index ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="px-6 pb-5 text-text-muted leading-relaxed">
+                      {item.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
   )
 }

@@ -7,6 +7,7 @@ import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Badge from '@/components/ui/Badge'
 import PageHero from '@/components/ui/PageHero'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
@@ -87,6 +88,7 @@ export default function LeistungenContent() {
         subtitle="Werden Sie glücklich machen — mit maßgeschneiderten Paketen für professionelle Rädereinlagerung und Hol- & Bringservice in der Region Stuttgart."
         videos={['/videos/herovideo2.mp4']}
       />
+      <Breadcrumb items={[{ name: 'Leistungen', href: '/leistungen' }]} />
 
       {/* ── Pricing Cards ── */}
       <section className="relative py-20 lg:py-28">

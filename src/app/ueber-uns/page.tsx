@@ -1,4 +1,6 @@
 import { createMetadata } from '@/lib/metadata'
+import { getBreadcrumbSchema } from '@/lib/schema'
+import JsonLd from '@/components/shared/JsonLd'
 import UeberUnsContent from './UeberUnsContent'
 
 export const metadata = createMetadata({
@@ -9,5 +11,15 @@ export const metadata = createMetadata({
 })
 
 export default function UeberUnsPage() {
-  return <UeberUnsContent />
+  const breadcrumb = getBreadcrumbSchema([
+    { name: 'Startseite', path: '' },
+    { name: 'Über uns', path: '/ueber-uns' },
+  ])
+
+  return (
+    <>
+      <JsonLd data={breadcrumb} />
+      <UeberUnsContent />
+    </>
+  )
 }

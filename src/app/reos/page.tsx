@@ -1,4 +1,6 @@
 import { createMetadata } from '@/lib/metadata'
+import { getBreadcrumbSchema } from '@/lib/schema'
+import JsonLd from '@/components/shared/JsonLd'
 import ReosContent from './ReosContent'
 
 export const metadata = createMetadata({
@@ -9,5 +11,15 @@ export const metadata = createMetadata({
 })
 
 export default function ReosPage() {
-  return <ReosContent />
+  const breadcrumb = getBreadcrumbSchema([
+    { name: 'Startseite', path: '' },
+    { name: 'REOS', path: '/reos' },
+  ])
+
+  return (
+    <>
+      <JsonLd data={breadcrumb} />
+      <ReosContent />
+    </>
+  )
 }

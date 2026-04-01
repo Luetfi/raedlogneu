@@ -1,4 +1,6 @@
 import { createMetadata } from '@/lib/metadata'
+import { getBreadcrumbSchema, getLocationSchemas } from '@/lib/schema'
+import JsonLd from '@/components/shared/JsonLd'
 import KontaktContent from './KontaktContent'
 
 export const metadata = createMetadata({
@@ -9,5 +11,15 @@ export const metadata = createMetadata({
 })
 
 export default function KontaktPage() {
-  return <KontaktContent />
+  const breadcrumb = getBreadcrumbSchema([
+    { name: 'Startseite', path: '' },
+    { name: 'Kontakt', path: '/kontakt' },
+  ])
+
+  return (
+    <>
+      <JsonLd data={[breadcrumb, ...getLocationSchemas()]} />
+      <KontaktContent />
+    </>
+  )
 }

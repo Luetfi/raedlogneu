@@ -9,6 +9,7 @@ import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import PageHero from '@/components/ui/PageHero'
+import Breadcrumb from '@/components/shared/Breadcrumb'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
 import { COMPANY, LOCATIONS } from '@/lib/constants'
@@ -90,6 +91,7 @@ export default function KontaktContent() {
         subtitle="Haben Sie Fragen zu unseren Leistungen oder möchten Sie einen Termin vereinbaren? Kontaktieren Sie uns — wir freuen uns auf Ihre Nachricht."
         videos={['/videos/herovideo2.mp4']}
       />
+      <Breadcrumb items={[{ name: 'Kontakt', href: '/kontakt' }]} />
 
       <div className="py-16 lg:py-24">
       <Container>
