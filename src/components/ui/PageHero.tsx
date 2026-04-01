@@ -30,7 +30,8 @@ export default function PageHero({ title, subtitle, videos }: PageHeroProps) {
           autoPlay
           muted
           playsInline
-          onEnded={handleEnded}
+          loop={videoList.length === 1}
+          onEnded={videoList.length > 1 ? handleEnded : undefined}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
