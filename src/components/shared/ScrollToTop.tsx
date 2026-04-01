@@ -8,15 +8,28 @@ export default function ScrollToTop() {
 
   // Use useLayoutEffect to scroll before browser paint
   useLayoutEffect(() => {
-    // Immediately scroll to top
+    // Force scroll to top — bypass Lenis smooth scroll
     window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
 
-    // Also scroll after a short delay to override any GSAP ScrollTrigger restoration
-    const timeout = setTimeout(() => {
+    // Retry after Lenis/GSAP may have restored scroll position
+    const t1 = setTimeout(() => {
       window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
     }, 50)
 
-    return () => clearTimeout(timeout)
+    const t2 = setTimeout(() => {
+      window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    }, 150)
+
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
   }, [pathname])
 
   return null
