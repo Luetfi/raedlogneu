@@ -196,7 +196,7 @@ export default function Footer() {
 
       {/* Zone D — Copyright Bar */}
       <div className="bg-bg-elevated">
-        <Container className="border-t border-border pt-6 pb-6">
+        <Container className="border-t border-border pt-6 pb-20 lg:pb-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-sm text-text-muted text-center sm:text-left">
               &copy; {year} {COMPANY.name}. Alle Rechte vorbehalten.
