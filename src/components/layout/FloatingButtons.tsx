@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Phone, Mail, FileDown, MessageSquare } from 'lucide-react'
 import { COMPANY } from '@/lib/constants'
 
@@ -15,12 +16,14 @@ const buttons = [
   {
     id: 'phone',
     label: 'Anrufen',
+    mobileLabel: 'Anruf',
     href: `tel:${COMPANY.phone.replace(/[\s\/\-]/g, '')}`,
     icon: Phone,
   },
   {
     id: 'whatsapp',
     label: 'WhatsApp',
+    mobileLabel: 'WhatsApp',
     href: 'https://wa.me/491738586249',
     icon: WhatsAppIcon,
     external: true,
@@ -28,18 +31,22 @@ const buttons = [
   {
     id: 'email',
     label: 'E-Mail',
+    mobileLabel: 'E-Mail',
     href: `mailto:${COMPANY.email}`,
     icon: Mail,
   },
   {
     id: 'contact',
     label: 'Kontaktformular',
+    mobileLabel: 'Kontakt',
     href: '/kontakt',
     icon: MessageSquare,
+    isInternal: true,
   },
   {
     id: 'flyer',
     label: 'Flyer herunterladen',
+    mobileLabel: 'Flyer',
     href: '/downloads/raedlog-flyer.pdf',
     icon: FileDown,
     download: true,
@@ -48,21 +55,60 @@ const buttons = [
 
 export default function FloatingButtons() {
   return (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2">
-      {buttons.map((btn) => (
-        <a
-          key={btn.id}
-          href={btn.href}
-          {...(btn.download || btn.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-          {...(btn.download ? { download: true } : {})}
-          className="group relative flex items-center justify-center w-11 h-11 bg-bg-surface/90 backdrop-blur-sm border rounded-l-lg shadow-lg transition-colors duration-300 border-border text-text hover:border-primary hover:text-primary"
-        >
-          <btn.icon className="w-5 h-5" />
-          <span className="pointer-events-none absolute right-full mr-2 whitespace-nowrap rounded-md bg-bg-surface border border-border px-2.5 py-1.5 text-sm font-medium text-text shadow-lg opacity-0 translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
-            {btn.label}
-          </span>
-        </a>
-      ))}
-    </div>
+    <>
+      {/* Desktop: Vertikale Sidebar rechts */}
+      <div className="hidden lg:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 flex-col gap-2">
+        {buttons.map((btn) => (
+          <a
+            key={btn.id}
+            href={btn.href}
+            {...(btn.download || btn.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            {...(btn.download ? { download: true } : {})}
+            className="group relative flex items-center justify-center w-11 h-11 bg-bg-surface/90 backdrop-blur-sm border rounded-l-lg shadow-lg transition-colors duration-300 border-border text-text hover:border-primary hover:text-primary"
+          >
+            <btn.icon className="w-5 h-5" />
+            <span className="pointer-events-none absolute right-full mr-2 whitespace-nowrap rounded-md bg-bg-surface border border-border px-2.5 py-1.5 text-sm font-medium text-text shadow-lg opacity-0 translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
+              {btn.label}
+            </span>
+          </a>
+        ))}
+      </div>
+
+      {/* Mobile: Horizontale Bottom-Bar */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around bg-bg-elevated/95 backdrop-blur-md border-t border-border h-14 pb-[env(safe-area-inset-bottom)]">
+        {buttons.map((btn) => {
+          const content = (
+            <div className="flex flex-col items-center gap-0.5">
+              <btn.icon className="w-5 h-5" />
+              <span className="text-[10px] font-medium leading-tight">{btn.mobileLabel}</span>
+            </div>
+          )
+
+          if (btn.isInternal) {
+            return (
+              <Link
+                key={btn.id}
+                href={btn.href}
+                className="flex items-center justify-center text-text-muted hover:text-primary transition-colors py-1.5 px-2"
+              >
+                {content}
+              </Link>
+            )
+          }
+
+          return (
+            <a
+              key={btn.id}
+              href={btn.href}
+              {...(btn.download || btn.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              {...(btn.download ? { download: true } : {})}
+              className="flex items-center justify-center text-text-muted hover:text-primary transition-colors py-1.5 px-2"
+            >
+              {content}
+            </a>
+          )
+        })}
+      </div>
+    </>
   )
 }

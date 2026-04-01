@@ -27,14 +27,14 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-28 items-center justify-between">
+        <div className="flex h-[72px] lg:h-28 items-center justify-between">
           <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-3 shrink-0">
             <Image
               src="/images/logo.png"
               alt="RÄDLOG-Center Logo"
               width={320}
               height={90}
-              className="h-16 w-auto"
+              className="h-10 lg:h-16 w-auto"
               priority
             />
           </Link>

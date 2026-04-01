@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollToTop />
         <SplashScreen />
         <Header />
-        <main className="flex-1 pt-20">
+        <main className="flex-1 pt-[72px] lg:pt-28 pb-16 lg:pb-0">
           {children}
         </main>
         <FloatingButtons />
