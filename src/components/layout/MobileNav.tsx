@@ -62,7 +62,7 @@ export default function MobileNav() {
                 transition={{ type: 'spring', damping: 28, stiffness: 220 }}
                 className="w-full max-w-sm"
               >
-                <DialogPanel className="bg-bg-elevated shadow-2xl flex flex-col h-screen">
+                <DialogPanel className="bg-bg-elevated shadow-2xl flex flex-col h-dvh">
                 {/* Header mit Logo und Close */}
                 <div className="flex items-center justify-between px-6 py-5 border-b border-border/50">
                   <Link
