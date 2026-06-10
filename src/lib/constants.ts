@@ -13,12 +13,50 @@ export const COMPANY = {
   ceo: 'Jörg Hoffmann',
   email: 'hoffmann@raedlog.de',
   phone: '0711 / 900 54 - 05',
+  // Telefonnummer in E.164-Format für Schema.org / tel:-Links.
+  phoneE164: '+497119005405',
   fax: '0711 / 900 54 - 06',
   mobile: '0172 / 908 64 99',
   reosUrl: 'http://reos.raedlog.de',
   registernummer: 'HRB 728877',
   ustId: 'DE251345629',
 } as const
+
+// Externe Profile für Trust-Signale (Schema.org `sameAs`) und GEO/KI-Suche.
+// Offizielle Google-Unternehmensprofile (Share-Links, dauerhaft gültig):
+//   - Profil Stuttgart (Hauptsitz):    /g/1vjdp0cn
+//   - Profil Remseck (Lagerstandorte): /g/11yllgqzlx
+// Weitere Profile (LinkedIn, Instagram, Facebook) bei Bedarf ergänzen.
+export const SOCIAL_PROFILES: string[] = [
+  'https://share.google/c7P8IRUeLiVx6Lr2i',
+  'https://share.google/e3ejR297aySSkxNew',
+].filter(Boolean)
+
+// Direkter Maps-/Profil-Link zum Hauptstandort (Schema.org `hasMap`).
+export const GOOGLE_MAPS_URL = 'https://share.google/c7P8IRUeLiVx6Lr2i'
+
+// Echte Kundenbewertungen für Schema.org `aggregateRating`.
+// Quelle: Google-Unternehmensprofil (Stand 10.06.2026).
+// 16 Rezensionen: 12×5★, 3×4★, 1×3★ → Summe 75 / 16 = 4,69 ≈ 4,7.
+// Solange `reviewCount` 0 ist, wird kein aggregateRating gerendert.
+export const REVIEWS = {
+  ratingValue: 4.7,
+  reviewCount: 16,
+} as const
+
+// Letzte inhaltliche Änderung je Route (für die Sitemap).
+// Bei Inhaltsänderungen das jeweilige Datum aktualisieren.
+export const LAST_MODIFIED: Record<string, string> = {
+  '/': '2026-06-10',
+  '/leistungen': '2026-06-10',
+  '/firmenkunden': '2026-06-10',
+  '/ueber-uns': '2026-06-10',
+  '/reos': '2026-06-10',
+  '/karriere': '2026-06-10',
+  '/kontakt': '2026-06-10',
+  '/impressum': '2026-06-10',
+  '/datenschutz': '2026-06-10',
+}
 
 export const LOCATIONS = [
   {

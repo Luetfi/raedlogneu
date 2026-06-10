@@ -1,8 +1,26 @@
 # RÄDLOG-Center GmbH
 
-## Unternehmen
+> RÄDLOG-Center GmbH ist ein spezialisierter Dienstleister für Räder- und Reifeneinlagerung für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart. Das 1998 von Jörg Hoffmann gegründete Familienunternehmen lagert Kompletträder und Reifen barcode-gestützt ein, reinigt und wuchtet sie und liefert sie tagesgenau – inklusive Hol- und Bringservice sowie dem 24/7-Onlinesystem REOS. Preise ab 29,50 € pro Radsatz (zzgl. MwSt.).
 
-RÄDLOG-Center GmbH ist ein spezialisierter Räder- und Reifeneinlagerungsservice für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart. Das Familienunternehmen wurde 1998 von Jörg Hoffmann gegründet und wird heute in der zweiten Generation geführt.
+## Kernseiten
+
+- [Startseite](https://www.raedlog.de/): Überblick über RÄDLOG-Center, Leistungen und Zielgruppen.
+- [Leistungen](https://www.raedlog.de/leistungen): Rädereinlagerung, Leistungspakete (Standard, Komfort, Premium), Reinigung, Wuchten, Alufelgen-Aufbereitung.
+- [Firmenkunden](https://www.raedlog.de/firmenkunden): Lösungen für Autohäuser, Fuhrparks und Autovermietungen inkl. häufiger Fragen (FAQ).
+- [REOS Online-System](https://www.raedlog.de/reos): 24/7-Onlinedatenbank für Radsatzanforderung, Bestandsübersicht und Auswertungen.
+- [Über uns](https://www.raedlog.de/ueber-uns): Unternehmensgeschichte seit 1998, Standorte und Chronik.
+- [Kontakt](https://www.raedlog.de/kontakt): Anschrift, Telefon, E-Mail und Standorte.
+
+## Leistungspakete
+
+- **Standard** (ab 29,50 € / Radsatz, zzgl. MwSt.): Barcode-Erfassung, Datenerfassung, sichere Einlagerung.
+- **Komfort**: zusätzlich Reinigung, Wuchten und tagesgenaue Anlieferung.
+- **Premium**: Komplett-Service inkl. Hol- und Bringservice sowie REOS-Onlinezugang.
+
+## Weitere Leistungen
+
+- Hol- und Bringservice: Abruf bis 18 Uhr, Lieferung am nächsten Werktag bis 12 Uhr.
+- Alufelgen-Aufbereitung (Power Air), Reifenmontage bis 24 Zoll, Rädermontage vor Ort, Reinigung und Wuchten.
 
 ## Standorte
 
@@ -14,34 +32,11 @@ RÄDLOG-Center GmbH ist ein spezialisierter Räder- und Reifeneinlagerungsservic
 
 Stuttgart, Ludwigsburg, Waiblingen, Böblingen, Sindelfingen, Leonberg und Umgebung.
 
-## Leistungen
-
-### Rädereinlagerung
-Professionelle Einlagerung von Kompletträdern und Reifen mit Barcode-System zur schnellen Identifikation. Drei Leistungspakete:
-
-- **Standard**: Barcode-Erfassung, Datenerfassung, sichere Einlagerung
-- **Komfort**: Zusätzlich Reinigung, Wuchten und tagesgenaue Anlieferung
-- **Premium**: Komplett-Service inkl. Hol- und Bringservice sowie REOS-Onlinezugang
-
-Preise ab 29,50 € pro Radsatz (zzgl. MwSt.).
-
-### Hol- und Bringservice
-Abholung und tagesgenaue Anlieferung der Radsätze. Bei Abruf bis 18 Uhr erfolgt die Lieferung am nächsten Werktag bis 12 Uhr.
-
-### REOS Online-System
-24/7 verfügbare Onlinedatenbank (Räder Einlagerungs Online System) für Radsatzanforderung, Bestandsübersicht, Zustandsberichte und statistische Auswertungen.
-
-### Weitere Leistungen
-- Alufelgen-Aufbereitung (Power Air)
-- Reifenmontage bis 24 Zoll
-- Rädermontage vor Ort
-- Reinigung und Wuchten
-
 ## Zielgruppen
 
-1. **Autohäuser**: Platz schaffen für das Kerngeschäft, Kundenbindung durch zwei garantierte Werkstattbesuche pro Jahr
-2. **Fuhrparks**: Effiziente Räderlogistik mit termingerechter Abwicklung und lückenloser Dokumentation
-3. **Autovermietungen**: Schneller Räderwechsel, tagesgenaue Anlieferung gereinigter und gewuchteter Räder
+- **Autohäuser**: Platz fürs Kerngeschäft, Kundenbindung durch zwei garantierte Werkstattbesuche pro Jahr.
+- **Fuhrparks**: effiziente Räderlogistik mit termingerechter Abwicklung und lückenloser Dokumentation.
+- **Autovermietungen**: schneller Räderwechsel, tagesgenaue Anlieferung gereinigter und gewuchteter Räder.
 
 ## Kontakt
 
@@ -51,10 +46,7 @@ Abholung und tagesgenaue Anlieferung der Radsätze. Bei Abruf bis 18 Uhr erfolgt
 - E-Mail: hoffmann@raedlog.de
 - Website: https://www.raedlog.de
 - REOS Login: http://reos.raedlog.de
-
-## Öffnungszeiten
-
-Montag bis Freitag: 07:00 – 17:00 Uhr
+- Öffnungszeiten: Montag bis Freitag, 07:00 – 17:00 Uhr
 
 ## Partnermarken
 

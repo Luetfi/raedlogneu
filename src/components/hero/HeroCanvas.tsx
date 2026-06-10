@@ -73,5 +73,12 @@ export default function HeroCanvas({ images, frameIndex }: HeroCanvasProps) {
     }
   }, [frameIndex, drawFrame])
 
-  return <canvas ref={canvasRef} className="block w-full h-full" />
+  return (
+    <canvas
+      ref={canvasRef}
+      className="block w-full h-full"
+      aria-hidden="true"
+      role="presentation"
+    />
+  )
 }

@@ -42,6 +42,7 @@ export default function HeroVideo() {
         autoPlay
         muted
         playsInline
+        aria-hidden="true"
         onEnded={handleEnded}
         src={videos[0]}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
@@ -54,6 +55,7 @@ export default function HeroVideo() {
         muted
         playsInline
         preload="auto"
+        aria-hidden="true"
         onEnded={handleEnded}
         src={videos[1]}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"

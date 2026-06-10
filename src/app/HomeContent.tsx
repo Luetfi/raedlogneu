@@ -186,6 +186,8 @@ export default function HomeContent() {
                       <div
                         className="absolute inset-0 bg-cover bg-center"
                         style={{ backgroundImage: `url(${audience.backgroundImage})` }}
+                        role="img"
+                        aria-label={`Rädereinlagerung für ${audience.title} bei RÄDLOG-Center`}
                       />
                       <div className="absolute inset-0 bg-bg-elevated/60" />
                       <div className="relative flex flex-col items-center justify-center h-full p-6 text-center">

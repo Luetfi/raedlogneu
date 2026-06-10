@@ -8,7 +8,7 @@ import SplashScreen from '@/components/shared/SplashScreen'
 import ScrollToTop from '@/components/shared/ScrollToTop'
 import ConsentBanner from '@/components/shared/ConsentBanner'
 import JsonLd from '@/components/shared/JsonLd'
-import { getOrganizationSchema, getLocalBusinessSchema } from '@/lib/schema'
+import { getOrganizationSchema, getLocalBusinessSchema, getWebsiteSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/constants'
 import './globals.css'
 
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://basemaps.cartocdn.com" />
         <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
-        <JsonLd data={[getOrganizationSchema(), getLocalBusinessSchema()]} />
+        <JsonLd data={[getOrganizationSchema(), getLocalBusinessSchema(), getWebsiteSchema()]} />
       </head>
       <body className="min-h-screen flex flex-col">
         <ScrollToTop />

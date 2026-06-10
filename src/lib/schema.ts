@@ -1,6 +1,26 @@
-import { COMPANY, LOCATIONS, SERVICE_REGION_DETAILS, SITE_URL } from './constants'
+import {
+  COMPANY,
+  GOOGLE_MAPS_URL,
+  LOCATIONS,
+  REVIEWS,
+  SERVICE_REGION_DETAILS,
+  SITE_URL,
+  SOCIAL_PROFILES,
+} from './constants'
 
 const BASE_URL = SITE_URL
+
+const AREA_SERVED = [
+  'Stuttgart',
+  'Ludwigsburg',
+  'Waiblingen',
+  'Böblingen',
+  'Sindelfingen',
+  'Leonberg',
+]
+
+// Nur nicht-leere sameAs-Links ausgeben (Google-Profil etc.).
+const SAME_AS = SOCIAL_PROFILES.filter(Boolean)
 
 export function getOrganizationSchema() {
   return {
@@ -8,12 +28,21 @@ export function getOrganizationSchema() {
     '@type': 'Organization',
     '@id': `${BASE_URL}/#organization`,
     name: COMPANY.name,
+    legalName: COMPANY.name,
     url: BASE_URL,
-    logo: `${BASE_URL}/images/logo.png`,
+    slogan: COMPANY.slogan,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${BASE_URL}/images/logo.png`,
+      width: 512,
+      height: 512,
+    },
+    image: `${BASE_URL}/og-image.jpg`,
     description:
       'Spezialisierter Räder- und Reifeneinlagerungsservice für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart. Seit 1998.',
-    telephone: '+497119005405',
+    telephone: COMPANY.phoneE164,
     email: COMPANY.email,
+    vatID: COMPANY.ustId,
     founder: {
       '@type': 'Person',
       name: COMPANY.ceo,
@@ -26,30 +55,41 @@ export function getOrganizationSchema() {
       postalCode: LOCATIONS[0].zip,
       addressCountry: 'DE',
     },
-    areaServed: [
-      'Stuttgart',
-      'Ludwigsburg',
-      'Waiblingen',
-      'Böblingen',
-      'Sindelfingen',
-      'Leonberg',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: COMPANY.phoneE164,
+      email: COMPANY.email,
+      contactType: 'customer service',
+      areaServed: 'DE',
+      availableLanguage: ['de'],
+    },
+    areaServed: AREA_SERVED,
+    knowsAbout: [
+      'Rädereinlagerung',
+      'Reifeneinlagerung',
+      'Reifenservice',
+      'Räderlogistik',
+      'Alufelgen-Aufbereitung',
     ],
+    ...(SAME_AS.length > 0 ? { sameAs: SAME_AS } : {}),
   }
 }
 
 export function getLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'AutomotiveBusiness'],
     '@id': `${BASE_URL}/#localbusiness`,
     name: COMPANY.name,
     description:
       'Spezialisierter Räder- und Reifeneinlagerungsservice für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart.',
     url: BASE_URL,
-    telephone: '+497119005405',
+    telephone: COMPANY.phoneE164,
     email: COMPANY.email,
     image: `${BASE_URL}/og-image.jpg`,
+    logo: `${BASE_URL}/images/logo.png`,
     priceRange: '€€',
+    currenciesAccepted: 'EUR',
     address: {
       '@type': 'PostalAddress',
       streetAddress: LOCATIONS[0].street,
@@ -62,28 +102,43 @@ export function getLocalBusinessSchema() {
       latitude: SERVICE_REGION_DETAILS[0].lat,
       longitude: SERVICE_REGION_DETAILS[0].lng,
     },
+    ...(GOOGLE_MAPS_URL ? { hasMap: GOOGLE_MAPS_URL } : {}),
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       opens: '07:00',
       closes: '17:00',
     },
-    areaServed: [
-      'Stuttgart',
-      'Ludwigsburg',
-      'Waiblingen',
-      'Böblingen',
-      'Sindelfingen',
-      'Leonberg',
-    ],
+    areaServed: AREA_SERVED,
     founder: { '@type': 'Person', name: COMPANY.ceo },
     foundingDate: '1998',
+    parentOrganization: { '@id': `${BASE_URL}/#organization` },
+    ...(SAME_AS.length > 0 ? { sameAs: SAME_AS } : {}),
+    ...(REVIEWS.reviewCount > 0
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: REVIEWS.ratingValue,
+            reviewCount: REVIEWS.reviewCount,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Rädereinlagerung Leistungspakete',
       itemListElement: [
         {
           '@type': 'Offer',
+          price: '29.50',
+          priceCurrency: 'EUR',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: '29.50',
+            priceCurrency: 'EUR',
+            valueAddedTaxIncluded: false,
+          },
           itemOffered: {
             '@type': 'Service',
             name: 'Standard Paket',
@@ -93,6 +148,7 @@ export function getLocalBusinessSchema() {
         },
         {
           '@type': 'Offer',
+          priceCurrency: 'EUR',
           itemOffered: {
             '@type': 'Service',
             name: 'Komfort Paket',
@@ -102,6 +158,7 @@ export function getLocalBusinessSchema() {
         },
         {
           '@type': 'Offer',
+          priceCurrency: 'EUR',
           itemOffered: {
             '@type': 'Service',
             name: 'Premium Paket',
@@ -115,12 +172,15 @@ export function getLocalBusinessSchema() {
 }
 
 export function getLocationSchemas() {
-  return SERVICE_REGION_DETAILS.map((location) => ({
+  return SERVICE_REGION_DETAILS.map((location, index) => ({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': `${BASE_URL}/#location-${index}`,
     name: `${COMPANY.name} – ${location.name}`,
-    telephone: '+497119005405',
+    url: BASE_URL,
+    telephone: COMPANY.phoneE164,
     email: COMPANY.email,
+    image: `${BASE_URL}/og-image.jpg`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: location.street,
@@ -139,10 +199,48 @@ export function getLocationSchemas() {
       opens: '07:00',
       closes: '17:00',
     },
+    branchOf: {
+      '@id': `${BASE_URL}/#organization`,
+    },
     parentOrganization: {
       '@id': `${BASE_URL}/#organization`,
     },
   }))
+}
+
+export function getWebsiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${BASE_URL}/#website`,
+    url: BASE_URL,
+    name: COMPANY.name,
+    description:
+      'Professionelle Räder- und Reifeneinlagerung für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart.',
+    inLanguage: 'de-DE',
+    publisher: { '@id': `${BASE_URL}/#organization` },
+  }
+}
+
+export function getReosSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'REOS – Räder Einlagerungs Online System',
+    url: `${BASE_URL}/reos`,
+    description:
+      '24/7 verfügbares Onlinesystem zur Radsatzanforderung, Bestandsübersicht, Zustandsberichten und statistischen Auswertungen für Kunden der RÄDLOG-Center GmbH.',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    inLanguage: 'de-DE',
+    provider: { '@id': `${BASE_URL}/#organization` },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'EUR',
+      description: 'Im Premium-Paket der Rädereinlagerung enthalten.',
+    },
+  }
 }
 
 export function getBreadcrumbSchema(
@@ -192,13 +290,6 @@ export function getServiceSchema(service: {
       '@id': `${BASE_URL}/#organization`,
       name: service.provider ?? COMPANY.name,
     },
-    areaServed: [
-      'Stuttgart',
-      'Ludwigsburg',
-      'Waiblingen',
-      'Böblingen',
-      'Sindelfingen',
-      'Leonberg',
-    ],
+    areaServed: AREA_SERVED,
   }
 }

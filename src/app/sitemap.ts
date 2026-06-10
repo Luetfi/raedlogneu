@@ -1,63 +1,31 @@
 import type { MetadataRoute } from 'next'
-import { SITE_URL } from '@/lib/constants'
+import { LAST_MODIFIED, SITE_URL } from '@/lib/constants'
+
+type Entry = {
+  path: string
+  changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']
+  priority: number
+}
+
+const ENTRIES: Entry[] = [
+  { path: '/', changeFrequency: 'weekly', priority: 1 },
+  { path: '/leistungen', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/firmenkunden', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/ueber-uns', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/reos', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/karriere', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/kontakt', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/impressum', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/datenschutz', changeFrequency: 'yearly', priority: 0.3 },
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date('2025-03-28'),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/leistungen`,
-      lastModified: new Date('2025-03-20'),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/firmenkunden`,
-      lastModified: new Date('2025-03-20'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ueber-uns`,
-      lastModified: new Date('2025-03-25'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/reos`,
-      lastModified: new Date('2025-03-20'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/karriere`,
-      lastModified: new Date('2025-03-15'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/kontakt`,
-      lastModified: new Date('2025-03-15'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/impressum`,
-      lastModified: new Date('2025-03-10'),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/datenschutz`,
-      lastModified: new Date('2025-03-10'),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
+  return ENTRIES.map(({ path, changeFrequency, priority }) => ({
+    url: path === '/' ? baseUrl : `${baseUrl}${path}`,
+    lastModified: new Date(LAST_MODIFIED[path] ?? '2026-06-10'),
+    changeFrequency,
+    priority,
+  }))
 }

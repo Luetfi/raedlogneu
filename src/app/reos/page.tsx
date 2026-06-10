@@ -1,5 +1,5 @@
 import { createMetadata } from '@/lib/metadata'
-import { getBreadcrumbSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getReosSchema } from '@/lib/schema'
 import JsonLd from '@/components/shared/JsonLd'
 import ReosContent from './ReosContent'
 
@@ -18,7 +18,7 @@ export default function ReosPage() {
 
   return (
     <>
-      <JsonLd data={breadcrumb} />
+      <JsonLd data={[breadcrumb, getReosSchema()]} />
       <ReosContent />
     </>
   )
