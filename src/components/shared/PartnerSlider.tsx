@@ -2,13 +2,14 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 
 const logos = [
-  { src: '/logos/amg.png', alt: 'AMG', className: 'h-24 sm:h-32 lg:h-40' },
-  { src: '/logos/mercedes.png', alt: 'Mercedes-Benz', className: 'h-14 sm:h-18 lg:h-22' },
-  { src: '/logos/vw.png', alt: 'Volkswagen' },
-  { src: '/logos/audi.png', alt: 'Audi' },
-  { src: '/logos/bmw.png', alt: 'BMW', className: 'h-20 sm:h-24 lg:h-30' },
+  { src: '/logos/amg.png', alt: 'AMG', width: 225, height: 225, className: 'h-24 sm:h-32 lg:h-40' },
+  { src: '/logos/mercedes.png', alt: 'Mercedes-Benz', width: 400, height: 400, className: 'h-14 sm:h-18 lg:h-22' },
+  { src: '/logos/vw.png', alt: 'Volkswagen', width: 500, height: 499 },
+  { src: '/logos/audi.png', alt: 'Audi', width: 577, height: 432 },
+  { src: '/logos/bmw.png', alt: 'BMW', width: 400, height: 400, className: 'h-20 sm:h-24 lg:h-30' },
 ]
 
 export default function PartnerSlider() {
@@ -23,6 +24,14 @@ export default function PartnerSlider() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="relative pt-16 pb-8 lg:pt-20 lg:pb-10"
     >
+      <div className="text-center mb-10 px-4">
+        <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+          Unsere Kunden
+        </span>
+        <p className="mt-3 text-base text-text-muted">
+          Marken und Autohäuser, die auf RÄDLOG-Center vertrauen
+        </p>
+      </div>
       <div className="overflow-hidden">
         <div className="flex animate-scroll pointer-events-none w-max">
           {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
@@ -30,9 +39,11 @@ export default function PartnerSlider() {
               key={i}
               className="flex-shrink-0 px-8 sm:px-12 lg:px-16 flex items-center justify-center"
             >
-              <img
+              <Image
                 src={logo.src}
                 alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
                 className={`${logo.className || 'h-16 sm:h-20 lg:h-24'} w-auto opacity-40 grayscale pointer-events-none`}
               />
             </div>

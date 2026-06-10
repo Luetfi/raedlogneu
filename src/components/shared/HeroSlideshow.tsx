@@ -4,11 +4,11 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const images = [
-  { src: '/images/hero1.jpg', position: 'center 40%' },
-  { src: '/images/hero2.jpg', position: 'center' },
-  { src: '/images/hero3.jpg', position: 'center' },
-  { src: '/images/hero4.jpg', position: 'center' },
-  { src: '/images/hero5.jpg', position: 'center 40%' },
+  { src: '/images/hero1.webp', position: 'center 40%' },
+  { src: '/images/hero2.webp', position: 'center' },
+  { src: '/images/hero3.webp', position: 'center' },
+  { src: '/images/hero4.webp', position: 'center' },
+  { src: '/images/hero5.webp', position: 'center 40%' },
 ]
 
 const INTERVAL = 6000
