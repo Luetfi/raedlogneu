@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useRef, type ChangeEvent, type FormEvent } from 'react'
-import { motion } from 'framer-motion'
-import { Briefcase, Users, MapPin, Building2, Upload, CheckCircle, AlertCircle } from 'lucide-react'
+import { Briefcase, Users, MapPin, Building2, Upload, CheckCircle, AlertCircle, ArrowDown } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
@@ -10,34 +9,36 @@ import PageHero from '@/components/ui/PageHero'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedSection from '@/components/shared/AnimatedSection'
-import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
+import { fadeInUp } from '@/lib/animations'
 import Link from 'next/link'
 
 const benefits = [
   {
     icon: Users,
     title: 'Familiäres Arbeitsumfeld',
-    description:
-      'Bei RÄDLOG-Center pflegen wir ein offenes, kollegiales Miteinander. Flache Hierarchien und ein starkes Teamgefühl zeichnen unsere Unternehmenskultur aus.',
+    description: 'Offenes Miteinander, flache Hierarchien und ein starkes Teamgefühl.',
   },
   {
     icon: Building2,
     title: 'Wachsendes Unternehmen',
-    description:
-      'Mit 3 Standorten in der Region Stuttgart sind wir seit 1998 kontinuierlich gewachsen. Wir bieten Ihnen langfristige Perspektiven in einem stabilen Unternehmen.',
+    description: 'Seit 1998 kontinuierlich gewachsen — mit langfristigen Perspektiven.',
   },
   {
     icon: MapPin,
     title: 'Region Stuttgart',
-    description:
-      'Unsere Standorte befinden sich in der Wirtschaftsmetropole Stuttgart und Umgebung — eine attraktive Region mit hoher Lebensqualität.',
+    description: 'Drei Standorte in einer Wirtschaftsregion mit hoher Lebensqualität.',
   },
   {
     icon: Briefcase,
     title: 'Spezialisierte Branche',
-    description:
-      'Als Experten für Räder- und Reifenlogistik bieten wir Ihnen ein einzigartiges, wachsendes Tätigkeitsfeld mit spannenden Aufgaben.',
+    description: 'Spannende Aufgaben als Experten für Räder- und Reifenlogistik.',
   },
+]
+
+const facts = [
+  { label: 'Gegründet', value: '1998' },
+  { label: 'Standorte', value: '3 in der Region Stuttgart' },
+  { label: 'Spezialisierung', value: 'Räder- & Reifenlogistik' },
 ]
 
 interface FormData {
@@ -172,99 +173,26 @@ export default function KarriereContent() {
       {/* Hero Section */}
       <PageHero
         title={<>Karriere bei <span className="text-primary">RÄDLOG-Center</span></>}
-        subtitle="Werden Sie Teil unseres Teams. Seit 1998 wachsen wir als führendes Unternehmen im Bereich Räder- und Reifenlogistik — und wir suchen engagierte Menschen, die diesen Weg mit uns fortsetzen."
+        subtitle="Werden Sie Teil unseres Teams — bewerben Sie sich jetzt in wenigen Minuten initiativ."
+        cta={
+          <Button href="#bewerbung" size="lg">
+            Jetzt bewerben
+            <ArrowDown className="h-5 w-5" />
+          </Button>
+        }
       />
       <Breadcrumb items={[{ name: 'Karriere', href: '/karriere' }]} />
 
-      {/* About Working at RÄDLOG */}
-      <section className="py-16 sm:py-20">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <AnimatedSection variants={fadeInUp}>
-              <h2 className="text-3xl font-bold text-text-heading sm:text-4xl">
-                Arbeiten bei RÄDLOG-Center
-              </h2>
-              <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
-              <p className="mt-6 text-text-muted leading-relaxed">
-                Seit unserer Gründung 1998 haben wir uns zu einem der führenden Spezialisten für
-                Rädereinlagerung und Reifenlogistik in der Region Stuttgart entwickelt. Mit drei
-                Standorten und einem engagierten Team bieten wir unseren Kunden erstklassigen Service.
-              </p>
-              <p className="mt-4 text-text-muted leading-relaxed">
-                Was uns ausmacht? Ein familiäres Miteinander, kurze Entscheidungswege und die
-                Leidenschaft für unsere Branche. Wir investieren in unsere Mitarbeiter, weil wir
-                wissen, dass unser Erfolg auf ihrem Engagement basiert.
-              </p>
-              <p className="mt-4 text-text-muted leading-relaxed">
-                Ob in der Logistik, im Kundendienst oder in der Verwaltung — bei RÄDLOG-Center
-                finden engagierte Talente ein Umfeld, in dem sie wachsen und sich weiterentwickeln
-                können.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection variants={fadeInUp} delay={0.15}>
-              <Card className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
-                <div className="relative space-y-5">
-                  {[
-                    { label: 'Gegründet', value: '1998' },
-                    { label: 'Standorte', value: '3 in der Region Stuttgart' },
-                    { label: 'Spezialisierung', value: 'Räder- & Reifenlogistik' },
-                    { label: 'Bewerbung', value: 'Initiativbewerbung möglich' },
-                  ].map((item) => (
-                    <div key={item.label} className="flex items-center justify-between border-b border-border pb-4 last:border-0 last:pb-0">
-                      <span className="text-sm text-text-muted">{item.label}</span>
-                      <span className="font-semibold text-text-heading">{item.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </AnimatedSection>
-          </div>
-        </Container>
-      </section>
-
-      {/* Benefits */}
-      <section className="border-t border-border py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            title="Warum RÄDLOG-Center?"
-            subtitle="Was uns als Arbeitgeber auszeichnet — und warum Mitarbeiter gerne bei uns arbeiten."
-          />
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {benefits.map((benefit) => {
-              const Icon = benefit.icon
-              return (
-                <motion.div key={benefit.title} variants={staggerItem}>
-                  <Card className="h-full">
-                    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="mb-2 text-lg font-semibold text-text-heading">{benefit.title}</h3>
-                    <p className="text-sm text-text-muted leading-relaxed">{benefit.description}</p>
-                  </Card>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        </Container>
-      </section>
-
       {/* Application Form */}
-      <section className="py-16 sm:py-20">
+      <section id="bewerbung" className="scroll-mt-24 py-16 sm:py-20">
         <Container>
           <SectionHeading
             title="Initiativbewerbung"
-            subtitle="Kein passendes Stellenangebot gefunden? Bewerben Sie sich initiativ — wir freuen uns auf Ihre Unterlagen."
+            subtitle="In wenigen Minuten beworben — wir melden uns schnellstmöglich bei Ihnen."
           />
 
-          <div className="mx-auto max-w-2xl">
+          <div className="grid gap-8 lg:grid-cols-3 lg:items-start">
+            <div className="lg:col-span-2">
             {submitStatus === 'success' ? (
               <AnimatedSection variants={fadeInUp}>
                 <Card className="text-center">
@@ -521,7 +449,66 @@ export default function KarriereContent() {
                 </Card>
               </AnimatedSection>
             )}
+            </div>
+
+            {/* Info Sidebar */}
+            <AnimatedSection variants={fadeInUp} delay={0.15} className="lg:sticky lg:top-24">
+              <Card hover={false} className="relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+                <div className="relative">
+                  <h3 className="text-lg font-semibold text-text-heading">Warum RÄDLOG-Center?</h3>
+                  <ul className="mt-5 space-y-4">
+                    {benefits.map((benefit) => {
+                      const Icon = benefit.icon
+                      return (
+                        <li key={benefit.title} className="flex items-start gap-3">
+                          <span className="mt-0.5 inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                            <Icon className="h-4 w-4 text-primary" />
+                          </span>
+                          <div>
+                            <p className="text-sm font-medium text-text-heading">{benefit.title}</p>
+                            <p className="mt-0.5 text-sm text-text-muted leading-relaxed">
+                              {benefit.description}
+                            </p>
+                          </div>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  <div className="mt-6 space-y-3 border-t border-border pt-5">
+                    {facts.map((item) => (
+                      <div key={item.label} className="flex items-center justify-between gap-4">
+                        <span className="text-sm text-text-muted">{item.label}</span>
+                        <span className="text-sm font-semibold text-text-heading">{item.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </AnimatedSection>
           </div>
+        </Container>
+      </section>
+
+      {/* About Working at RÄDLOG */}
+      <section className="border-t border-border py-16 sm:py-20">
+        <Container>
+          <AnimatedSection variants={fadeInUp}>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-bold text-text-heading sm:text-4xl">
+                Arbeiten bei RÄDLOG-Center
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" />
+              <p className="mt-6 text-text-muted leading-relaxed">
+                Seit unserer Gründung 1998 haben wir uns zu einem der führenden Spezialisten für
+                Rädereinlagerung und Reifenlogistik in der Region Stuttgart entwickelt. Uns zeichnen
+                ein familiäres Miteinander, kurze Entscheidungswege und die Leidenschaft für unsere
+                Branche aus. Ob in der Logistik, im Kundendienst oder in der Verwaltung — bei
+                RÄDLOG-Center finden engagierte Talente ein Umfeld, in dem sie wachsen und sich
+                weiterentwickeln können.
+              </p>
+            </div>
+          </AnimatedSection>
         </Container>
       </section>
     </main>

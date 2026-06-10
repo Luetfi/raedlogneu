@@ -10,10 +10,11 @@ const defaultVideos = ['/images/hero-video.mp4', '/images/hero-video-2.mp4']
 interface PageHeroProps {
   title: ReactNode
   subtitle: ReactNode
+  cta?: ReactNode
   videos?: string[]
 }
 
-export default function PageHero({ title, subtitle, videos }: PageHeroProps) {
+export default function PageHero({ title, subtitle, cta, videos }: PageHeroProps) {
   const videoList = videos ?? defaultVideos
   const [currentVideo, setCurrentVideo] = useState(0)
 
@@ -60,6 +61,7 @@ export default function PageHero({ title, subtitle, videos }: PageHeroProps) {
           <p className="mt-6 text-lg leading-relaxed text-text-muted sm:text-xl">
             {subtitle}
           </p>
+          {cta && <div className="mt-8 flex justify-center">{cta}</div>}
         </motion.div>
       </Container>
     </section>
