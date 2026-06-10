@@ -1,6 +1,6 @@
-import { COMPANY, LOCATIONS, SERVICE_REGION_DETAILS } from './constants'
+import { COMPANY, LOCATIONS, SERVICE_REGION_DETAILS, SITE_URL } from './constants'
 
-const BASE_URL = 'https://raedlogneu.vercel.app'
+const BASE_URL = SITE_URL
 
 export function getOrganizationSchema() {
   return {

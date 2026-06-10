@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, phone, firma, nachricht, datenschutz } = body
+    const { name, email, nachricht, datenschutz } = body
 
     if (!name || !email || !nachricht || !datenschutz) {
       return NextResponse.json(
@@ -20,8 +20,8 @@ export async function POST(request: Request) {
       )
     }
 
-    // TODO: Integrate with email service (e.g., Resend, SendGrid, Nodemailer)
-    console.log('Kontaktformular:', { name, email, phone, firma, nachricht })
+    // TODO: E-Mail-Versand anbinden (z. B. Resend, SendGrid, Nodemailer).
+    // Hinweis: Eingabedaten werden bewusst nicht geloggt (Datenschutz).
 
     return NextResponse.json({ success: true, message: 'Ihre Nachricht wurde erfolgreich gesendet.' })
   } catch {

@@ -9,6 +9,7 @@ import ScrollToTop from '@/components/shared/ScrollToTop'
 import ConsentBanner from '@/components/shared/ConsentBanner'
 import JsonLd from '@/components/shared/JsonLd'
 import { getOrganizationSchema, getLocalBusinessSchema } from '@/lib/schema'
+import { SITE_URL } from '@/lib/constants'
 import './globals.css'
 
 const inter = Inter({
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s | RÄDLOG-Center GmbH',
   },
   description: 'Ihr kompetenter Partner für Rädereinlagerung, Reifeneinlagerung und Service in Stuttgart, Ludwigsburg, Waiblingen und Umgebung. Professionelle Einlagerung für Autohäuser, Fuhrparks und Autovermietungen.',
-  metadataBase: new URL('https://raedlogneu.vercel.app'),
+  metadataBase: new URL(SITE_URL),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

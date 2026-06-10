@@ -1,3 +1,10 @@
+// Basis-URL der Website. Über die Umgebungsvariable NEXT_PUBLIC_SITE_URL
+// überschreibbar (z. B. für Preview-Deployments), fällt sonst auf die
+// Produktionsdomain zurück. Ein evtl. abschließender Slash wird entfernt.
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.raedlog.de'
+).replace(/\/+$/, '')
+
 export const COMPANY = {
   name: 'RÄDLOG-Center GmbH',
   shortName: 'RÄDLOG',

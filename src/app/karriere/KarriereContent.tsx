@@ -187,7 +187,7 @@ export default function KarriereContent() {
               <div className="mt-4 h-1 w-16 rounded-full bg-primary" />
               <p className="mt-6 text-text-muted leading-relaxed">
                 Seit unserer Gründung 1998 haben wir uns zu einem der führenden Spezialisten für
-                Rädereinlagerung und Reifenlogistik in der Region Stuttgart entwickelt. Mit vier
+                Rädereinlagerung und Reifenlogistik in der Region Stuttgart entwickelt. Mit drei
                 Standorten und einem engagierten Team bieten wir unseren Kunden erstklassigen Service.
               </p>
               <p className="mt-4 text-text-muted leading-relaxed">
@@ -208,7 +208,7 @@ export default function KarriereContent() {
                 <div className="relative space-y-5">
                   {[
                     { label: 'Gegründet', value: '1998' },
-                    { label: 'Standorte', value: '4 in der Region Stuttgart' },
+                    { label: 'Standorte', value: '3 in der Region Stuttgart' },
                     { label: 'Spezialisierung', value: 'Räder- & Reifenlogistik' },
                     { label: 'Bewerbung', value: 'Initiativbewerbung möglich' },
                   ].map((item) => (
@@ -225,7 +225,7 @@ export default function KarriereContent() {
       </section>
 
       {/* Benefits */}
-      <section className="border-t border-border bg-bg-elevated py-16 sm:py-20">
+      <section className="border-t border-border py-16 sm:py-20">
         <Container>
           <SectionHeading
             title="Warum RÄDLOG-Center?"

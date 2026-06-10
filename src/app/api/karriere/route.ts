@@ -7,7 +7,6 @@ export async function POST(request: Request) {
     const vorname = formData.get('vorname') as string
     const nachname = formData.get('nachname') as string
     const email = formData.get('email') as string
-    const telefon = formData.get('telefon') as string
     const nachricht = formData.get('nachricht') as string
     const datenschutz = formData.get('datenschutz')
     const lebenslauf = formData.get('lebenslauf') as File | null
@@ -49,8 +48,8 @@ export async function POST(request: Request) {
       }
     }
 
-    // TODO: Integrate with email service
-    console.log('Bewerbung:', { vorname, nachname, email, telefon, nachricht, hasFile: !!lebenslauf })
+    // TODO: E-Mail-Versand anbinden (z. B. Resend, SendGrid, Nodemailer).
+    // Hinweis: Bewerbungsdaten werden bewusst nicht geloggt (Datenschutz).
 
     return NextResponse.json({ success: true, message: 'Ihre Bewerbung wurde erfolgreich gesendet.' })
   } catch {
