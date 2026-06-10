@@ -32,12 +32,12 @@ export default function PartnerSlider() {
           Marken und Autohäuser, die auf RÄDLOG-Center vertrauen
         </p>
       </div>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden logo-slider-mask">
         <div className="flex animate-scroll pointer-events-none w-max">
           {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 px-8 sm:px-12 lg:px-16 flex items-center justify-center"
+              className="flex-shrink-0 px-5 sm:px-12 lg:px-16 flex items-center justify-center"
             >
               <Image
                 src={logo.src}
