@@ -215,7 +215,7 @@ function EventCard({ event, Icon, isLeft }: { event: TimelineEvent; Icon: React.
 
 export default function Timeline() {
   return (
-    <section id="chronik" className="bg-bg-elevated py-14 lg:py-20">
+    <section id="chronik" className="py-14 lg:py-20">
       <Container>
         <SectionHeading
           title="Unsere Firmengeschichte"

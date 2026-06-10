@@ -182,8 +182,6 @@ export default function ScrollTimeline() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-bg-elevated" />
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{

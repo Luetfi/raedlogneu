@@ -307,7 +307,7 @@ export default function UeberUnsContent() {
       <Timeline />
 
       {/* ── Team ── */}
-      <section className="bg-bg-elevated py-20 lg:py-28">
+      <section className="py-20 lg:py-28">
         <Container>
           <SectionHeading
             title="Unser Team"

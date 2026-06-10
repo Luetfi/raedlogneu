@@ -95,9 +95,6 @@ function StatCard({ stat, index }: { stat: StatConfig; index: number }) {
 export default function StatsSection() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-bg-elevated" />
-
       {/* Parallax dot pattern */}
       <ParallaxBackground speed={0.15} className="absolute inset-0">
         <div

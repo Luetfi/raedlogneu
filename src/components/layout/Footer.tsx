@@ -34,7 +34,7 @@ export default function Footer() {
 
       {/* Haupt-Content-Grid */}
       <div
-        className="relative bg-bg-elevated"
+        className="relative bg-bg"
         style={{
           backgroundImage:
             'radial-gradient(circle, #0568b1 1px, transparent 0)',
@@ -43,7 +43,7 @@ export default function Footer() {
         }}
       >
         {/* Overlay to control dot opacity */}
-        <div className="absolute inset-0 bg-bg-elevated/[0.98]" />
+        <div className="absolute inset-0 bg-bg/[0.98]" />
 
         <Container className="relative py-16 lg:py-20">
           <motion.div
@@ -195,7 +195,7 @@ export default function Footer() {
       </div>
 
       {/* Zone D — Copyright Bar */}
-      <div className="bg-bg-elevated">
+      <div className="bg-bg">
         <Container className="border-t border-border pt-6 pb-20 lg:pb-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-sm text-text-muted text-center sm:text-left">

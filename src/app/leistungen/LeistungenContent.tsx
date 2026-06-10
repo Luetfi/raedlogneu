@@ -172,7 +172,6 @@ export default function LeistungenContent() {
 
       {/* ── Process Timeline (static) ── */}
       <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-bg-elevated" />
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -299,7 +298,6 @@ export default function LeistungenContent() {
 
       {/* ── CTA Band ── */}
       <section className="relative py-24 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-elevated to-bg" />
         <div className="absolute inset-0 border-t border-b border-border" />
         <div
           className="absolute inset-0 opacity-5"

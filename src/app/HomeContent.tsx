@@ -225,8 +225,6 @@ export default function HomeContent() {
 
       {/* ── Benefits Grid ── */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
-        {/* Subtle background treatment */}
-        <div className="absolute inset-0 bg-bg-elevated" />
         <ParallaxBackground speed={0.1} className="absolute inset-0">
           <div
             className="absolute inset-0 opacity-[0.02]"
@@ -285,7 +283,6 @@ export default function HomeContent() {
       {/* ── CTA Band ── */}
       <section className="relative py-24 lg:py-28 overflow-hidden">
         {/* Background with angled accent */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-elevated to-bg" />
         <div className="absolute inset-0 border-t border-b border-border" />
         <div
           className="absolute inset-0 opacity-5"
