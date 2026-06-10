@@ -19,13 +19,10 @@ export default function SplashScreen() {
     return () => clearTimeout(timer)
   }, [])
 
-  // Navigation: 800ms splash + scroll to top
+  // Navigation: scroll to top only, no splash
   useEffect(() => {
     if (isInitialLoad.current) return
-    setVisible(true)
     window.scrollTo(0, 0)
-    const timer = setTimeout(() => setVisible(false), 800)
-    return () => clearTimeout(timer)
   }, [pathname])
 
   return (

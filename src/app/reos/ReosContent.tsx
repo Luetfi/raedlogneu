@@ -77,25 +77,21 @@ const features = [
 
 export default function ReosContent() {
   const [activeStep, setActiveStep] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [progressKey, setProgressKey] = useState(0)
 
   const handleStepClick = useCallback((index: number) => {
     setActiveStep(index)
-    setIsAutoPlaying(false)
+    setProgressKey((k) => k + 1)
   }, [])
 
+  // Auto-advance restarts after every step change — auto or manual click
   useEffect(() => {
-    if (!isAutoPlaying) return
-    const timer = setInterval(() => {
-      setActiveStep((prev) => {
-        const next = (prev + 1) % workflowSteps.length
-        setProgressKey((k) => k + 1)
-        return next
-      })
+    const timer = setTimeout(() => {
+      setActiveStep((prev) => (prev + 1) % workflowSteps.length)
+      setProgressKey((k) => k + 1)
     }, AUTO_PLAY_INTERVAL)
-    return () => clearInterval(timer)
-  }, [isAutoPlaying])
+    return () => clearTimeout(timer)
+  }, [activeStep, progressKey])
 
   return (
     <main className="min-h-screen bg-bg">
@@ -265,8 +261,8 @@ export default function ReosContent() {
                             : '0%'
                         }}
                         transition={{
-                          duration: i === activeStep && isAutoPlaying ? AUTO_PLAY_INTERVAL / 1000 : 0.3,
-                          ease: i === activeStep && isAutoPlaying ? 'linear' : 'easeOut',
+                          duration: i === activeStep ? AUTO_PLAY_INTERVAL / 1000 : 0.3,
+                          ease: i === activeStep ? 'linear' : 'easeOut',
                         }}
                       />
                     </button>
@@ -335,7 +331,7 @@ export default function ReosContent() {
               {/* Background image */}
               <div
                 className="pointer-events-none absolute inset-0 bg-contain bg-center bg-no-repeat opacity-15"
-                style={{ backgroundImage: "url('/images/reos-login.png')" }}
+                style={{ backgroundImage: "url('/images/reos-login.webp')" }}
               />
               {/* Decorative glow */}
               <div className="pointer-events-none absolute inset-0">
