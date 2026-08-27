@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, Mail, MapPin, Clock, Printer, Smartphone } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Printer } from 'lucide-react'
 import { COMPANY, NAV_ITEMS, LOCATIONS } from '@/lib/constants'
 import Container from '@/components/ui/Container'
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
@@ -65,8 +65,8 @@ export default function Footer() {
                 />
               </Link>
               <p className="text-sm text-text-muted/80 leading-relaxed">
-                Wir kümmern uns Rund ums Rad — Ihr Partner für Rädereinlagerung, Reifenservice und Logistik im
-                Raum Stuttgart, professionell und zuverlässig seit 1998.
+                Ihr Partner für Rädereinlagerung, Reifenservice und Logistik im Raum Stuttgart,
+                professionell und zuverlässig seit 1998.
               </p>
               <div className="mt-5 h-[2px] w-12 rounded-full bg-primary/40" />
             </motion.div>
@@ -136,15 +136,6 @@ export default function Footer() {
                 <li className="flex items-center gap-3 text-sm text-text-muted">
                   <Printer className="h-4 w-4 text-primary shrink-0" />
                   <span>{COMPANY.fax}</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-text-muted">
-                  <Smartphone className="h-4 w-4 text-primary shrink-0" />
-                  <a
-                    href={`tel:${COMPANY.mobile.replace(/[\s/-]/g, '')}`}
-                    className="hover:text-primary transition-colors"
-                  >
-                    {COMPANY.mobile}
-                  </a>
                 </li>
                 <li className="flex items-center gap-3 text-sm text-text-muted">
                   <Mail className="h-4 w-4 text-primary shrink-0" />

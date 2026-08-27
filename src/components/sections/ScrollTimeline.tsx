@@ -19,19 +19,19 @@ const timelineSteps = [
     number: '02',
     title: 'Datenerfassung',
     description:
-      'Die wichtigsten Reifendaten werden vollständig auf dem Reparaturauftrag dokumentiert und digital hinterlegt.',
+      'Die wichtigsten Kunden- und Radsatzdaten werden vollständig dokumentiert und digital hinterlegt.',
   },
   {
     number: '03',
     title: 'Einlagerung',
     description:
-      'Der Radsatz wird in einem Rollwagen eingelagert. Volle Rollwagen werden von unserem Team abgeholt und ins Lager überführt.',
+      'Der Radsatz wird in speziellen Transportregalen von unserem Team abgeholt und ins Lager überführt.',
   },
   {
     number: '04',
     title: 'Abruf',
     description:
-      'Den Radsatz bequem über REOS, telefonisch oder per Fax anfordern — flexibel und unkompliziert.',
+      'Den Radsatz bequem über REOS anfordern — flexibel und unkompliziert.',
   },
   {
     number: '05',

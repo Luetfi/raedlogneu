@@ -7,6 +7,7 @@ import {
   Building2,
   Car,
   KeyRound,
+  FlaskConical,
   Warehouse,
   Search,
   Clock,
@@ -44,8 +45,15 @@ const targetAudiences = [
     icon: KeyRound,
     title: 'Autovermietungen',
     description:
-      'Schneller Räderwechsel ohne Lagerchaos. Tagesgenaue Anlieferung, gereinigt und gewuchtet — damit Ihre Flotte jederzeit einsatzbereit ist.',
+      'Schneller Räderwechsel ohne Lagerchaos. Tagesgenaue Anlieferung — damit Ihre Flotte jederzeit einsatzbereit ist.',
     backgroundImage: '/images/autovermietungen.jpg',
+  },
+  {
+    icon: FlaskConical,
+    title: 'Automotive Entwicklung',
+    description:
+      'Spezialisierte Dienstleistungen rund um Räder und Reifen für Entwicklungs-, Erprobungs- und Pressefahrzeuge.',
+    backgroundImage: '/images/automotive-entwicklung.jpg',
   },
 ]
 
@@ -58,12 +66,12 @@ const benefits = [
   {
     icon: Search,
     title: 'Langes Suchen entfällt',
-    description: 'Jeder Radsatz sofort auffindbar per Barcode-System',
+    description: 'Schnelle und präzise Radsatzsuche durch Barcode-Kennzeichnung',
   },
   {
     icon: Clock,
     title: 'Kurze Wartezeiten',
-    description: 'Tagesgenaue Anlieferung für punktgenauen Räderwechsel',
+    description: 'Tagesgenaue Anlieferung für einen termingerechten Radwechsel',
   },
   {
     icon: Sparkles,
@@ -172,7 +180,7 @@ export default function HomeContent() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
-            className="grid gap-6 md:grid-cols-3"
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
             {targetAudiences.map((audience) => (
               <motion.div key={audience.title} variants={staggerItem}>

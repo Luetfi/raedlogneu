@@ -131,14 +131,7 @@ export function getLocalBusinessSchema() {
       itemListElement: [
         {
           '@type': 'Offer',
-          price: '29.50',
           priceCurrency: 'EUR',
-          priceSpecification: {
-            '@type': 'PriceSpecification',
-            price: '29.50',
-            priceCurrency: 'EUR',
-            valueAddedTaxIncluded: false,
-          },
           itemOffered: {
             '@type': 'Service',
             name: 'Standard Paket',

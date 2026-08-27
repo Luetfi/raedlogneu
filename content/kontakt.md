@@ -11,7 +11,6 @@ Hortensienweg 23
 70374 Stuttgart
 Tel: 0711 / 900 54 - 05
 Fax: 0711 / 900 54 - 06
-Mobil: 0172 / 908 64 99
 
 ## Weitere Standorte
 

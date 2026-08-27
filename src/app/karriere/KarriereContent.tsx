@@ -31,7 +31,7 @@ const benefits = [
   {
     icon: Briefcase,
     title: 'Spezialisierte Branche',
-    description: 'Spannende Aufgaben als Experten für Räder- und Reifenlogistik.',
+    description: 'Spannende Aufgaben rund um Räder- und Reifenlogistik.',
   },
 ]
 
@@ -172,7 +172,7 @@ export default function KarriereContent() {
     <main className="min-h-screen bg-bg">
       {/* Hero Section */}
       <PageHero
-        title={<>Karriere bei <span className="text-primary">RÄDLOG-Center</span></>}
+        title={<>Karriere bei <span className="whitespace-nowrap text-primary">RÄDLOG-Center</span></>}
         subtitle="Werden Sie Teil unseres Teams — bewerben Sie sich jetzt in wenigen Minuten initiativ."
         cta={
           <Button href="#bewerbung" size="lg">

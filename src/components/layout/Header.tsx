@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { LogIn } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { NAV_ITEMS, COMPANY } from '@/lib/constants'
 import MobileNav from './MobileNav'
 
@@ -53,14 +53,29 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+
             <a
               href={COMPANY.reosUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-4 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-base font-semibold text-white transition-colors hover:bg-primary-light"
+              aria-label="REOS Login"
+              className="group relative ml-5 inline-flex items-center gap-3 rounded-xl bg-gradient-to-b from-primary-light to-primary py-2.5 pl-4 pr-3.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),0_6px_18px_-6px_rgba(5,104,177,0.8)] ring-1 ring-white/15 transition-all duration-300 hover:from-primary-light hover:to-primary-light hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4),0_12px_28px_-8px_rgba(10,127,212,0.95)] hover:ring-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
-              <LogIn className="h-5 w-5" />
-              REOS Login
+              <Image
+                src="/images/reos-logo-light.png"
+                alt="REOS"
+                width={210}
+                height={70}
+                className="h-7 w-auto"
+              />
+              <span
+                aria-hidden="true"
+                className="h-7 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent"
+              />
+              <span className="flex items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.14em] text-white">
+                Login
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </span>
             </a>
           </nav>
 

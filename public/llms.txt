@@ -1,6 +1,6 @@
 # RÄDLOG-Center GmbH
 
-> RÄDLOG-Center GmbH ist ein spezialisierter Dienstleister für Räder- und Reifeneinlagerung für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart. Das 1998 von Jörg Hoffmann gegründete Familienunternehmen lagert Kompletträder und Reifen barcode-gestützt ein, reinigt und wuchtet sie und liefert sie tagesgenau – inklusive Hol- und Bringservice sowie dem 24/7-Onlinesystem REOS. Preise ab 29,50 € pro Radsatz (zzgl. MwSt.).
+> RÄDLOG-Center GmbH ist ein spezialisierter Dienstleister für Räder- und Reifeneinlagerung für Autohäuser, Fuhrparks und Autovermietungen im Raum Stuttgart. Das 1998 von Jörg Hoffmann gegründete Familienunternehmen lagert Kompletträder und Reifen barcode-gestützt ein, reinigt und wuchtet sie und liefert sie tagesgenau – inklusive Hol- und Bringservice sowie dem 24/7-Onlinesystem REOS.
 
 ## Kernseiten
 
@@ -13,7 +13,7 @@
 
 ## Leistungspakete
 
-- **Standard** (ab 29,50 € / Radsatz, zzgl. MwSt.): Barcode-Erfassung, Datenerfassung, sichere Einlagerung.
+- **Standard**: Barcode-Erfassung, Datenerfassung, sichere Einlagerung.
 - **Komfort**: zusätzlich Reinigung, Wuchten und tagesgenaue Anlieferung.
 - **Premium**: Komplett-Service inkl. Hol- und Bringservice sowie REOS-Onlinezugang.
 
@@ -41,7 +41,6 @@ Stuttgart, Ludwigsburg, Waiblingen, Böblingen, Sindelfingen, Leonberg und Umgeb
 ## Kontakt
 
 - Telefon: 0711 / 900 54 - 05
-- Mobil: 0172 / 908 64 99
 - Fax: 0711 / 900 54 - 06
 - E-Mail: hoffmann@raedlog.de
 - Website: https://www.raedlog.de

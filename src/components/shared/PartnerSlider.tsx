@@ -10,6 +10,11 @@ const logos = [
   { src: '/logos/vw.png', alt: 'Volkswagen', width: 500, height: 499 },
   { src: '/logos/audi.png', alt: 'Audi', width: 577, height: 432 },
   { src: '/logos/bmw.png', alt: 'BMW', width: 400, height: 400, className: 'h-20 sm:h-24 lg:h-30' },
+  { src: '/logos/skoda.png', alt: 'Škoda', width: 400, height: 400 },
+  { src: '/logos/ford.png', alt: 'Ford', width: 800, height: 300, className: 'h-12 sm:h-14 lg:h-16' },
+  { src: '/logos/jaguar.png', alt: 'Jaguar', width: 780, height: 400, className: 'h-14 sm:h-16 lg:h-20' },
+  { src: '/logos/seat.png', alt: 'SEAT', width: 503, height: 400 },
+  { src: '/logos/volvo.png', alt: 'Volvo', width: 400, height: 400 },
 ]
 
 export default function PartnerSlider() {

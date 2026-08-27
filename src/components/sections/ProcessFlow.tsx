@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Truck, Sparkles, Monitor, CalendarCheck, ArrowRight } from 'lucide-react'
+import { Truck, Sparkles, Gauge, Monitor, CalendarCheck, ArrowRight } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import AnimatedSection from '@/components/shared/AnimatedSection'
 import ParallaxBackground from '@/components/shared/ParallaxBackground'
@@ -26,19 +26,26 @@ const steps: Step[] = [
   {
     number: '02',
     title: 'Reinigung & Einlagerung',
-    description: 'Professionelle Reinigung und sichere Lagerung mit Barcode-Erfassung jeder Position.',
+    description: 'Professionelle Reinigung und sichere Lagerung mit Barcode-Erfassung.',
     icon: Sparkles,
   },
   {
     number: '03',
-    title: 'Verwaltung via REOS',
-    description: 'Alle Radsätze online einsehbar und verwaltbar über unser eigenes System.',
-    icon: Monitor,
+    title: 'Reifencheck',
+    description:
+      'Wir prüfen Profiltiefe und Zustand jedes Radsatzes — damit haben Sie den Zustand Ihrer Räder im Blick.',
+    icon: Gauge,
   },
   {
     number: '04',
+    title: 'Verwaltung via REOS',
+    description: 'Alle eingelagerten Radsätze online einsehbar und verwaltbar über unser eigenes System.',
+    icon: Monitor,
+  },
+  {
+    number: '05',
     title: 'Tagesgenaue Anlieferung',
-    description: 'Gereinigt, gewuchtet und genau dann geliefert, wenn Sie die Räder brauchen.',
+    description: 'Genau dann, wenn Sie die Räder brauchen.',
     icon: CalendarCheck,
   },
 ]
@@ -85,7 +92,7 @@ export default function ProcessFlow() {
             Wie es funktioniert
           </span>
           <h2 className="mt-4 text-3xl font-bold text-text-heading sm:text-4xl lg:text-5xl">
-            In 4 Schritten zum sorgenfreien Räderwechsel
+            In 5 Schritten zum sorgenfreien Räderwechsel
           </h2>
           <div className="mt-4 h-1 w-16 rounded-full bg-primary mx-auto" />
         </AnimatedSection>
@@ -96,7 +103,7 @@ export default function ProcessFlow() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="hidden lg:grid grid-cols-4 gap-0"
+          className="hidden lg:grid grid-cols-5 gap-0"
         >
           {steps.map((step, i) => {
             const Icon = step.icon
@@ -129,7 +136,7 @@ export default function ProcessFlow() {
                   <h3 className="mt-5 text-lg font-bold text-text-heading">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm text-text-muted leading-relaxed max-w-[220px]">
+                  <p className="mt-2 text-sm text-text-muted leading-relaxed max-w-[200px]">
                     {step.description}
                   </p>
                 </div>

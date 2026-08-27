@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Check, CheckCircle2, ArrowRight, Zap, Disc3, Wrench, Truck, Settings } from 'lucide-react'
+import { Check, CheckCircle2, ArrowRight, Disc3, Wrench, Warehouse, Gauge, Settings } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Badge from '@/components/ui/Badge'
@@ -56,14 +56,9 @@ const pricingPlans = [
 
 const additionalServices = [
   {
-    icon: Zap,
-    title: 'Power Air',
-    description: 'Professionelle Druckluftbehandlung für optimale Reifenpflege.',
-  },
-  {
     icon: Disc3,
     title: 'Alufelgen-Aufbereitung',
-    description: 'Fachmännische Reinigung und Aufbereitung von Alufelgen.',
+    description: 'Fachmännische Aufbereitung von Alufelgen.',
   },
   {
     icon: Wrench,
@@ -71,9 +66,14 @@ const additionalServices = [
     description: 'Montage und Demontage aller gängigen Reifengrößen bis 24 Zoll.',
   },
   {
-    icon: Truck,
-    title: 'Rädermontage vor Ort',
-    description: 'Auf Wunsch montieren wir die Räder direkt bei Ihnen vor Ort.',
+    icon: Warehouse,
+    title: 'Einlagerung von Neurädern',
+    description: 'Zum Beispiel Vororder Ihrer Winterkompletträder.',
+  },
+  {
+    icon: Gauge,
+    title: 'Laufräder wuchten',
+    description: 'Stationäres Wuchten sowie TU-Vermessung (Tire Uniformity).',
   },
 ]
 
@@ -159,101 +159,6 @@ export default function LeistungenContent() {
               </motion.div>
             ))}
           </motion.div>
-
-          {/* Price note */}
-          <AnimatedSection delay={0.2} className="mt-10 text-center">
-            <p className="inline-flex items-center gap-2 rounded-xl border border-border bg-bg-elevated px-6 py-3 text-sm text-text-muted">
-              <Check className="h-4 w-4 text-primary shrink-0" />
-              Ab 29,50 €/Radsatz abhängig von Stückzahl und Leistungspaket zzgl. ges. MwSt.
-            </p>
-          </AnimatedSection>
-        </Container>
-      </section>
-
-      {/* ── Process Timeline (static) ── */}
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, #0568b1 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}
-        />
-
-        <Container className="relative">
-          <SectionHeading
-            title="Ablauf der Rädereinlagerung"
-            subtitle="Von der Abholung bis zur tagesgenauen Anlieferung — transparent und effizient."
-          />
-
-          <div className="relative max-w-3xl mx-auto">
-            {/* Vertical line */}
-            <div className="absolute left-5 lg:left-1/2 top-0 bottom-0 w-px bg-border lg:-translate-x-1/2" />
-
-            {[
-              {
-                number: '01',
-                title: 'Barcode-Erfassung',
-                description:
-                  'Abmontierte Kundenräder erhalten Barcode-Aufkleber für jede Position (VL, VR, HL, HR) — lückenlose Rückverfolgbarkeit von Anfang an.',
-              },
-              {
-                number: '02',
-                title: 'Datenerfassung',
-                description:
-                  'Die wichtigsten Reifendaten werden vollständig auf dem Reparaturauftrag dokumentiert und digital hinterlegt.',
-              },
-              {
-                number: '03',
-                title: 'Einlagerung',
-                description:
-                  'Der Radsatz wird in einem Rollwagen eingelagert. Volle Rollwagen werden von unserem Team abgeholt und ins Lager überführt.',
-              },
-              {
-                number: '04',
-                title: 'Abruf',
-                description:
-                  'Den Radsatz bequem über REOS, telefonisch oder per Fax anfordern — flexibel und unkompliziert.',
-              },
-              {
-                number: '05',
-                title: 'Tagesgenaue Anlieferung',
-                description:
-                  'Nur die für die Montage benötigten Räder werden tagesgenau angeliefert — kein Überschuss, kein Aufwand.',
-              },
-            ].map((step, i) => (
-              <motion.div
-                key={step.number}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-40px' }}
-                className={`relative flex items-start gap-6 lg:gap-12 mb-12 last:mb-0 ${
-                  i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                }`}
-              >
-                {/* Node */}
-                <div className="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-primary border-4 border-bg-elevated flex items-center justify-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-                  <span className="text-xs font-bold text-white">{step.number}</span>
-                </div>
-
-                {/* Content */}
-                <div
-                  className={`flex-1 rounded-2xl border border-border bg-bg-elevated p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 ${
-                    i % 2 === 0 ? 'lg:mr-[calc(50%+2rem)]' : 'lg:ml-[calc(50%+2rem)]'
-                  }`}
-                >
-                  <h3 className="text-lg font-bold text-text-heading mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-text-muted leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </Container>
       </section>
 
@@ -293,6 +198,93 @@ export default function LeistungenContent() {
               </motion.div>
             ))}
           </motion.div>
+        </Container>
+      </section>
+
+      {/* ── Process Timeline (static) ── */}
+      <section className="relative py-20 lg:py-28 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 1px 1px, #0568b1 1px, transparent 0)',
+            backgroundSize: '40px 40px',
+          }}
+        />
+
+        <Container className="relative">
+          <SectionHeading
+            title="Ablauf der Rädereinlagerung"
+            subtitle="Von der Abholung bis zur tagesgenauen Anlieferung — transparent und effizient."
+          />
+
+          <div className="relative max-w-3xl mx-auto">
+            {/* Vertical line */}
+            <div className="absolute left-5 lg:left-1/2 top-0 bottom-0 w-px bg-border lg:-translate-x-1/2" />
+
+            {[
+              {
+                number: '01',
+                title: 'Barcode-Erfassung',
+                description:
+                  'Abmontierte Kundenräder erhalten Barcode-Aufkleber für jede Position (VL, VR, HL, HR) — lückenlose Rückverfolgbarkeit von Anfang an.',
+              },
+              {
+                number: '02',
+                title: 'Datenerfassung',
+                description:
+                  'Die wichtigsten Kunden- und Radsatzdaten werden vollständig dokumentiert und digital hinterlegt.',
+              },
+              {
+                number: '03',
+                title: 'Einlagerung',
+                description:
+                  'Der Radsatz wird in speziellen Transportregalen von unserem Team abgeholt und ins Lager überführt.',
+              },
+              {
+                number: '04',
+                title: 'Abruf',
+                description:
+                  'Den Radsatz bequem über REOS anfordern — flexibel und unkompliziert.',
+              },
+              {
+                number: '05',
+                title: 'Tagesgenaue Anlieferung',
+                description:
+                  'Nur die für die Montage benötigten Räder werden tagesgenau angeliefert — kein Überschuss, kein Aufwand.',
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={step.number}
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                className={`relative flex items-start gap-6 lg:gap-12 mb-12 last:mb-0 ${
+                  i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                }`}
+              >
+                {/* Node */}
+                <div className="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-primary border-4 border-bg-elevated flex items-center justify-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+                  <span className="text-xs font-bold text-white">{step.number}</span>
+                </div>
+
+                {/* Content */}
+                <div
+                  className={`flex-1 rounded-2xl border border-border bg-bg-elevated p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 ${
+                    i % 2 === 0 ? 'lg:mr-[calc(50%+2rem)]' : 'lg:ml-[calc(50%+2rem)]'
+                  }`}
+                >
+                  <h3 className="text-lg font-bold text-text-heading mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-text-muted leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </Container>
       </section>
 

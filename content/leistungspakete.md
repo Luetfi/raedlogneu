@@ -33,4 +33,4 @@ Unsere Leistungspakete werden Sie glücklich machen
 
 ## Preise
 
-Ab 29,50 Euro/Radsatz abhängig von Stückzahl und Leistungspaket zzgl. ges. MwSt.
+Abhängig von Stückzahl und Leistungspaket — individuelles Angebot auf Anfrage.

@@ -67,8 +67,8 @@ const teamMembers: TeamMember[] = [
 
 const companyFacts = [
   { icon: Calendar, label: 'Gründung', value: '1998' },
-  { icon: MapPin, label: 'Standorte', value: '3 im Raum Stuttgart' },
-  { icon: Users, label: 'Führung', value: 'Familie Hoffmann' },
+  { icon: MapPin, label: 'Standorte', value: '3 in der Region Stuttgart' },
+  { icon: Users, label: 'Führung', value: 'Jörg Hoffmann' },
   { icon: Building2, label: 'Spezialisierung', value: 'Räder- & Reifenlogistik' },
 ]
 
@@ -248,7 +248,7 @@ export default function UeberUnsContent() {
     <main className="min-h-screen bg-bg text-text">
       {/* ── Hero ── */}
       <PageHero
-        title={<>Über uns — <span className="text-primary">RÄDLOG-Center GmbH</span></>}
+        title={<>Über uns — <span className="text-primary"><span className="whitespace-nowrap">RÄDLOG-Center</span> GmbH</span></>}
         subtitle="Ein Familienunternehmen mit Leidenschaft für Räder- und Reifenlogistik — seit 1998 im Raum Stuttgart zuhause."
       />
       <Breadcrumb items={[{ name: 'Über uns', href: '/ueber-uns' }]} />

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, LogIn, Home, Users, Wrench, Building2, Monitor, Briefcase, Mail } from 'lucide-react'
+import { Menu, X, ArrowRight, Home, Users, Wrench, Building2, Monitor, Briefcase, Mail } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_ITEMS, COMPANY } from '@/lib/constants'
 
@@ -127,10 +127,24 @@ export default function MobileNav() {
                       href={COMPANY.reosUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3.5 text-base font-semibold text-white transition-colors hover:bg-primary-light"
+                      aria-label="REOS Login"
+                      className="group flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-primary-light to-primary px-4 py-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),0_6px_18px_-6px_rgba(5,104,177,0.8)] ring-1 ring-white/15 transition-all duration-300 active:scale-[0.98]"
                     >
-                      <LogIn className="h-5 w-5" />
-                      REOS Login
+                      <Image
+                        src="/images/reos-logo-light.png"
+                        alt="REOS"
+                        width={210}
+                        height={70}
+                        className="h-8 w-auto"
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="h-8 w-px bg-gradient-to-b from-transparent via-white/40 to-transparent"
+                      />
+                      <span className="flex items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.14em] text-white">
+                        Login
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </span>
                     </a>
                   </motion.div>
                 </motion.nav>

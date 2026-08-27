@@ -8,6 +8,7 @@ import {
   Search,
   MousePointer,
   Calendar,
+  ClipboardList,
   CheckCircle2,
   LogIn,
 } from 'lucide-react'
@@ -55,9 +56,9 @@ const workflowSteps = [
   },
   {
     number: 5,
-    icon: Calendar,
-    title: 'Datum',
-    description: 'Kalenderfunktion: 2 Klicks für das richtige Datum',
+    icon: ClipboardList,
+    title: 'Kontaktformular',
+    description: 'Angaben im Kontaktformular prüfen und Anforderung absenden',
     image: '/images/reos4.gif',
   },
 ]

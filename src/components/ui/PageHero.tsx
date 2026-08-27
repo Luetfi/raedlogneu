@@ -53,12 +53,13 @@ export default function PageHero({ title, subtitle, cta, videos }: PageHeroProps
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-6xl text-center"
         >
-          <h1 className="text-4xl font-bold text-text-heading sm:text-5xl lg:text-6xl">
+          {/* text-balance + hyphens:none halten Überschriften ohne Trennstriche zusammen */}
+          <h1 className="text-balance text-4xl font-bold text-text-heading [hyphens:none] sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
             {title}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-text-muted sm:text-xl">
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-text-muted sm:text-xl">
             {subtitle}
           </p>
           {cta && <div className="mt-8 flex justify-center">{cta}</div>}

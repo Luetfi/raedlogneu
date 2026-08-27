@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Building2, Smartphone, Printer, CheckCircle, AlertCircle, Send, Navigation, MessageSquare } from 'lucide-react'
+import { Phone, Mail, MapPin, Building2, Printer, CheckCircle, AlertCircle, Send, Navigation, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Container from '@/components/ui/Container'
@@ -293,23 +293,6 @@ export default function KontaktContent() {
                         Telefon
                       </span>
                       <span className="font-semibold text-text">{COMPANY.phone}</span>
-                    </span>
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href={`tel:${COMPANY.mobile.replace(/\s/g, '')}`}
-                    className="group flex items-start gap-3 text-text-muted hover:text-text transition-colors"
-                  >
-                    <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                      <Smartphone className="size-4" />
-                    </span>
-                    <span>
-                      <span className="block text-xs font-medium uppercase tracking-wider text-text-muted/60 mb-0.5">
-                        Mobil
-                      </span>
-                      <span className="font-semibold text-text">{COMPANY.mobile}</span>
                     </span>
                   </a>
                 </li>

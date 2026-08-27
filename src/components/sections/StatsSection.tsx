@@ -20,9 +20,9 @@ interface StatConfig {
 
 const stats: StatConfig[] = [
   {
-    end: 50000,
+    end: 35000,
     suffix: '+',
-    label: 'eingelagerte Radsätze',
+    label: 'eingelagerte Räder',
     description: 'Professionell gelagert',
     icon: Warehouse,
   },

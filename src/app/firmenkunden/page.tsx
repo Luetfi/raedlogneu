@@ -14,12 +14,12 @@ const faqItems = [
   {
     question: 'Was kostet die Rädereinlagerung bei RÄDLOG?',
     answer:
-      'Die Rädereinlagerung beginnt ab 29,50 € pro Radsatz (zzgl. MwSt.), abhängig von Stückzahl und gewähltem Leistungspaket (Standard, Komfort oder Premium).',
+      'Gerne erstellen wir Ihnen ein individuelles Angebot — sprechen Sie uns einfach an.',
   },
   {
     question: 'Wie funktioniert der Hol- und Bringservice?',
     answer:
-      'Wir holen Ihre Radsätze direkt bei Ihnen ab und liefern sie tagesgenau zurück. Bei Faxabruf bis 18 Uhr erfolgt die Anlieferung am nächsten Werktag bis 12 Uhr.',
+      'Wir holen Ihre Radsätze direkt bei Ihnen ab und liefern sie tagesgenau zurück. Der Abruf erfolgt bequem über unser Online-System REOS.',
   },
   {
     question: 'Welche Leistungspakete gibt es?',
@@ -39,7 +39,7 @@ const faqItems = [
   {
     question: 'Sind die eingelagerten Radsätze versichert?',
     answer:
-      'Ja, alle bei uns eingelagerten Radsätze sind gegen Marke, Diebstahl und Transportschäden versichert.',
+      'Ja, alle bei uns eingelagerten Radsätze sind gegen Brand, Diebstahl und Transportschäden versichert.',
   },
 ]
 

@@ -9,6 +9,9 @@ import {
   Monitor,
   Building2,
   Globe,
+  Gauge,
+  Warehouse,
+  Sparkles,
   Circle,
 } from 'lucide-react'
 import Container from '@/components/ui/Container'
@@ -44,7 +47,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: 2007,
-    description: 'Erweiterung der Serviceleistung Rädermontage bei der Daimler AG',
+    description: 'Erweiterung der Serviceleistung: Räder- und Reifenmontage',
     icon: Wrench,
   },
   {
@@ -59,7 +62,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: 2010,
-    description: 'Anpassung System REOS an Mercedes-AMG Bedürfnisse',
+    description: 'Anpassung System REOS an individuelle Kundenbedürfnisse',
     icon: Monitor,
   },
   {
@@ -82,18 +85,69 @@ const timelineEvents: TimelineEvent[] = [
     description: 'Eröffnung eines zusätzlichen Standorts in Aldingen/Remseck',
     icon: MapPin,
   },
+  {
+    year: 2020,
+    description: 'Eröffnung eines weiteren Standorts in Remseck-Aldingen',
+    icon: MapPin,
+  },
+  {
+    year: 2020,
+    description: 'Umzug von Kornwestheim nach Remseck-Aldingen',
+    icon: MapPin,
+  },
+  {
+    year: 2022,
+    description: 'Einführung einer digitalen Messtechnologie und Zustandsdokumentation',
+    icon: Gauge,
+  },
+  {
+    year: 2023,
+    description: 'Erweiterung der Lagerkapazität am Standort Remseck-Aldingen',
+    icon: Warehouse,
+  },
+  {
+    year: 2026,
+    description: 'Inbetriebnahme einer vollautomatischen Räderwaschanlage',
+    icon: Sparkles,
+  },
+  {
+    year: 2026,
+    description: 'Relaunch des Internetauftritts der RÄDLOG-Center GmbH',
+    icon: Globe,
+  },
 ]
 
+// Ereignisse desselben Jahres werden zu einer Karte zusammengefasst,
+// damit die Timeline nicht mehrfach dieselbe Jahreszahl zeigt.
+interface TimelineGroup {
+  year: number
+  icon: React.ElementType
+  descriptions: string[]
+}
+
+const groupByYear = (events: TimelineEvent[]): TimelineGroup[] =>
+  events.reduce<TimelineGroup[]>((groups, event) => {
+    const current = groups[groups.length - 1]
+    if (current && current.year === event.year) {
+      current.descriptions.push(event.description)
+      return groups
+    }
+    groups.push({ year: event.year, icon: event.icon, descriptions: [event.description] })
+    return groups
+  }, [])
+
+const timelineGroups = groupByYear(timelineEvents)
+
 interface TimelineItemProps {
-  event: TimelineEvent
+  group: TimelineGroup
   index: number
 }
 
-function TimelineItem({ event, index }: TimelineItemProps) {
+function TimelineItem({ group, index }: TimelineItemProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
   const isLeft = index % 2 === 0
-  const Icon = event.icon
+  const Icon = group.icon
 
   const cardVariants = {
     hidden: { opacity: 0, x: isLeft ? -40 : 40 },
@@ -126,7 +180,7 @@ function TimelineItem({ event, index }: TimelineItemProps) {
               variants={cardVariants}
               className="w-full max-w-sm"
             >
-              <EventCard event={event} Icon={Icon} isLeft />
+              <EventCard group={group} isLeft />
             </motion.div>
           )}
         </div>
@@ -150,7 +204,7 @@ function TimelineItem({ event, index }: TimelineItemProps) {
               variants={cardVariants}
               className="w-full max-w-sm"
             >
-              <EventCard event={event} Icon={Icon} isLeft={false} />
+              <EventCard group={group} isLeft={false} />
             </motion.div>
           )}
         </div>
@@ -177,14 +231,15 @@ function TimelineItem({ event, index }: TimelineItemProps) {
           variants={{ hidden: { opacity: 0, x: 24 }, visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: 'easeOut' } } }}
           className="flex-1 pb-2"
         >
-          <EventCard event={event} Icon={Icon} />
+          <EventCard group={group} />
         </motion.div>
       </div>
     </div>
   )
 }
 
-function EventCard({ event, Icon, isLeft }: { event: TimelineEvent; Icon: React.ElementType; isLeft?: boolean }) {
+function EventCard({ group, isLeft }: { group: TimelineGroup; isLeft?: boolean }) {
+  const isMulti = group.descriptions.length > 1
   return (
     <div
       className="group relative overflow-hidden rounded-2xl border border-border bg-bg-elevated transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-border-accent"
@@ -199,15 +254,32 @@ function EventCard({ event, Icon, isLeft }: { event: TimelineEvent; Icon: React.
         {/* Year badge – year faces the timeline */}
         <div className={`mb-3 flex items-center gap-3 ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}>
           <span className="text-2xl font-extrabold tracking-tight text-primary leading-none">
-            {event.year}
+            {group.year}
           </span>
           <div className={`h-px flex-1 ${isLeft ? 'bg-gradient-to-l from-primary/40 to-transparent' : 'bg-gradient-to-r from-primary/40 to-transparent'}`} />
         </div>
 
-        {/* Description */}
-        <p className={`relative text-base leading-relaxed text-text-muted group-hover:text-text transition-colors duration-200 ${isLeft ? 'text-right' : 'text-left'}`}>
-          {event.description}
-        </p>
+        {/* Description – bei mehreren Ereignissen pro Jahr als Liste */}
+        {isMulti ? (
+          <ul className={`relative space-y-2 ${isLeft ? 'text-right' : 'text-left'}`}>
+            {group.descriptions.map((description) => (
+              <li
+                key={description}
+                className={`flex items-start gap-2.5 text-base leading-relaxed text-text-muted group-hover:text-text transition-colors duration-200 ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60"
+                />
+                <span>{description}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className={`relative text-base leading-relaxed text-text-muted group-hover:text-text transition-colors duration-200 ${isLeft ? 'text-right' : 'text-left'}`}>
+            {group.descriptions[0]}
+          </p>
+        )}
       </div>
     </div>
   )
@@ -236,8 +308,8 @@ export default function Timeline() {
 
           {/* Events */}
           <div className="flex flex-col gap-6 pl-0 lg:pl-0">
-            {timelineEvents.map((event, index) => (
-              <TimelineItem key={`${event.year}-${index}`} event={event} index={index} />
+            {timelineGroups.map((group, index) => (
+              <TimelineItem key={group.year} group={group} index={index} />
             ))}
           </div>
 
