@@ -6,7 +6,7 @@ import LeistungenContent from './LeistungenContent'
 export const metadata = createMetadata({
   title: 'Leistungen',
   description:
-    'Unsere Leistungspakete für Rädereinlagerung: Standard, Komfort und Premium Service mit Hol- und Bringservice in der Region Stuttgart.',
+    'Unsere Leistungspakete für Rädereinlagerung: Standard, Eco, Komfort und Premium Service mit Hol- und Bringservice in der Region Stuttgart.',
   path: '/leistungen',
 })
 
@@ -18,19 +18,24 @@ export default function LeistungenPage() {
 
   const services = [
     getServiceSchema({
-      name: 'Standard Paket – Rädereinlagerung',
+      name: 'Standard-Service – Rädereinlagerung',
       description:
-        'Rädereinlagerung mit Barcode-Erfassung, Datenerfassung und sicherer Lagerung im Raum Stuttgart.',
+        'Rädereinlagerung mit Hol- und Bringservice, Reinigung und Einlagerung von Kompletträdern bzw. Reifen im Raum Stuttgart.',
     }),
     getServiceSchema({
-      name: 'Komfort Paket – Rädereinlagerung',
+      name: 'Eco-Service – Einlagerung von Neurädern',
       description:
-        'Rädereinlagerung inklusive Reinigung, Wuchten und tagesgenauer Anlieferung.',
+        'Anlieferung der Neuräder durch den Auftraggeber, Kommissionierung durch RÄDLOG und Einlagerung im Raum Stuttgart.',
     }),
     getServiceSchema({
-      name: 'Premium Paket – Rädereinlagerung',
+      name: 'Komfort-Service – Rädereinlagerung',
       description:
-        'Komplett-Service mit Reinigung, Wuchten, Hol- und Bringservice sowie REOS-Onlinezugang.',
+        'Rädereinlagerung inklusive digitaler Erfassung sämtlicher Reifen- und Felgendaten sowie Zustandsbewertung und Dokumentation.',
+    }),
+    getServiceSchema({
+      name: 'Premium-Service – Rädereinlagerung',
+      description:
+        'Komplett-Service mit digitaler Datenerfassung, Zustandsbewertung, Dokumentation und Wuchten von 4 Laufrädern mit 3D-Technologie.',
     }),
   ]
 

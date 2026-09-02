@@ -14,9 +14,15 @@
 3. Ablauf Rädereinlagerung
 4. Serviceleistungen
 5. Onlinesystem REOS
-6. Login REOS (extern: http://reos.raedlog.de)
+6. Login REOS (extern: https://reos.raedlog.de)
 7. Kontakt
 8. Download
+
+## Unternehmensstruktur
+
+- **Jörg Hoffmann** – Geschäftsführer (Gründer, 1998)
+- **Dominik Hoffmann** – Junior Executive
+- **Tim Hoffmann** – Junior Manager
 
 ## Regionen / Servicegebiete
 

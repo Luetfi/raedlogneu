@@ -30,36 +30,39 @@ const workflowSteps = [
     icon: Monitor,
     title: 'Login',
     description: 'Login unter reos.raedlog.de mit Benutzername und Passwort',
-    image: '/images/reos-login-screen.png',
+    image: '/images/reos-step-1-login.webp',
   },
   {
     number: 2,
     icon: Search,
     title: 'Suche',
     description:
-      'Suchmaske: Kundennamen, Kennzeichen, Fahrzeugident. Nr. oder Barcode suchen',
-    image: '/images/reos1.gif',
+      'Suchmaske: Kundenname, Kennzeichen, Fahrzeugident-Nr. oder Barcode suchen',
+    image: '/images/reos-step-2-suche.webp',
   },
   {
     number: 3,
     icon: MousePointer,
     title: 'Auswahl',
-    description: 'Detailansicht oder direkt zur Radsatzanforderung',
-    image: '/images/reos2.gif',
+    description:
+      'Treffer prüfen und direkt zur Detailansicht oder zur Radsatzanforderung',
+    image: '/images/reos-step-3-auswahl.webp',
   },
   {
     number: 4,
-    icon: Calendar,
-    title: 'Angaben',
-    description: 'Anforderdatum und Abladestelle angeben',
-    image: '/images/reos3.gif',
+    icon: ClipboardList,
+    title: 'Radsatzdetails',
+    description:
+      'Reifen- und Felgendaten, Profiltiefen je Rad, DOT und dokumentierte Mängel einsehen',
+    image: '/images/reos-step-4-details.webp',
   },
   {
     number: 5,
-    icon: ClipboardList,
-    title: 'Kontaktformular',
-    description: 'Angaben im Kontaktformular prüfen und Anforderung absenden',
-    image: '/images/reos4.gif',
+    icon: Calendar,
+    title: 'Anforderung',
+    description:
+      'Anforderdatum und Abladestelle angeben, Angaben prüfen und Anforderung absenden',
+    image: '/images/reos-step-5-anforderung.webp',
   },
 ]
 
@@ -221,7 +224,7 @@ export default function ReosContent() {
                   </div>
 
                   {/* Image area */}
-                  <div className="relative aspect-[4/3] sm:aspect-[16/10]">
+                  <div className="relative aspect-[16/10]">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeStep}
@@ -233,10 +236,11 @@ export default function ReosContent() {
                       >
                         <Image
                           src={workflowSteps[activeStep].image}
-                          alt={`REOS: ${workflowSteps[activeStep].title}`}
+                          alt={`REOS Screenshot: ${workflowSteps[activeStep].title} — ${workflowSteps[activeStep].description}`}
                           fill
-                          className="object-contain p-2"
-                          unoptimized
+                          sizes="(min-width: 1024px) 900px, 100vw"
+                          className="object-contain"
+                          priority={activeStep === 0}
                         />
                       </motion.div>
                     </AnimatePresence>

@@ -2,35 +2,43 @@
 
 Unsere Leistungspakete werden Sie glücklich machen
 
+*Stand: 08/2026*
+
 ## Standard-Service
 
 - Hol- und Bringservice
 - Reinigung
 - Einlagerung von Kompletträdern bzw. Reifen
-- Versicherung gegen Diebstahl, Brand und Transportschäden
+- Grundleistungen
+
+## Eco-Service
+
+- Anlieferung von Neurädern durch den Auftraggeber
+- Kommissionierung von Neurädern durch RÄDLOG
+- Einlagerung
+- Grundleistungen
 
 ## Komfort-Service
 
 - Hol- und Bringservice
 - Reinigung
-- Räder werden gewuchtet
 - Einlagerung von Kompletträdern bzw. Reifen
-- Erfassung von Profiltiefe und Reifenhersteller
-- Versicherung gegen Diebstahl, Brand und Transportschäden
+- Digitale Erfassung sämtlicher Reifen- und Felgendaten (Reifengröße, Hersteller, Typ, DOT)
+- Zustandsbewertung und Dokumentation*
+- Grundleistungen
 
 ## Premium-Service
 
 - Hol- und Bringservice
 - Reinigung
-- Räder werden gewuchtet
-- Einlagerung von Kompletträdern/Reifen
-- Komplett-Check:
-  - Erfassung sämtlicher Reifendaten (Reifengröße, Hersteller, Typ, Alter, Felgengröße und -art, Geschwindigkeits- und Loadindex)
-  - Luftdruck auf 2,5 Bar einstellen
-  - Reifen + Felgen auf Beschädigungen + Zustand prüfen
-  - Profiltiefe messen
-- Versicherung gegen Diebstahl, Brand und Transportschäden
+- Einlagerung von Kompletträdern bzw. Reifen
+- Digitale Erfassung sämtlicher Reifen- und Felgendaten (Reifengröße, Hersteller, Typ, DOT)
+- Zustandsbewertung und Dokumentation*
+- 4 Laufräder wuchten mit 3D-Technologie
+- Grundleistungen
+
+\* Reifen und Felgen auf Beschädigungen prüfen, Messung der Profiltiefe an 3 verschiedenen Punkten, digitale Dokumentation von Beschädigungen als JPEG.
 
 ## Preise
 
-Abhängig von Stückzahl und Leistungspaket — individuelles Angebot auf Anfrage.
+Abhängig von Stückzahl und Leistungspaket — individuelles Angebot auf Anfrage. Preise werden nicht öffentlich ausgewiesen.

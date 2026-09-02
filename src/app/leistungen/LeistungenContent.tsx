@@ -14,16 +14,30 @@ import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
 
 // ── Data ────────────────────────────────────────────────────────────────────
 
+const FOOTNOTE =
+  'Reifen und Felgen auf Beschädigungen prüfen, Messung der Profiltiefe an 3 verschiedenen Punkten, digitale Dokumentation von Beschädigungen als JPEG.'
+
 const pricingPlans = [
   {
     id: 'standard',
     name: 'Standard-Service',
     popular: false,
     features: [
-      'Hol- und Bringservice',
-      'Reinigung',
-      'Einlagerung von Kompletträdern bzw. Reifen',
-      'Versicherung gegen Diebstahl, Brand und Transportschäden',
+      { text: 'Hol- und Bringservice' },
+      { text: 'Reinigung' },
+      { text: 'Einlagerung von Kompletträdern bzw. Reifen' },
+      { text: 'Grundleistungen' },
+    ],
+  },
+  {
+    id: 'eco',
+    name: 'Eco-Service',
+    popular: false,
+    features: [
+      { text: 'Anlieferung von Neurädern durch den Auftraggeber' },
+      { text: 'Kommissionierung von Neurädern durch RÄDLOG' },
+      { text: 'Einlagerung' },
+      { text: 'Grundleistungen' },
     ],
   },
   {
@@ -31,12 +45,14 @@ const pricingPlans = [
     name: 'Komfort-Service',
     popular: false,
     features: [
-      'Hol- und Bringservice',
-      'Reinigung',
-      'Räder werden gewuchtet',
-      'Einlagerung von Kompletträdern bzw. Reifen',
-      'Erfassung von Profiltiefe und Reifenhersteller',
-      'Versicherung gegen Diebstahl, Brand und Transportschäden',
+      { text: 'Hol- und Bringservice' },
+      { text: 'Reinigung' },
+      { text: 'Einlagerung von Kompletträdern bzw. Reifen' },
+      {
+        text: 'Digitale Erfassung sämtlicher Reifen- und Felgendaten (Reifengröße, Hersteller, Typ, DOT)',
+      },
+      { text: 'Zustandsbewertung und Dokumentation', footnote: true },
+      { text: 'Grundleistungen' },
     ],
   },
   {
@@ -44,12 +60,15 @@ const pricingPlans = [
     name: 'Premium-Service',
     popular: false,
     features: [
-      'Hol- und Bringservice',
-      'Reinigung',
-      'Räder werden gewuchtet',
-      'Einlagerung von Kompletträdern/Reifen',
-      'Komplett-Check (Erfassung sämtlicher Reifendaten, Luftdruck auf 2,5 Bar, Reifen + Felgen Beschädigungen prüfen, Profiltiefe messen)',
-      'Versicherung gegen Diebstahl, Brand und Transportschäden',
+      { text: 'Hol- und Bringservice' },
+      { text: 'Reinigung' },
+      { text: 'Einlagerung von Kompletträdern bzw. Reifen' },
+      {
+        text: 'Digitale Erfassung sämtlicher Reifen- und Felgendaten (Reifengröße, Hersteller, Typ, DOT)',
+      },
+      { text: 'Zustandsbewertung und Dokumentation', footnote: true },
+      { text: '4 Laufräder wuchten mit 3D-Technologie' },
+      { text: 'Grundleistungen' },
     ],
   },
 ]
@@ -95,7 +114,7 @@ export default function LeistungenContent() {
         <Container>
           <SectionHeading
             title="Die passende Lösung für Sie"
-            subtitle="Alle Pakete beinhalten Hol- und Bringservice sowie umfassenden Versicherungsschutz."
+            subtitle="Vier Pakete — von der reinen Einlagerung bis zum Komplett-Service mit digitaler Erfassung, Zustandsbewertung und 3D-Wuchten."
           />
 
           <motion.div
@@ -103,7 +122,7 @@ export default function LeistungenContent() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="grid gap-6 md:grid-cols-3"
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
             {pricingPlans.map((plan) => (
               <motion.div
@@ -142,14 +161,19 @@ export default function LeistungenContent() {
                     {/* Feature list */}
                     <ul className="space-y-3">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
+                        <li key={feature.text} className="flex items-start gap-3">
                           <CheckCircle2
                             className={`h-5 w-5 shrink-0 mt-0.5 ${
                               plan.popular ? 'text-primary' : 'text-primary/70'
                             }`}
                           />
                           <span className="text-sm text-text-muted leading-relaxed">
-                            {feature}
+                            {feature.text}
+                            {feature.footnote && (
+                              <sup className="ml-0.5 text-primary" title={FOOTNOTE}>
+                                *
+                              </sup>
+                            )}
                           </span>
                         </li>
                       ))}
@@ -159,6 +183,10 @@ export default function LeistungenContent() {
               </motion.div>
             ))}
           </motion.div>
+
+          <p className="mt-8 max-w-3xl mx-auto text-center text-xs text-text-muted leading-relaxed">
+            <span className="text-primary">*</span> {FOOTNOTE}
+          </p>
         </Container>
       </section>
 

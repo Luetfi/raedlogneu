@@ -4,7 +4,7 @@ REOS ist eine eigens für unsere Zwecke entwickelte Onlinedatenbank. Damit könn
 
 ## Ablauf
 
-1. Sie loggen sich unter http://reos.raedlog.de mit Ihrem von uns bereitgestellten Benutzername und Passwort ein.
+1. Sie loggen sich unter https://reos.raedlog.de mit Ihrem von uns bereitgestellten Benutzername und Passwort ein.
 2. Sofort befinden Sie sich in der Suchmaske und können mit einem Kundennamen, Kennzeichen, Fahrzeugident. Nr. oder dem Barcode nach Ihrem gewünschten Radsatz suchen.
 3. Optional können Sie in die Detailansicht wechseln oder direkt zur Radsatzanforderung springen.
 4. Zum Radsatzanfordern ist nur das Anforderdatum und die Abladestelle anzugeben.

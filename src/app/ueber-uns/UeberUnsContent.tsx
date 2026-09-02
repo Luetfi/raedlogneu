@@ -49,18 +49,18 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Dominik Hoffmann',
-    role: 'Geschäftsleitung',
+    role: 'Junior Executive',
     initials: 'DH',
     description:
-      'Verantwortet als Teil der Geschäftsleitung die operative Weiterentwicklung des Unternehmens und sorgt für reibungslose Abläufe an allen Standorten.',
+      'Verantwortet die operative Weiterentwicklung des Unternehmens und sorgt für reibungslose Abläufe an allen Standorten.',
     gradient: 'from-primary-light via-primary to-primary-light',
   },
   {
     name: 'Tim Hoffmann',
-    role: 'Geschäftsleitung',
+    role: 'Junior Manager',
     initials: 'TH',
     description:
-      'Bringt als Teil der Geschäftsleitung frische Impulse ein und treibt die Modernisierung von Prozessen und Kundenservice voran.',
+      'Bringt frische Impulse ein und treibt die Modernisierung von Prozessen und Kundenservice voran.',
     gradient: 'from-primary via-primary-light to-primary',
   },
 ]

@@ -16,7 +16,7 @@ export const COMPANY = {
   // Telefonnummer in E.164-Format für Schema.org / tel:-Links.
   phoneE164: '+497119005405',
   fax: '0711 / 900 54 - 06',
-  reosUrl: 'http://reos.raedlog.de',
+  reosUrl: 'https://reos.raedlog.de',
   registernummer: 'HRB 728877',
   ustId: 'DE251345629',
 } as const

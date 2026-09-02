@@ -22,7 +22,7 @@
 3. Ablauf Rädereinlagerung
 4. Serviceleistungen
 5. Onlinesystem REOS
-6. Login REOS (extern: http://reos.raedlog.de)
+6. Login REOS (extern: https://reos.raedlog.de)
 7. Kontakt
 8. Download
 
@@ -52,6 +52,12 @@
 - Autohäuser
 - Fuhrparks
 - Autovermietungen
+
+## Unternehmensstruktur
+
+- **Jörg Hoffmann** – Geschäftsführer (Gründer, 1998)
+- **Dominik Hoffmann** – Junior Executive
+- **Tim Hoffmann** – Junior Manager
 
 ## Kernkompetenzen
 
@@ -141,38 +147,46 @@ Zwischenlagerung von Reifen, Felgen oder Kompletträdern für Ihre Winter- bzw. 
 
 Unsere Leistungspakete werden Sie glücklich machen
 
+*Stand: 08/2026*
+
 ## Standard-Service
 
 - Hol- und Bringservice
 - Reinigung
 - Einlagerung von Kompletträdern bzw. Reifen
-- Versicherung gegen Diebstahl, Brand und Transportschäden
+- Grundleistungen
+
+## Eco-Service
+
+- Anlieferung von Neurädern durch den Auftraggeber
+- Kommissionierung von Neurädern durch RÄDLOG
+- Einlagerung
+- Grundleistungen
 
 ## Komfort-Service
 
 - Hol- und Bringservice
 - Reinigung
-- Räder werden gewuchtet
 - Einlagerung von Kompletträdern bzw. Reifen
-- Erfassung von Profiltiefe und Reifenhersteller
-- Versicherung gegen Diebstahl, Brand und Transportschäden
+- Digitale Erfassung sämtlicher Reifen- und Felgendaten (Reifengröße, Hersteller, Typ, DOT)
+- Zustandsbewertung und Dokumentation*
+- Grundleistungen
 
 ## Premium-Service
 
 - Hol- und Bringservice
 - Reinigung
-- Räder werden gewuchtet
-- Einlagerung von Kompletträdern/Reifen
-- Komplett-Check:
-  - Erfassung sämtlicher Reifendaten (Reifengröße, Hersteller, Typ, Alter, Felgengröße und -art, Geschwindigkeits- und Loadindex)
-  - Luftdruck auf 2,5 Bar einstellen
-  - Reifen + Felgen auf Beschädigungen + Zustand prüfen
-  - Profiltiefe messen
-- Versicherung gegen Diebstahl, Brand und Transportschäden
+- Einlagerung von Kompletträdern bzw. Reifen
+- Digitale Erfassung sämtlicher Reifen- und Felgendaten (Reifengröße, Hersteller, Typ, DOT)
+- Zustandsbewertung und Dokumentation*
+- 4 Laufräder wuchten mit 3D-Technologie
+- Grundleistungen
+
+\* Reifen und Felgen auf Beschädigungen prüfen, Messung der Profiltiefe an 3 verschiedenen Punkten, digitale Dokumentation von Beschädigungen als JPEG.
 
 ## Preise
 
-Abhängig von Stückzahl und Leistungspaket — individuelles Angebot auf Anfrage.
+Abhängig von Stückzahl und Leistungspaket — individuelles Angebot auf Anfrage. Preise werden nicht öffentlich ausgewiesen.
 
 
 ---
@@ -261,7 +275,7 @@ REOS ist eine eigens für unsere Zwecke entwickelte Onlinedatenbank. Damit könn
 
 ## Ablauf
 
-1. Sie loggen sich unter http://reos.raedlog.de mit Ihrem von uns bereitgestellten Benutzername und Passwort ein.
+1. Sie loggen sich unter https://reos.raedlog.de mit Ihrem von uns bereitgestellten Benutzername und Passwort ein.
 2. Sofort befinden Sie sich in der Suchmaske und können mit einem Kundennamen, Kennzeichen, Fahrzeugident. Nr. oder dem Barcode nach Ihrem gewünschten Radsatz suchen.
 3. Optional können Sie in die Detailansicht wechseln oder direkt zur Radsatzanforderung springen.
 4. Zum Radsatzanfordern ist nur das Anforderdatum und die Abladestelle anzugeben.

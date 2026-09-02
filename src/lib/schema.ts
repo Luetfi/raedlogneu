@@ -47,6 +47,11 @@ export function getOrganizationSchema() {
       '@type': 'Person',
       name: COMPANY.ceo,
     },
+    employee: [
+      { '@type': 'Person', name: 'Jörg Hoffmann', jobTitle: 'Geschäftsführer' },
+      { '@type': 'Person', name: 'Dominik Hoffmann', jobTitle: 'Junior Executive' },
+      { '@type': 'Person', name: 'Tim Hoffmann', jobTitle: 'Junior Manager' },
+    ],
     foundingDate: '1998',
     address: {
       '@type': 'PostalAddress',
@@ -134,9 +139,9 @@ export function getLocalBusinessSchema() {
           priceCurrency: 'EUR',
           itemOffered: {
             '@type': 'Service',
-            name: 'Standard Paket',
+            name: 'Standard-Service',
             description:
-              'Rädereinlagerung mit Barcode-Erfassung, Datenerfassung und sicherer Lagerung.',
+              'Rädereinlagerung mit Hol- und Bringservice, Reinigung und Einlagerung von Kompletträdern bzw. Reifen inklusive Grundleistungen.',
           },
         },
         {
@@ -144,9 +149,9 @@ export function getLocalBusinessSchema() {
           priceCurrency: 'EUR',
           itemOffered: {
             '@type': 'Service',
-            name: 'Komfort Paket',
+            name: 'Eco-Service',
             description:
-              'Rädereinlagerung inklusive Reinigung, Wuchten und tagesgenauer Anlieferung.',
+              'Einlagerung von Neurädern: Anlieferung durch den Auftraggeber, Kommissionierung durch RÄDLOG inklusive Grundleistungen.',
           },
         },
         {
@@ -154,9 +159,19 @@ export function getLocalBusinessSchema() {
           priceCurrency: 'EUR',
           itemOffered: {
             '@type': 'Service',
-            name: 'Premium Paket',
+            name: 'Komfort-Service',
             description:
-              'Komplett-Service mit Reinigung, Wuchten, Hol- und Bringservice sowie REOS-Onlinezugang.',
+              'Rädereinlagerung inklusive digitaler Erfassung sämtlicher Reifen- und Felgendaten sowie Zustandsbewertung und Dokumentation.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          priceCurrency: 'EUR',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Premium-Service',
+            description:
+              'Komplett-Service mit digitaler Datenerfassung, Zustandsbewertung, Dokumentation und Wuchten von 4 Laufrädern mit 3D-Technologie.',
           },
         },
       ],
