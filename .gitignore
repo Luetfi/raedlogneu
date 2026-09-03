@@ -23,3 +23,7 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 node_modules
+
+# Arbeitsmaterial (nicht Teil der Website)
+feedback/
+image.png
