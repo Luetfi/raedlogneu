@@ -1,5 +1,6 @@
 import {
   COMPANY,
+  LAST_MODIFIED,
   GOOGLE_MAPS_URL,
   LOCATIONS,
   REVIEWS,
@@ -248,6 +249,44 @@ export function getReosSchema() {
       priceCurrency: 'EUR',
       description: 'Im Premium-Paket der Rädereinlagerung enthalten.',
     },
+  }
+}
+
+/**
+ * WebPage-Schema je Route.
+ *
+ * `dateModified` speist sich aus LAST_MODIFIED und ist das Frische-Signal, an
+ * dem Suchmaschinen und KI-Systeme die Aktualitaet einer Quelle bemessen —
+ * ohne dieses Feld muessen sie das Alter aus dem HTTP-Header schaetzen.
+ */
+export function getWebPageSchema({
+  name,
+  description,
+  path = '',
+  primaryImage,
+}: {
+  name: string
+  description: string
+  path?: string
+  primaryImage?: string
+}) {
+  const url = path === '' ? BASE_URL : `${BASE_URL}${path}`
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: 'de-DE',
+    isPartOf: { '@id': `${BASE_URL}/#website` },
+    about: { '@id': `${BASE_URL}/#organization` },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: `${BASE_URL}${primaryImage ?? '/og-image.jpg'}`,
+    },
+    dateModified: LAST_MODIFIED[path === '' ? '/' : path],
   }
 }
 

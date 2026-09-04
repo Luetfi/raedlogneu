@@ -46,15 +46,15 @@ export const REVIEWS = {
 // Letzte inhaltliche Änderung je Route (für die Sitemap).
 // Bei Inhaltsänderungen das jeweilige Datum aktualisieren.
 export const LAST_MODIFIED: Record<string, string> = {
-  '/': '2026-06-10',
-  '/leistungen': '2026-06-10',
-  '/firmenkunden': '2026-06-10',
-  '/ueber-uns': '2026-06-10',
-  '/reos': '2026-06-10',
-  '/karriere': '2026-06-10',
-  '/kontakt': '2026-06-10',
-  '/impressum': '2026-06-10',
-  '/datenschutz': '2026-06-10',
+  '/': '2026-08-27',
+  '/leistungen': '2026-09-02',
+  '/firmenkunden': '2026-09-02',
+  '/ueber-uns': '2026-09-02',
+  '/reos': '2026-09-02',
+  '/karriere': '2026-08-27',
+  '/kontakt': '2026-08-27',
+  '/impressum': '2026-04-01',
+  '/datenschutz': '2026-04-01',
 }
 
 export const LOCATIONS = [

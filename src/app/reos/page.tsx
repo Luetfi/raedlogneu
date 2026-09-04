@@ -1,5 +1,5 @@
 import { createMetadata } from '@/lib/metadata'
-import { getBreadcrumbSchema, getReosSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getReosSchema, getWebPageSchema } from '@/lib/schema'
 import JsonLd from '@/components/shared/JsonLd'
 import ReosContent from './ReosContent'
 
@@ -18,7 +18,18 @@ export default function ReosPage() {
 
   return (
     <>
-      <JsonLd data={[breadcrumb, getReosSchema()]} />
+      <JsonLd
+        data={[
+          breadcrumb,
+          getReosSchema(),
+          getWebPageSchema({
+            name: 'REOS',
+            description:
+              'REOS — das Räder Einlagerungs Online System der RÄDLOG-Center GmbH für Radsatzanforderung rund um die Uhr.',
+            path: '/reos',
+          }),
+        ]}
+      />
       <ReosContent />
     </>
   )

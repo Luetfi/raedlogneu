@@ -1,6 +1,7 @@
 import { createMetadata } from '@/lib/metadata'
-import { getBreadcrumbSchema, getFaqSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getFaqSchema, getWebPageSchema } from '@/lib/schema'
 import JsonLd from '@/components/shared/JsonLd'
+import { FIRMENKUNDEN_FAQ } from '@/lib/faq'
 import FirmenkundenContent from './FirmenkundenContent'
 
 export const metadata = createMetadata({
@@ -10,50 +11,28 @@ export const metadata = createMetadata({
   path: '/firmenkunden',
 })
 
-const faqItems = [
-  {
-    question: 'Was kostet die Rädereinlagerung bei RÄDLOG?',
-    answer:
-      'Gerne erstellen wir Ihnen ein individuelles Angebot — sprechen Sie uns einfach an.',
-  },
-  {
-    question: 'Wie funktioniert der Hol- und Bringservice?',
-    answer:
-      'Wir holen Ihre Radsätze direkt bei Ihnen ab und liefern sie tagesgenau zurück. Der Abruf erfolgt bequem über unser Online-System REOS.',
-  },
-  {
-    question: 'Welche Leistungspakete gibt es?',
-    answer:
-      'Wir bieten vier Pakete: Standard (Hol- und Bringservice, Reinigung, Einlagerung), Eco (Einlagerung und Kommissionierung von Neurädern), Komfort (zusätzlich digitale Erfassung sämtlicher Reifen- und Felgendaten sowie Zustandsbewertung und Dokumentation) und Premium (zusätzlich Wuchten von 4 Laufrädern mit 3D-Technologie).',
-  },
-  {
-    question: 'Wie fordere ich einen Radsatz über REOS an?',
-    answer:
-      'Über unser Online-System REOS können Sie 24/7 Radsätze anfordern. In nur zwei Klicks wählen Sie den Radsatz und das Lieferdatum — die Anlieferung erfolgt tagesgenau.',
-  },
-  {
-    question: 'In welchen Regionen ist RÄDLOG aktiv?',
-    answer:
-      'Wir bedienen den gesamten Raum Stuttgart, Ludwigsburg, Waiblingen, Böblingen, Sindelfingen und Leonberg mit drei Standorten in Stuttgart-Sommerrain und Remseck-Aldingen.',
-  },
-  {
-    question: 'Sind die eingelagerten Radsätze versichert?',
-    answer:
-      'Ja, alle bei uns eingelagerten Radsätze sind gegen Brand, Diebstahl und Transportschäden versichert.',
-  },
-]
-
 export default function FirmenkundenPage() {
   const breadcrumb = getBreadcrumbSchema([
     { name: 'Startseite', path: '' },
     { name: 'Firmenkunden', path: '/firmenkunden' },
   ])
 
-  const faq = getFaqSchema(faqItems)
+  const faq = getFaqSchema(FIRMENKUNDEN_FAQ)
 
   return (
     <>
-      <JsonLd data={[breadcrumb, faq]} />
+      <JsonLd
+        data={[
+          breadcrumb,
+          faq,
+          getWebPageSchema({
+            name: 'Firmenkunden',
+            description:
+              'Rädereinlagerung für Autohäuser, Fuhrparks und Autovermietungen — Ablauf, Vorteile und häufige Fragen.',
+            path: '/firmenkunden',
+          }),
+        ]}
+      />
       <FirmenkundenContent />
     </>
   )

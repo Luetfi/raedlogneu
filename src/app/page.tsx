@@ -1,4 +1,6 @@
 import { createMetadata } from '@/lib/metadata'
+import JsonLd from '@/components/shared/JsonLd'
+import { getWebPageSchema } from '@/lib/schema'
 import HomeContent from './HomeContent'
 
 export const metadata = createMetadata({
@@ -9,5 +11,19 @@ export const metadata = createMetadata({
 })
 
 export default function HomePage() {
-  return <HomeContent />
+  return (
+    <>
+      <JsonLd
+        data={[
+          getWebPageSchema({
+            name: 'Startseite',
+            description:
+              'Rädereinlagerung und Reifeneinlagerung für Autohäuser, Fuhrparks und Autovermietungen in der Region Stuttgart — seit 1998.',
+            path: '',
+          }),
+        ]}
+      />
+      <HomeContent />
+    </>
+  )
 }

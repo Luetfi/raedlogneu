@@ -1,5 +1,5 @@
 import { createMetadata } from '@/lib/metadata'
-import { getBreadcrumbSchema, getServiceSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getServiceSchema, getWebPageSchema } from '@/lib/schema'
 import JsonLd from '@/components/shared/JsonLd'
 import LeistungenContent from './LeistungenContent'
 
@@ -41,7 +41,18 @@ export default function LeistungenPage() {
 
   return (
     <>
-      <JsonLd data={[breadcrumb, ...services]} />
+      <JsonLd
+        data={[
+          breadcrumb,
+          ...services,
+          getWebPageSchema({
+            name: 'Leistungen',
+            description:
+              'Die vier Leistungspakete der Rädereinlagerung: Standard, Eco, Komfort und Premium — inklusive Hol- und Bringservice.',
+            path: '/leistungen',
+          }),
+        ]}
+      />
       <LeistungenContent />
     </>
   )

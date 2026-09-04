@@ -1,5 +1,5 @@
 import { createMetadata } from '@/lib/metadata'
-import { getBreadcrumbSchema, getLocationSchemas } from '@/lib/schema'
+import { getBreadcrumbSchema, getLocationSchemas, getWebPageSchema } from '@/lib/schema'
 import JsonLd from '@/components/shared/JsonLd'
 import KontaktContent from './KontaktContent'
 
@@ -18,7 +18,18 @@ export default function KontaktPage() {
 
   return (
     <>
-      <JsonLd data={[breadcrumb, ...getLocationSchemas()]} />
+      <JsonLd
+        data={[
+          breadcrumb,
+          ...getLocationSchemas(),
+          getWebPageSchema({
+            name: 'Kontakt',
+            description:
+              'Kontaktdaten und die drei Standorte der RÄDLOG-Center GmbH in Stuttgart und Remseck.',
+            path: '/kontakt',
+          }),
+        ]}
+      />
       <KontaktContent />
     </>
   )

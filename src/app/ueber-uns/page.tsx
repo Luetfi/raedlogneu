@@ -1,5 +1,5 @@
 import { createMetadata } from '@/lib/metadata'
-import { getBreadcrumbSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import JsonLd from '@/components/shared/JsonLd'
 import UeberUnsContent from './UeberUnsContent'
 
@@ -18,7 +18,17 @@ export default function UeberUnsPage() {
 
   return (
     <>
-      <JsonLd data={breadcrumb} />
+      <JsonLd
+        data={[
+          breadcrumb,
+          getWebPageSchema({
+            name: 'Über uns',
+            description:
+              'Das Familienunternehmen RÄDLOG-Center GmbH: Chronik seit 1998, Standorte und Führungsteam.',
+            path: '/ueber-uns',
+          }),
+        ]}
+      />
       <UeberUnsContent />
     </>
   )

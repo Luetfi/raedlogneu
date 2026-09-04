@@ -1,5 +1,5 @@
 import { createMetadata } from '@/lib/metadata'
-import { getBreadcrumbSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import JsonLd from '@/components/shared/JsonLd'
 import KarriereContent from './KarriereContent'
 
@@ -18,7 +18,17 @@ export default function KarrierePage() {
 
   return (
     <>
-      <JsonLd data={breadcrumb} />
+      <JsonLd
+        data={[
+          breadcrumb,
+          getWebPageSchema({
+            name: 'Karriere',
+            description:
+              'Offene Positionen und Initiativbewerbung bei der RÄDLOG-Center GmbH in Stuttgart.',
+            path: '/karriere',
+          }),
+        ]}
+      />
       <KarriereContent />
     </>
   )
