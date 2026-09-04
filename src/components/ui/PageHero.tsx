@@ -39,6 +39,9 @@ export default function PageHero({ title, subtitle, cta, videos }: PageHeroProps
           transition={{ duration: 1.2, ease: 'easeInOut' }}
           className="absolute inset-0 h-full w-full object-cover"
           src={videoList[currentVideo]}
+          // Poster fuellt den Hero sofort, statt ihn schwarz zu lassen, bis
+          // genug Videodaten geladen sind — das haelt den LCP niedrig.
+          poster={videoList[currentVideo].replace(/\.mp4$/, '-poster.webp')}
         />
       </AnimatePresence>
       {/* Dark overlay */}

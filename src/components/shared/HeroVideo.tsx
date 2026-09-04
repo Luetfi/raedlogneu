@@ -3,12 +3,16 @@
 import { useRef, useCallback, useState, useEffect } from 'react'
 
 const videos = ['/videos/herovideo.mp4', '/videos/herovideo1.mp4']
+const posters = ['/videos/herovideo-poster.webp', '/videos/herovideo1-poster.webp']
 
 export default function HeroVideo() {
   const videoARefs = useRef<HTMLVideoElement>(null)
   const videoBRefs = useRef<HTMLVideoElement>(null)
   // 0 = video A is active, 1 = video B is active
   const [activeSlot, setActiveSlot] = useState<0 | 1>(0)
+  // Video B wird erst geladen, wenn A laeuft — sonst konkurrieren beide
+  // Downloads um die Bandbreite des ersten Seitenaufrufs und verzoegern den LCP.
+  const [preloadB, setPreloadB] = useState(false)
   const sequenceRef = useRef(0) // tracks which video in the list plays next
 
   // Set playback speed for the first video
@@ -42,22 +46,26 @@ export default function HeroVideo() {
         autoPlay
         muted
         playsInline
+        preload="auto"
+        poster={posters[0]}
         aria-hidden="true"
+        onPlaying={() => setPreloadB(true)}
         onEnded={handleEnded}
         src={videos[0]}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
         style={{ opacity: activeSlot === 0 ? 1 : 0 }}
       />
 
-      {/* Video B */}
+      {/* Video B — laedt erst nach, sobald A sichtbar spielt */}
       <video
         ref={videoBRefs}
         muted
         playsInline
-        preload="auto"
+        preload={preloadB ? 'auto' : 'none'}
+        poster={posters[1]}
         aria-hidden="true"
         onEnded={handleEnded}
-        src={videos[1]}
+        src={preloadB ? videos[1] : undefined}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
         style={{ opacity: activeSlot === 1 ? 1 : 0 }}
       />
