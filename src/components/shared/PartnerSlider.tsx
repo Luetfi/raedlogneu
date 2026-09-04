@@ -4,17 +4,19 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
 
+// Alt-Texte nennen die Marke im Kundenkontext — die Logoleiste ist ein
+// Trust-Signal und soll auch fuer Bildsuche und KI-Crawler lesbar sein.
 const logos = [
-  { src: '/logos/amg.png', alt: 'AMG', width: 225, height: 225, className: 'h-24 sm:h-32 lg:h-40' },
-  { src: '/logos/mercedes.png', alt: 'Mercedes-Benz', width: 400, height: 400, className: 'h-14 sm:h-18 lg:h-22' },
-  { src: '/logos/vw.png', alt: 'Volkswagen', width: 500, height: 499 },
-  { src: '/logos/audi.png', alt: 'Audi', width: 577, height: 432 },
-  { src: '/logos/bmw.png', alt: 'BMW', width: 400, height: 400, className: 'h-20 sm:h-24 lg:h-30' },
-  { src: '/logos/skoda.png', alt: 'Škoda', width: 400, height: 400 },
-  { src: '/logos/ford.png', alt: 'Ford', width: 800, height: 300, className: 'h-12 sm:h-14 lg:h-16' },
-  { src: '/logos/jaguar.png', alt: 'Jaguar', width: 780, height: 400, className: 'h-14 sm:h-16 lg:h-20' },
-  { src: '/logos/seat.png', alt: 'SEAT', width: 503, height: 400 },
-  { src: '/logos/volvo.png', alt: 'Volvo', width: 400, height: 400 },
+  { src: '/logos/amg.webp', alt: 'Mercedes-AMG — Kunde der RÄDLOG-Center GmbH', width: 225, height: 225, className: 'h-24 sm:h-32 lg:h-40' },
+  { src: '/logos/mercedes.webp', alt: 'Mercedes-Benz — Kunde der RÄDLOG-Center GmbH', width: 400, height: 400, className: 'h-14 sm:h-18 lg:h-22' },
+  { src: '/logos/vw.webp', alt: 'Volkswagen — Kunde der RÄDLOG-Center GmbH', width: 400, height: 399 },
+  { src: '/logos/audi.webp', alt: 'Audi — Kunde der RÄDLOG-Center GmbH', width: 400, height: 299 },
+  { src: '/logos/bmw.webp', alt: 'BMW — Kunde der RÄDLOG-Center GmbH', width: 400, height: 400, className: 'h-20 sm:h-24 lg:h-30' },
+  { src: '/logos/skoda.webp', alt: 'Škoda — Kunde der RÄDLOG-Center GmbH', width: 400, height: 400 },
+  { src: '/logos/ford.webp', alt: 'Ford — Kunde der RÄDLOG-Center GmbH', width: 400, height: 150, className: 'h-12 sm:h-14 lg:h-16' },
+  { src: '/logos/jaguar.webp', alt: 'Jaguar — Kunde der RÄDLOG-Center GmbH', width: 400, height: 205, className: 'h-14 sm:h-16 lg:h-20' },
+  { src: '/logos/seat.webp', alt: 'SEAT — Kunde der RÄDLOG-Center GmbH', width: 400, height: 318 },
+  { src: '/logos/volvo.webp', alt: 'Volvo — Kunde der RÄDLOG-Center GmbH', width: 400, height: 400 },
 ]
 
 export default function PartnerSlider() {

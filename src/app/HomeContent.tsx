@@ -32,28 +32,28 @@ const targetAudiences = [
     title: 'Autohäuser',
     description:
       'Schaffen Sie Platz für Ihr Kerngeschäft. Wir übernehmen Einlagerung, Logistik und Service — Sie stärken die Kundenbindung durch zwei garantierte Werkstattbesuche pro Jahr.',
-    backgroundImage: '/images/autohaus.jpeg',
+    backgroundImage: '/images/autohaus.webp',
   },
   {
     icon: Car,
     title: 'Fuhrparks',
     description:
       'Effiziente Räderlogistik für Ihren gesamten Fuhrpark. Termingerechte Abwicklung, lückenlose Dokumentation und professionelles Handling aller Radsätze.',
-    backgroundImage: '/images/fuhrparks.jpg',
+    backgroundImage: '/images/fuhrparks.webp',
   },
   {
     icon: KeyRound,
     title: 'Autovermietungen',
     description:
       'Schneller Räderwechsel ohne Lagerchaos. Tagesgenaue Anlieferung — damit Ihre Flotte jederzeit einsatzbereit ist.',
-    backgroundImage: '/images/autovermietungen.jpg',
+    backgroundImage: '/images/autovermietungen.webp',
   },
   {
     icon: FlaskConical,
     title: 'Automotive Entwicklung',
     description:
       'Spezialisierte Dienstleistungen rund um Räder und Reifen für Entwicklungs-, Erprobungs- und Pressefahrzeuge.',
-    backgroundImage: '/images/automotive-entwicklung.jpg',
+    backgroundImage: '/images/automotive-entwicklung.webp',
   },
 ]
 
