@@ -33,7 +33,7 @@ const ENTRIES: Entry[] = [
       '/images/reos-step-1-login.webp',
       '/images/reos-step-2-suche.webp',
       '/images/reos-step-3-auswahl.webp',
-      '/images/reos-step-4-radsatzdetails.webp',
+      '/images/reos-step-4-gesamt.webp',
       '/images/reos-step-5-anforderung.webp',
     ],
   },
