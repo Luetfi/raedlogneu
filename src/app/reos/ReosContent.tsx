@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import {
   Monitor,
@@ -23,8 +23,18 @@ import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
 import { COMPANY } from '@/lib/constants'
 
 const AUTO_PLAY_INTERVAL = 5000
+const FRAME_ASPECT = 10 / 16
 
-const workflowSteps = [
+interface WorkflowStep {
+  number: number
+  icon: React.ElementType
+  title: string
+  description: string
+  image: string
+  tall?: { width: number; height: number }
+}
+
+const workflowSteps: WorkflowStep[] = [
   {
     number: 1,
     icon: Monitor,
@@ -54,7 +64,9 @@ const workflowSteps = [
     title: 'Radsatzdetails',
     description:
       'Reifen- und Felgendaten, Profiltiefen je Rad, DOT und dokumentierte Mängel einsehen',
-    image: '/images/reos-step-4-details.webp',
+    image: '/images/reos-step-4-radsatzdetails.webp',
+    // Hoher Screenshot (Vorder- und Hinterräder) wird im 16:10-Rahmen durchgescrollt
+    tall: { width: 1280, height: 1271 },
   },
   {
     number: 5,
@@ -78,6 +90,38 @@ const features = [
   'Tagesgenaue Planungssicherheit',
   'CSV Export (Excel)',
 ]
+
+// Zeigt einen hohen Screenshot in voller Breite und fährt innerhalb der
+// Anzeigedauer eines Schritts langsam von oben nach unten.
+function TallScreenshot({ step }: { step: WorkflowStep }) {
+  const reduceMotion = useReducedMotion()
+  const alt = `REOS Screenshot: ${step.title} — ${step.description}`
+  const { width, height } = step.tall!
+  const overflow = 1 - FRAME_ASPECT / (height / width)
+
+  if (reduceMotion || overflow <= 0) {
+    return (
+      <Image src={step.image} alt={alt} fill sizes="(min-width: 1024px) 900px, 100vw" className="object-contain" />
+    )
+  }
+
+  return (
+    <motion.div
+      initial={{ y: '0%' }}
+      animate={{ y: ['0%', '0%', `-${overflow * 100}%`, `-${overflow * 100}%`] }}
+      transition={{ duration: AUTO_PLAY_INTERVAL / 1000, times: [0, 0.15, 0.85, 1], ease: 'easeInOut' }}
+    >
+      <Image
+        src={step.image}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes="(min-width: 1024px) 900px, 100vw"
+        className="block h-auto w-full"
+      />
+    </motion.div>
+  )
+}
 
 export default function ReosContent() {
   const [activeStep, setActiveStep] = useState(0)
@@ -232,16 +276,20 @@ export default function ReosContent() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.98 }}
                         transition={{ duration: 0.4, ease: 'easeInOut' }}
-                        className="absolute inset-0"
+                        className="absolute inset-0 overflow-hidden"
                       >
-                        <Image
-                          src={workflowSteps[activeStep].image}
-                          alt={`REOS Screenshot: ${workflowSteps[activeStep].title} — ${workflowSteps[activeStep].description}`}
-                          fill
-                          sizes="(min-width: 1024px) 900px, 100vw"
-                          className="object-contain"
-                          priority={activeStep === 0}
-                        />
+                        {workflowSteps[activeStep].tall ? (
+                          <TallScreenshot step={workflowSteps[activeStep]} />
+                        ) : (
+                          <Image
+                            src={workflowSteps[activeStep].image}
+                            alt={`REOS Screenshot: ${workflowSteps[activeStep].title} — ${workflowSteps[activeStep].description}`}
+                            fill
+                            sizes="(min-width: 1024px) 900px, 100vw"
+                            className="object-contain"
+                            priority={activeStep === 0}
+                          />
+                        )}
                       </motion.div>
                     </AnimatePresence>
                   </div>

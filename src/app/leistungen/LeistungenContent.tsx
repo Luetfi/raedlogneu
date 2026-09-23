@@ -19,17 +19,6 @@ const FOOTNOTE =
 
 const pricingPlans = [
   {
-    id: 'standard',
-    name: 'Standard-Service',
-    popular: false,
-    features: [
-      { text: 'Hol- und Bringservice' },
-      { text: 'Reinigung' },
-      { text: 'Einlagerung von Kompletträdern bzw. Reifen' },
-      { text: 'Grundleistungen' },
-    ],
-  },
-  {
     id: 'eco',
     name: 'Eco-Service',
     popular: false,
@@ -37,6 +26,17 @@ const pricingPlans = [
       { text: 'Anlieferung von Neurädern durch den Auftraggeber' },
       { text: 'Kommissionierung von Neurädern durch RÄDLOG' },
       { text: 'Einlagerung' },
+      { text: 'Grundleistungen' },
+    ],
+  },
+  {
+    id: 'standard',
+    name: 'Standard-Service',
+    popular: false,
+    features: [
+      { text: 'Hol- und Bringservice' },
+      { text: 'Reinigung' },
+      { text: 'Einlagerung von Kompletträdern bzw. Reifen' },
       { text: 'Grundleistungen' },
     ],
   },

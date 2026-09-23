@@ -5,7 +5,7 @@
 ## Kernseiten
 
 - [Startseite](https://www.raedlog.de/): Überblick über RÄDLOG-Center, Leistungen und Zielgruppen.
-- [Leistungen](https://www.raedlog.de/leistungen): Rädereinlagerung, Leistungspakete (Standard, Eco, Komfort, Premium), Reinigung, Wuchten, Alufelgen-Aufbereitung.
+- [Leistungen](https://www.raedlog.de/leistungen): Rädereinlagerung, Leistungspakete (Eco, Standard, Komfort, Premium), Reinigung, Wuchten, Alufelgen-Aufbereitung.
 - [Firmenkunden](https://www.raedlog.de/firmenkunden): Lösungen für Autohäuser, Fuhrparks und Autovermietungen inkl. häufiger Fragen (FAQ).
 - [REOS Online-System](https://www.raedlog.de/reos): 24/7-Onlinedatenbank für Radsatzanforderung, Bestandsübersicht und Auswertungen.
 - [Über uns](https://www.raedlog.de/ueber-uns): Unternehmensgeschichte seit 1998, Standorte und Chronik.
@@ -65,7 +65,7 @@ Gerne erstellen wir Ihnen ein individuelles Angebot — sprechen Sie uns einfach
 Wir holen Ihre Radsätze direkt bei Ihnen ab und liefern sie tagesgenau zurück. Der Abruf erfolgt bequem über unser Online-System REOS.
 
 **Welche Leistungspakete gibt es?**
-Wir bieten vier Pakete: Standard (Hol- und Bringservice, Reinigung, Einlagerung), Eco (Einlagerung und Kommissionierung von Neurädern), Komfort (zusätzlich digitale Erfassung sämtlicher Reifen- und Felgendaten sowie Zustandsbewertung und Dokumentation) und Premium (zusätzlich Wuchten von 4 Laufrädern mit 3D-Technologie).
+Wir bieten vier Pakete: Eco (Einlagerung und Kommissionierung von Neurädern), Standard (Hol- und Bringservice, Reinigung, Einlagerung), Komfort (zusätzlich digitale Erfassung sämtlicher Reifen- und Felgendaten sowie Zustandsbewertung und Dokumentation) und Premium (zusätzlich Wuchten von 4 Laufrädern mit 3D-Technologie).
 
 **Wie fordere ich einen Radsatz über REOS an?**
 Über unser Online-System REOS können Sie 24/7 Radsätze anfordern. In nur zwei Klicks wählen Sie den Radsatz und das Lieferdatum — die Anlieferung erfolgt tagesgenau.

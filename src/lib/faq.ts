@@ -25,7 +25,7 @@ export const FIRMENKUNDEN_FAQ: FaqItem[] = [
   {
     question: 'Welche Leistungspakete gibt es?',
     answer:
-      'Wir bieten vier Pakete: Standard (Hol- und Bringservice, Reinigung, Einlagerung), Eco (Einlagerung und Kommissionierung von Neurädern), Komfort (zusätzlich digitale Erfassung sämtlicher Reifen- und Felgendaten sowie Zustandsbewertung und Dokumentation) und Premium (zusätzlich Wuchten von 4 Laufrädern mit 3D-Technologie).',
+      'Wir bieten vier Pakete: Eco (Einlagerung und Kommissionierung von Neurädern), Standard (Hol- und Bringservice, Reinigung, Einlagerung), Komfort (zusätzlich digitale Erfassung sämtlicher Reifen- und Felgendaten sowie Zustandsbewertung und Dokumentation) und Premium (zusätzlich Wuchten von 4 Laufrädern mit 3D-Technologie).',
   },
   {
     question: 'Wie fordere ich einen Radsatz über REOS an?',

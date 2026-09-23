@@ -138,6 +138,18 @@ const groupByYear = (events: TimelineEvent[]): TimelineGroup[] =>
 
 const timelineGroups = groupByYear(timelineEvents)
 
+// Ortsnamen mit Bindestrich (z. B. Remseck-Aldingen) nicht am Bindestrich umbrechen.
+const keepHyphenatedTogether = (text: string) =>
+  text.split(/(\S+-\S+)/).map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className="whitespace-nowrap">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  )
+
 interface TimelineItemProps {
   group: TimelineGroup
   index: number
@@ -271,13 +283,13 @@ function EventCard({ group, isLeft }: { group: TimelineGroup; isLeft?: boolean }
                   aria-hidden="true"
                   className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60"
                 />
-                <span>{description}</span>
+                <span>{keepHyphenatedTogether(description)}</span>
               </li>
             ))}
           </ul>
         ) : (
           <p className={`relative text-base leading-relaxed text-text-muted group-hover:text-text transition-colors duration-200 ${isLeft ? 'text-right' : 'text-left'}`}>
-            {group.descriptions[0]}
+            {keepHyphenatedTogether(group.descriptions[0])}
           </p>
         )}
       </div>

@@ -75,7 +75,7 @@ const benefits = [
   },
   {
     icon: Sparkles,
-    title: 'Gereinigt & gewuchtet',
+    title: 'Gereinigt & gewuchtet (optional)',
     description: 'Räder kommen montagebereit bei Ihnen an',
   },
   {

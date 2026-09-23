@@ -6,7 +6,7 @@ import LeistungenContent from './LeistungenContent'
 export const metadata = createMetadata({
   title: 'Leistungen',
   description:
-    'Unsere Leistungspakete für Rädereinlagerung: Standard, Eco, Komfort und Premium Service mit Hol- und Bringservice in der Region Stuttgart.',
+    'Unsere Leistungspakete für Rädereinlagerung: Eco, Standard, Komfort und Premium Service mit Hol- und Bringservice in der Region Stuttgart.',
   path: '/leistungen',
 })
 
@@ -48,7 +48,7 @@ export default function LeistungenPage() {
           getWebPageSchema({
             name: 'Leistungen',
             description:
-              'Die vier Leistungspakete der Rädereinlagerung: Standard, Eco, Komfort und Premium — inklusive Hol- und Bringservice.',
+              'Die vier Leistungspakete der Rädereinlagerung: Eco, Standard, Komfort und Premium — inklusive Hol- und Bringservice.',
             path: '/leistungen',
           }),
         ]}
