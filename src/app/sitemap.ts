@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { LAST_MODIFIED, SITE_URL } from '@/lib/constants'
 
+// Noetig fuer den statischen Export (output: 'export').
+export const dynamic = 'force-static'
+
 type Entry = {
   path: string
   changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']

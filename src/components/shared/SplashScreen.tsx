@@ -1,79 +1,25 @@
-'use client'
-
-import { useState, useEffect, useRef } from 'react'
-import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
+// Reiner CSS-Splash: steckt im statischen HTML und blendet sich per Animation
+// selbst aus (.splash in globals.css). Frueher hing das Ausblenden an einem
+// JS-Timer, der erst nach der Hydration startete — auf Handys stand der Splash
+// dadurch mehrere Sekunden. Beim Seitenwechsel bleibt das Layout bestehen,
+// der Splash erscheint also nur beim ersten Aufruf.
 export default function SplashScreen() {
-  const [visible, setVisible] = useState(true)
-  const pathname = usePathname()
-  const isInitialLoad = useRef(true)
-
-  // Initial load: 1600ms
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false)
-      isInitialLoad.current = false
-    }, 1600)
-    return () => clearTimeout(timer)
-  }, [])
-
-  // Navigation: scroll to top only, no splash
-  useEffect(() => {
-    if (isInitialLoad.current) return
-    window.scrollTo(0, 0)
-  }, [pathname])
-
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          key="splash"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg"
-        >
-          {/* Radial glow behind logo */}
-          <div className="absolute w-[500px] h-[500px] rounded-full bg-primary/8 blur-[120px]" />
-
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
-            <Image
-              src="/images/logo.png"
-              alt="RÄDLOG-Center"
-              width={320}
-              height={90}
-              className="h-20 sm:h-24 w-auto relative"
-              priority
-            />
-          </motion.div>
-
-          {/* Animated loading bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mt-8 w-48 h-[2px] rounded-full bg-border overflow-hidden"
-          >
-            <motion.div
-              initial={{ x: '-100%' }}
-              animate={{ x: '100%' }}
-              transition={{
-                duration: 0.9,
-                ease: 'easeInOut',
-                repeat: 1,
-              }}
-              className="h-full w-full bg-gradient-to-r from-transparent via-primary to-transparent"
-            />
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      aria-hidden="true"
+      className="splash fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg pointer-events-none"
+    >
+      <div className="absolute w-[500px] h-[500px] rounded-full bg-primary/8 blur-[120px]" />
+      <Image
+        src="/images/logo.png"
+        alt=""
+        width={320}
+        height={90}
+        className="splash-logo h-20 sm:h-24 w-auto relative"
+        priority
+      />
+    </div>
   )
 }

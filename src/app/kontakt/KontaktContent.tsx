@@ -4,20 +4,16 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Building2, Printer, CheckCircle, AlertCircle, Send, Navigation, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import PageHero from '@/components/ui/PageHero'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import AnimatedSection from '@/components/shared/AnimatedSection'
+import LocationMap from '@/components/shared/LocationMap'
 import { staggerContainer, staggerItem, fadeInUp } from '@/lib/animations'
 import { COMPANY, LOCATIONS } from '@/lib/constants'
 
-const ServiceRegionMap = dynamic(
-  () => import('@/components/shared/ServiceRegionMap'),
-  { ssr: false, loading: () => <div className="h-full min-h-[420px] w-full animate-pulse rounded-2xl bg-bg-surface" /> },
-)
 
 interface FormState {
   name: string
@@ -45,6 +41,9 @@ export default function KontaktContent() {
     datenschutz: false,
   })
   const [status, setStatus] = useState<SubmitStatus>('idle')
+  const [activeLocation, setActiveLocation] = useState(0)
+  const [mapLoaded, setMapLoaded] = useState(false)
+  const active = LOCATIONS[activeLocation]
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -61,7 +60,7 @@ export default function KontaktContent() {
     setStatus('loading')
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/api/contact.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -357,7 +356,12 @@ export default function KontaktContent() {
             {/* Karte — links (3/5) */}
             <div className="lg:col-span-3">
               <div className="h-full min-h-[420px]">
-                <ServiceRegionMap />
+                <LocationMap
+                  name={active.name}
+                  address={`${active.street}, ${active.zip} ${active.city}`}
+                  loaded={mapLoaded}
+                  onLoad={() => setMapLoaded(true)}
+                />
               </div>
             </div>
 
@@ -369,9 +373,9 @@ export default function KontaktContent() {
               viewport={{ once: true, margin: '-60px' }}
               className="flex flex-col gap-4 lg:col-span-2"
             >
-              {LOCATIONS.map((location) => (
+              {LOCATIONS.map((location, index) => (
                 <motion.div key={location.name} variants={staggerItem}>
-                  <Card className="h-full p-5">
+                  <Card className={`h-full p-5 transition-colors ${index === activeLocation ? 'ring-1 ring-primary' : ''}`}>
                     <div className="mb-3 flex items-center justify-between gap-2">
                       <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                         <Building2 className="size-4" />
@@ -395,11 +399,19 @@ export default function KontaktContent() {
                       href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${location.street}, ${location.zip} ${location.city}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
+                      className="relative z-10 mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-light"
                     >
                       <Navigation className="size-3.5" />
                       Zur Route
                     </a>
+                    {/* Die ganze Box wählt den Standort für die Karte aus */}
+                    <button
+                      type="button"
+                      onClick={() => setActiveLocation(index)}
+                      aria-pressed={index === activeLocation}
+                      aria-label={`${location.name} auf der Karte zeigen`}
+                      className="absolute inset-0 cursor-pointer rounded-2xl focus-visible:outline-2 focus-visible:outline-primary"
+                    />
                   </Card>
                 </motion.div>
               ))}

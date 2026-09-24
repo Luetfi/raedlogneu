@@ -29,7 +29,9 @@ export function createMetadata({
   const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`
 
   return {
-    title: fullTitle,
+    // absolute: fullTitle enthaelt den Firmennamen bereits — sonst haengt das
+    // Template aus layout.tsx ihn ein zweites Mal an.
+    title: { absolute: fullTitle },
     description,
     keywords: keywords ?? DEFAULT_KEYWORDS,
     robots: {

@@ -6,7 +6,6 @@ import FloatingButtons from '@/components/layout/FloatingButtons'
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton'
 import SplashScreen from '@/components/shared/SplashScreen'
 import ScrollToTop from '@/components/shared/ScrollToTop'
-import ConsentBanner from '@/components/shared/ConsentBanner'
 import JsonLd from '@/components/shared/JsonLd'
 import { getOrganizationSchema, getLocalBusinessSchema, getWebsiteSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/constants'
@@ -23,7 +22,7 @@ export const metadata: Metadata = {
     default: 'RÄDLOG-Center GmbH – Rädereinlagerung & Reifenservice Stuttgart',
     template: '%s | RÄDLOG-Center GmbH',
   },
-  description: 'Ihr kompetenter Partner für Rädereinlagerung, Reifeneinlagerung und Service in Stuttgart, Ludwigsburg, Waiblingen und Umgebung. Professionelle Einlagerung für Autohäuser, Fuhrparks und Autovermietungen.',
+  description: 'Rädereinlagerung und Reifeneinlagerung in Stuttgart, Ludwigsburg, Waiblingen und Umgebung – für Autohäuser, Fuhrparks und Autovermietungen. Seit 1998.',
   metadataBase: new URL(SITE_URL),
 }
 
@@ -31,8 +30,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={inter.variable}>
       <head>
-        <link rel="preconnect" href="https://basemaps.cartocdn.com" />
-        <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
         <JsonLd data={[getOrganizationSchema(), getLocalBusinessSchema(), getWebsiteSchema()]} />
       </head>
       <body className="min-h-screen flex flex-col">
@@ -45,7 +42,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <FloatingButtons />
         <ScrollToTopButton />
         <Footer />
-        <ConsentBanner />
       </body>
     </html>
   )

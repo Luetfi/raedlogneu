@@ -144,11 +144,12 @@ export default function KarriereContent() {
       payload.append('email', formData.email)
       payload.append('telefon', formData.telefon)
       payload.append('nachricht', formData.nachricht)
+      payload.append('datenschutz', formData.datenschutz ? '1' : '')
       if (selectedFile) {
         payload.append('lebenslauf', selectedFile)
       }
 
-      const res = await fetch('/api/karriere', {
+      const res = await fetch('/api/karriere.php', {
         method: 'POST',
         body: payload,
       })

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { motion } from 'framer-motion'
 import HeroVideo from '@/components/shared/HeroVideo'
 import {
@@ -106,39 +106,31 @@ export default function HomeContent() {
 
         <Container className="relative z-10 -mt-20 lg:-mt-28">
           <div className="flex flex-col items-center text-center">
-            <motion.p
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-lg sm:text-xl font-semibold text-primary tracking-widest uppercase mb-4 hero-text-shadow-sm"
+            <p
+              style={{ '--hero-delay': '0.15s', '--hero-y': '0px', '--hero-scale': '0.9' } as CSSProperties}
+              className="hero-in text-lg sm:text-xl font-semibold text-primary tracking-widest uppercase mb-4 hero-text-shadow-sm"
             >
               Wir kümmern uns Rund ums Rad!
-            </motion.p>
+            </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-4xl font-extrabold tracking-tight text-text-heading sm:text-5xl lg:text-6xl xl:text-7xl !leading-[1.1] hero-text-shadow"
+            <h1
+              style={{ '--hero-delay': '0.2s' } as CSSProperties}
+              className="hero-in text-4xl font-extrabold tracking-tight text-text-heading sm:text-5xl lg:text-6xl xl:text-7xl !leading-[1.1] hero-text-shadow"
             >
               Ein neues Zuhause
               <br />
               <span className="text-primary">für Ihre Kundenräder</span>
-            </motion.h1>
+            </h1>
 
             {/* Decorative divider */}
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
-              className="mt-4 h-[2px] w-24 bg-gradient-to-r from-transparent via-primary to-transparent"
+            <div
+              style={{ '--hero-delay': '0.35s' } as CSSProperties}
+              className="hero-line-in mt-4 h-[2px] w-24 bg-gradient-to-r from-transparent via-primary to-transparent"
             />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-              className="mt-8 flex flex-wrap justify-center gap-4"
+            <div
+              style={{ '--hero-delay': '0.6s' } as CSSProperties}
+              className="hero-in mt-8 flex flex-wrap justify-center gap-4"
             >
               <Button href="/leistungen" size="lg">
                 Leistungen entdecken
@@ -147,7 +139,7 @@ export default function HomeContent() {
               <Button href="/kontakt" variant="outline" size="lg">
                 Kontakt aufnehmen
               </Button>
-            </motion.div>
+            </div>
 
           </div>
         </Container>

@@ -1,11 +1,16 @@
 'use client'
 
 import { useRef, useCallback, useState, useEffect } from 'react'
+import { preload } from 'react-dom'
 
 const videos = ['/videos/herovideo.mp4', '/videos/herovideo1.mp4']
 const posters = ['/videos/herovideo-poster.webp', '/videos/herovideo1-poster.webp']
 
 export default function HeroVideo() {
+  // Das Poster ist das groesste Element beim ersten Aufruf (LCP) — frueh und
+  // mit hoher Prioritaet laden.
+  preload(posters[0], { as: 'image', fetchPriority: 'high' })
+
   const videoARefs = useRef<HTMLVideoElement>(null)
   const videoBRefs = useRef<HTMLVideoElement>(null)
   // 0 = video A is active, 1 = video B is active
@@ -13,12 +18,29 @@ export default function HeroVideo() {
   // Video B wird erst geladen, wenn A laeuft — sonst konkurrieren beide
   // Downloads um die Bandbreite des ersten Seitenaufrufs und verzoegern den LCP.
   const [preloadB, setPreloadB] = useState(false)
+  // Auch Video A startet erst nach dem load-Event: bis dahin steht das Poster,
+  // und die 500 KB konkurrieren auf dem Handy nicht mit JS, Schrift und Bildern.
+  const [loadA, setLoadA] = useState(false)
   const sequenceRef = useRef(0) // tracks which video in the list plays next
 
-  // Set playback speed for the first video
   useEffect(() => {
-    if (videoARefs.current) videoARefs.current.playbackRate = 1.5
+    if (document.readyState === 'complete') {
+      setLoadA(true)
+      return
+    }
+    const onLoad = () => setLoadA(true)
+    window.addEventListener('load', onLoad, { once: true })
+    return () => window.removeEventListener('load', onLoad)
   }, [])
+
+  // Set playback speed for the first video (defaultPlaybackRate, weil das
+  // Setzen von src playbackRate wieder zuruecksetzt)
+  useEffect(() => {
+    const video = videoARefs.current
+    if (!video || !loadA) return
+    video.defaultPlaybackRate = 1.5
+    video.playbackRate = 1.5
+  }, [loadA])
 
   const handleEnded = useCallback(() => {
     const next = sequenceRef.current === 0 ? 1 : 0
@@ -46,12 +68,12 @@ export default function HeroVideo() {
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload={loadA ? 'auto' : 'none'}
         poster={posters[0]}
         aria-hidden="true"
         onPlaying={() => setPreloadB(true)}
         onEnded={handleEnded}
-        src={videos[0]}
+        src={loadA ? videos[0] : undefined}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out"
         style={{ opacity: activeSlot === 0 ? 1 : 0 }}
       />

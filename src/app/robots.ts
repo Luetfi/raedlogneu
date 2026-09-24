@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/constants'
 
+// Noetig fuer den statischen Export (output: 'export').
+export const dynamic = 'force-static'
+
 // KI-/Suchmaschinen-Crawler, die wir ausdrücklich zulassen (GEO-Reichweite).
 const ALLOWED_BOTS = [
   '*',

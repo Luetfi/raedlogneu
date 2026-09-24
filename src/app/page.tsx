@@ -6,7 +6,7 @@ import HomeContent from './HomeContent'
 export const metadata = createMetadata({
   title: 'Startseite',
   description:
-    'Ihr kompetenter Partner für Rädereinlagerung, Reifeneinlagerung und Service in Stuttgart, Ludwigsburg, Waiblingen und Umgebung. Professionelle Einlagerung für Autohäuser, Fuhrparks und Autovermietungen.',
+    'Rädereinlagerung und Reifeneinlagerung in Stuttgart, Ludwigsburg, Waiblingen und Umgebung – für Autohäuser, Fuhrparks und Autovermietungen. Seit 1998.',
   path: '',
 })
 

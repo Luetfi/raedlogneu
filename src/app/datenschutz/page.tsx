@@ -270,33 +270,29 @@ export default function DatenschutzPage() {
               somit keine personenbezogenen Daten an Google übertragen.
             </p>
 
-            <h3>OpenStreetMap-Kartendienst (CARTO)</h3>
+            <h3>Google Maps</h3>
             <p>
-              Wir nutzen auf unserer Website den Kartendienst OpenStreetMap mit Kartenkacheln
-              von CARTO. Anbieter ist die CARTO, 307 Fifth Avenue, 17th Floor, New York,
-              NY 10016, USA.
+              Wir binden auf unserer Kontaktseite Karten des Dienstes Google Maps ein. Anbieter ist
+              die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
             </p>
             <p>
-              Wenn Sie eine Seite mit einer eingebundenen Karte aufrufen, lädt Ihr Browser die
-              benötigten Kartenkacheln von den Servern von CARTO
-              (basemaps.cartocdn.com). Dabei wird Ihre IP-Adresse an CARTO übermittelt. Dies ist
-              erforderlich, um Ihnen die Kartendarstellung in Ihrem Browser anzeigen zu können.
+              Die Karte wird erst geladen, wenn Sie aktiv auf „Karte laden" klicken. Vorher
+              findet keine Verbindung zu Servern von Google statt. Nach dem Klick
+              lädt Ihr Browser die Karte von Google; dabei werden insbesondere Ihre IP-Adresse
+              sowie ggf. weitere Nutzungsdaten an Google übertragen und möglicherweise auf Servern
+              in den USA verarbeitet. Google kann dabei Cookies setzen.
             </p>
             <p>
-              Die Nutzung von OpenStreetMap / CARTO erfolgt im Interesse einer ansprechenden
-              Darstellung unserer Standorte und einer leichten Auffindbarkeit der von uns auf der
-              Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von
-              Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO dar.
+              Rechtsgrundlage ist Ihre Einwilligung gemäß Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO
+              und §&nbsp;25 Abs.&nbsp;1 TDDDG, die Sie durch den Klick erteilen. Die Einwilligung
+              gilt nur für den aktuellen Seitenaufruf. Google ist nach dem EU-US Data Privacy
+              Framework zertifiziert.
             </p>
             <p>
               Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der
-              Datenschutzerklärung von CARTO:{' '}
-              <a href="https://carto.com/privacy/" target="_blank" rel="noopener noreferrer">
-                https://carto.com/privacy/
-              </a>{' '}
-              und der Datenschutzerklärung von OpenStreetMap:{' '}
-              <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">
-                https://wiki.osmfoundation.org/wiki/Privacy_Policy
+              Datenschutzerklärung von Google:{' '}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                https://policies.google.com/privacy
               </a>.
             </p>
 
@@ -317,21 +313,15 @@ export default function DatenschutzPage() {
               Auf unserer Website befinden sich Links zu Google Maps für die Routenplanung zu
               unseren Standorten. Es handelt sich um externe Links, die Sie auf die Website von
               Google weiterleiten. Erst durch das aktive Anklicken des Links werden Daten an
-              Google übertragen. Es findet keine Einbettung von Google Maps auf unserer Website
-              statt.
+              Google übertragen.
             </p>
 
             {/* 8. Cookies und Speichertechnologien */}
             <h2>8. Cookies und Speichertechnologien</h2>
             <p>
-              Diese Website verwendet keine Cookies. Es werden keine Tracking-, Analyse- oder
-              Marketing-Cookies eingesetzt.
-            </p>
-            <p>
-              Zur Speicherung Ihrer Einwilligungspräferenz (ob Sie unseren Datenschutzhinweis
-              zur Kenntnis genommen haben) wird ausschließlich der localStorage Ihres Browsers
-              verwendet. Dies ist technisch notwendig und dient nicht dem Tracking. Sie können
-              diesen Eintrag jederzeit über die Browsereinstellungen löschen.
+              Diese Website selbst verwendet keine Cookies. Es werden keine Tracking-, Analyse-
+              oder Marketing-Cookies eingesetzt. Laden Sie die Google-Maps-Karte auf der
+              Kontaktseite, kann Google eigene Cookies setzen (siehe Abschnitt „Google Maps").
             </p>
 
             {/* 9. Widerspruch gegen Werbe-Mails */}

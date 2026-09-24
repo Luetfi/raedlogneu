@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { COMPANY } from '@/lib/constants'
 
+// Noetig fuer den statischen Export (output: 'export').
+export const dynamic = 'force-static'
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: COMPANY.name,
@@ -14,8 +17,9 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'de-DE',
     icons: [
       {
-        src: '/images/logo.png',
-        sizes: '781x319',
+        // Manifest-Icons muessen quadratisch sein; src/app/icon.png ist 512x512.
+        src: '/icon.png',
+        sizes: '512x512',
         type: 'image/png',
         purpose: 'any',
       },

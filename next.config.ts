@@ -1,63 +1,20 @@
 import type { NextConfig } from 'next'
 
-// Statische Medien in public/ haben stabile Dateinamen und werden bei Aenderungen
-// umbenannt bzw. neu deployt — daher lang cachebar. Next liefert public/ sonst mit
-// max-age=0 aus, was die Frame-Sequenz bei jedem Seitenaufruf neu laden laesst.
-const IMMUTABLE_CACHE = 'public, max-age=31536000, immutable'
-
+// Statischer Export fuer das Hosting bei all-inkl (Apache, kein Node.js).
+// `next build` schreibt die fertige Seite nach out/ — dieser Ordner wird per
+// FTP hochgeladen. Header, Caching und Weiterleitungen, die Next im
+// Export-Modus nicht mehr liefern kann, stehen in public/.htaccess.
+// Die Formulare posten an PHP-Skripte unter public/api/.
 const nextConfig: NextConfig = {
+  output: 'export',
+  // Seiten landen als leistungen.html usw.; public/.htaccess liefert sie unter
+  // /leistungen aus (URLs ohne Slash wie in Sitemap, Schema und llms.txt).
   images: {
-    // AVIF zuerst: rund 20–30 % kleiner als WebP bei gleicher Qualitaet.
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 31536000,
+    // Kein Bild-Server im Export; die Bilder in public/ sind bereits als
+    // WebP/AVIF optimiert (scripts/optimize-images.mjs).
+    unoptimized: true,
   },
-  compress: true,
   poweredByHeader: false,
-  async headers() {
-    return [
-      {
-        source: '/:path(frames|images|logos|videos)/:file*',
-        headers: [{ key: 'Cache-Control', value: IMMUTABLE_CACHE }],
-      },
-      {
-        source: '/:file(og-image.jpg|favicon.ico)',
-        headers: [{ key: 'Cache-Control', value: IMMUTABLE_CACHE }],
-      },
-      {
-        // llms.txt wird von KI-Crawlern gelesen — als Text ausliefern statt Download.
-        source: '/:file(llms.txt|llms-full.txt)',
-        headers: [
-          { key: 'Content-Type', value: 'text/plain; charset=utf-8' },
-          { key: 'Cache-Control', value: 'public, max-age=3600' },
-        ],
-      },
-      {
-        source: '/:path*',
-        headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-          },
-        ],
-      },
-    ]
-  },
-  async redirects() {
-    return [
-      {
-        source: '/chronik',
-        destination: '/ueber-uns#chronik',
-        permanent: true,
-      },
-    ]
-  },
 }
 
 export default nextConfig

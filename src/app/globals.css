@@ -98,6 +98,44 @@ body {
   -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
+/* Splash beim ersten Aufruf — laeuft ohne JavaScript ab */
+@keyframes splash-out {
+  to { opacity: 0; visibility: hidden; }
+}
+@keyframes splash-logo-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+.splash {
+  animation: splash-out 0.35s ease-in-out 0.55s forwards;
+}
+.splash-logo {
+  animation: splash-logo-in 0.45s ease-out both;
+}
+
+/* Hero-Einblendung per CSS, damit der Text nicht auf die Hydration wartet.
+   Verzoegerung ueber --hero-delay; Start nach dem Splash. */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(var(--hero-y, 20px)) scale(var(--hero-scale, 1)); }
+  to { opacity: 1; transform: none; }
+}
+.hero-in {
+  animation: hero-in 0.7s ease-out both;
+  animation-delay: calc(0.5s + var(--hero-delay, 0s));
+}
+@keyframes hero-line-in {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: none; }
+}
+.hero-line-in {
+  animation: hero-line-in 0.7s ease-out both;
+  animation-delay: calc(0.5s + var(--hero-delay, 0s));
+}
+@media (prefers-reduced-motion: reduce) {
+  .splash { animation-duration: 0.01s; animation-delay: 0.2s; }
+  .splash-logo, .hero-in, .hero-line-in { animation: none; }
+}
+
 /* Ken Burns zoom effect for hero slideshow */
 @keyframes ken-burns {
   0% { transform: scale(1); }
@@ -114,18 +152,6 @@ body {
 }
 .hero-text-shadow-sm {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Leaflet attribution — minimal & unobtrusive */
-.leaflet-control-attribution {
-  font-size: 7px !important;
-  opacity: 0.2 !important;
-  background: transparent !important;
-  color: #334155 !important;
-  padding: 0 3px !important;
-}
-.leaflet-control-attribution a {
-  color: #334155 !important;
 }
 
 /* Flip card — 3D hover effect for target audience cards */

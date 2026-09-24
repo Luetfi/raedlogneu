@@ -1,0 +1,4 @@
+# Helfer-Include nicht direkt aufrufbar machen.
+<Files "_mail.php">
+    Require all denied
+</Files>
