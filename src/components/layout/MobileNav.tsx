@@ -131,7 +131,7 @@ export default function MobileNav() {
                       className="group flex items-center justify-center gap-3 rounded-xl bg-gradient-to-b from-primary-light to-primary px-4 py-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),0_6px_18px_-6px_rgba(5,104,177,0.8)] ring-1 ring-white/15 transition-all duration-300 active:scale-[0.98]"
                     >
                       <Image
-                        src="/images/reos-logo-light.png"
+                        src="/images/reos-logo.png"
                         alt="REOS"
                         width={210}
                         height={70}

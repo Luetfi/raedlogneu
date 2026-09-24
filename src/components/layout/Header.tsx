@@ -62,7 +62,7 @@ export default function Header() {
               className="group relative ml-5 inline-flex items-center gap-3 rounded-xl bg-gradient-to-b from-primary-light to-primary py-2.5 pl-4 pr-3.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),0_6px_18px_-6px_rgba(5,104,177,0.8)] ring-1 ring-white/15 transition-all duration-300 hover:from-primary-light hover:to-primary-light hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4),0_12px_28px_-8px_rgba(10,127,212,0.95)] hover:ring-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
               <Image
-                src="/images/reos-logo-light.png"
+                src="/images/reos-logo.png"
                 alt="REOS"
                 width={210}
                 height={70}
